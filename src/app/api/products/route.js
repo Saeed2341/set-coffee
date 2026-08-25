@@ -2,13 +2,18 @@ import { authAdmin } from "@/utils/auth";
 import connectToDB from "../../../../configs/db";
 import ProductModel from "@/models/Product";
 import { isValidObjectId } from "mongoose";
-import { writeFile } from "fs/promises";
-import path from "path";
+import cloudinary from "@/utils/cloudinary";
+
 export async function POST(req) {
   try {
     const isAdmin = await authAdmin();
-    if (!isAdmin)
-      throw new Error("This api protected and you can't access it !");
+    if (!isAdmin) {
+      return Response.json(
+        { message: "This api protected and you can't access it!" },
+        { status: 403 },
+      );
+    }
+
     await connectToDB();
     const formData = await req.formData();
 
@@ -20,13 +25,35 @@ export async function POST(req) {
     const suitableFor = formData.get("suitableFor");
     const smell = formData.get("smell");
     const tags = formData.get("tags");
+    const stock = formData.get("stock");
     const img = formData.get("img");
+    console.log(stock);
+    // اگر تصویری ارسال نشده باشد
+    if (!img) {
+      return Response.json({ message: "Image is required!" }, { status: 400 });
+    }
 
+    // تبدیل تصویر به بافر
     const buffer = Buffer.from(await img.arrayBuffer());
-    const extName = "." + img.type.slice(6);
-    const fileName = Math.floor(Math.random() * Date.now()) + extName;
-    writeFile(path.join(process.cwd(), "public", "uploads", fileName), buffer);
 
+    // آپلود به Cloudinary
+    const uploadResult = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          {
+            folder: "set-coffee/products",
+            use_filename: true,
+            unique_filename: true,
+          },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          },
+        )
+        .end(buffer);
+    });
+
+    // ذخیره اطلاعات محصول در دیتابیس
     const product = await ProductModel.create({
       name,
       price,
@@ -34,9 +61,10 @@ export async function POST(req) {
       longDescription,
       weight,
       suitableFor,
+      stock,
       smell,
       tags: tags,
-      img: fileName,
+      img: uploadResult.secure_url, // ذخیره آدرس کامل تصویر
     });
 
     return Response.json(
@@ -44,8 +72,9 @@ export async function POST(req) {
       { status: 201 },
     );
   } catch (error) {
+    console.error("Upload error:", error);
     return Response.json(
-      { message: "Internal server error. " + error.message },
+      { message: "Internal server error: " + error.message },
       { status: 500 },
     );
   }

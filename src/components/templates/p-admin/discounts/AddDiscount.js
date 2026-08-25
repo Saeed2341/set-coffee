@@ -9,6 +9,7 @@ function AddDiscount() {
   const [code, setCode] = useState("");
   const [percent, setPercent] = useState("");
   const [maxUse, setMaxUse] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -28,29 +29,36 @@ function AddDiscount() {
       );
     }
 
-    const discount = { code, percent, maxUse };
-    const res = await fetch("/api/discounts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(discount),
-    });
+    setIsLoading(true);
 
-    if (res.status == 201) {
-      setCode("");
-      setPercent("");
-      setMaxUse("");
-      swal({
-        title: "کد تخفیف با موفقیت ایجاد شد",
-        icon: "success",
-        buttons: "تایید",
-      }).then(() => {
-        router.refresh();
+    const discount = { code, percent, maxUse };
+    try {
+      const res = await fetch("/api/discounts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(discount),
       });
+
+      if (res.status == 201) {
+        setCode("");
+        setPercent("");
+        setMaxUse("");
+        swal({
+          title: "کد تخفیف با موفقیت ایجاد شد",
+          icon: "success",
+          buttons: "تایید",
+        }).then(() => {
+          router.refresh();
+        });
+      }
+    } catch (error) {
+      showSwal("خطا در ارتباط با سرور", "error", "تلاش مجدد");
+    } finally {
+      setIsLoading(false);
     }
   };
-
 
   return (
     <section className={styles.discount}>
@@ -92,7 +100,13 @@ function AddDiscount() {
           </select>
         </div>
       </div>
-      <button onClick={addDiscount}>افزودن</button>
+      <button
+        onClick={addDiscount}
+        className={`${styles.submitButton} ${isLoading ? styles.loading : ""}`}
+        disabled={isLoading}
+      >
+        {isLoading ? "در حال افزودن..." : "افزودن"}
+      </button>
     </section>
   );
 }

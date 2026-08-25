@@ -9,9 +9,12 @@ const stateOptions = stateData();
 
 const Details = ({ formData, updateForm }) => {
   // ===== Stateهای مربوط به انتخاب آدرس قبلی =====
-  const [savedAddresses, setSavedAddresses] = useState([]); // لیست آدرس‌های ذخیره‌شده کاربر
-  const [selectedAddressId, setSelectedAddressId] = useState(null); // آیدی آدرس انتخاب‌شده
-  const [isLoadingAddresses, setIsLoadingAddresses] = useState(false); // وضعیت لودینگ
+  const [savedAddresses, setSavedAddresses] = useState([]);
+  const [selectedAddressId, setSelectedAddressId] = useState(null);
+  const [isLoadingAddresses, setIsLoadingAddresses] = useState(false);
+
+  // ===== State لودینگ برای دکمه ذخیره آدرس =====
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // ===== Stateهای مربوط به Select استان و شهر =====
   const [stateSelectedOption, setStateSelectedOption] = useState(null);
@@ -20,7 +23,7 @@ const Details = ({ formData, updateForm }) => {
   const [cityOption, setCityOption] = useState([]);
   const [isClient, setIsClient] = useState(false);
 
-  // ===== دریافت لیست آدرس‌های کاربر (شما منطقش را کامل می‌کنید) =====
+  // ===== دریافت لیست آدرس‌های کاربر =====
   useEffect(() => {
     fetchAddresses();
   }, []);
@@ -80,6 +83,8 @@ const Details = ({ formData, updateForm }) => {
         buttons: "تایید",
       });
 
+    setIsSubmitting(true);
+
     try {
       const res = await fetch("/api/addresses", {
         method: "POST",
@@ -112,6 +117,8 @@ const Details = ({ formData, updateForm }) => {
         icon: "error",
         buttons: "تلاش مجدد",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -119,7 +126,6 @@ const Details = ({ formData, updateForm }) => {
   const handleAddressSelect = (selectedOption) => {
     setSelectedAddressId(selectedOption?.value || null);
     if (selectedOption) {
-      // ⚠️ آدرس کامل را از لیست savedAddresses پیدا کنید و در فرم قرار دهید
       const fullAddress = savedAddresses.find(
         (addr) => addr._id === selectedOption.value,
       );
@@ -135,7 +141,6 @@ const Details = ({ formData, updateForm }) => {
         updateForm("email", fullAddress.email || "");
       }
     } else {
-      // اگر گزینه‌ای انتخاب نشد، فرم را خالی کنید
       updateForm("firstname", "");
       updateForm("lastname", "");
       updateForm("company", "");
@@ -229,7 +234,7 @@ const Details = ({ formData, updateForm }) => {
           />
         </div>
 
-        {/* ===== فیلدهای فرم (بدون تغییر) ===== */}
+        {/* ===== فیلدهای فرم ===== */}
         <div className={styles.groups}>
           <div className={styles.group}>
             <label>
@@ -362,10 +367,11 @@ const Details = ({ formData, updateForm }) => {
             </div>
             <button
               type="button"
-              // ⚠️ اینجا باید منطق ارسال به بک‌اند را خودتان پیاده‌سازی کنید
               onClick={createNewAddress}
+              className={isSubmitting ? styles.loading : ""}
+              disabled={isSubmitting}
             >
-              ذخیره آدرس جدید
+              {isSubmitting ? "...در حال ذخیره" : "ذخیره آدرس جدید"}
             </button>
           </section>
         </div>

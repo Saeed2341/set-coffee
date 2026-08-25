@@ -10,6 +10,7 @@ const Form = () => {
   const [phone, setPhone] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -23,29 +24,41 @@ const Form = () => {
     if (!validateEmail(email) || !validatePhone(phone)) {
       return showSwal("ایمیل یا شماره تماس نامعتبر است", "error", "تلاش مجدد");
     }
+
+    setIsLoading(true);
+
     const newMessage = { name, email, phone, company, message };
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newMessage),
-    });
-    if (res.status == 201) {
-      setName("");
-      setEmail("");
-      setPhone("");
-      setCompany("");
-      setMessage("");
-      return showSwal("پیام شما با موفقیت ارسال شد", "success", "تایید");
-    } else if (res.status == 422) {
-      return showSwal(
-        "اطلاعات خواسته شده را با دقت تکمیل کنید",
-        "error",
-        "تلاش مجدد",
-      );
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newMessage),
+      });
+
+      if (res.status == 201) {
+        setName("");
+        setEmail("");
+        setPhone("");
+        setCompany("");
+        setMessage("");
+        return showSwal("پیام شما با موفقیت ارسال شد", "success", "تایید");
+      } else if (res.status == 422) {
+        return showSwal(
+          "اطلاعات خواسته شده را با دقت تکمیل کنید",
+          "error",
+          "تلاش مجدد",
+        );
+      }
+    } catch (error) {
+      showSwal("خطا در ارتباط با سرور", "error", "تلاش مجدد");
+    } finally {
+      setIsLoading(false);
     }
   };
+
   return (
     <form className={styles.form}>
       <span>فرم تماس با ما</span>
@@ -97,7 +110,13 @@ const Form = () => {
           rows="3"
         ></textarea>
       </div>
-      <button onClick={sendMessage}>ارسال</button>
+      <button
+        onClick={sendMessage}
+        className={`${styles.submitBtn} ${isLoading ? styles.loading : ""}`}
+        disabled={isLoading}
+      >
+        {isLoading ? "...در حال ارسال" : "ارسال"}
+      </button>
     </form>
   );
 };

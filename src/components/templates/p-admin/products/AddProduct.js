@@ -16,6 +16,7 @@ function AddProduct({ mode, product }) {
   const [tags, setTags] = useState("");
   const [stock, setStock] = useState("");
   const [img, setImg] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const params = useSearchParams();
@@ -89,6 +90,7 @@ function AddProduct({ mode, product }) {
 
   const addProduct = async () => {
     if (!validateForm()) return;
+    setIsLoading(true);
 
     const formData = new FormData();
     formData.append("name", name);
@@ -155,11 +157,14 @@ function AddProduct({ mode, product }) {
         icon: "error",
         buttons: "تلاش مجدد",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const editProduct = async () => {
     if (!validateForm()) return;
+    setIsLoading(true);
 
     const formData = new FormData();
     formData.append("name", name);
@@ -226,6 +231,8 @@ function AddProduct({ mode, product }) {
         icon: "error",
         buttons: "تلاش مجدد",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -250,7 +257,6 @@ function AddProduct({ mode, product }) {
       </p>
 
       <div className={styles.discount_main}>
-        {/* ===== نام محصول ===== */}
         <div className={styles.inputGroup}>
           <label>
             نام محصول <span className={styles.requiredStar}>*</span>
@@ -263,7 +269,6 @@ function AddProduct({ mode, product }) {
           />
         </div>
 
-        {/* ===== قیمت ===== */}
         <div className={styles.inputGroup}>
           <label>
             مبلغ محصول <span className={styles.requiredStar}>*</span>
@@ -276,7 +281,6 @@ function AddProduct({ mode, product }) {
           />
         </div>
 
-        {/* ===== توضیحات کوتاه ===== */}
         <div className={styles.inputGroup}>
           <label>
             توضیحات کوتاه <span className={styles.requiredStar}>*</span>
@@ -289,7 +293,6 @@ function AddProduct({ mode, product }) {
           />
         </div>
 
-        {/* ===== وزن ===== */}
         <div className={styles.inputGroup}>
           <label>وزن</label>
           <input
@@ -300,7 +303,6 @@ function AddProduct({ mode, product }) {
           />
         </div>
 
-        {/* ===== مناسب برای ===== */}
         <div className={styles.inputGroup}>
           <label>مناسب برای:</label>
           <input
@@ -311,7 +313,6 @@ function AddProduct({ mode, product }) {
           />
         </div>
 
-        {/* ===== میزان بو ===== */}
         <div className={styles.inputGroup}>
           <label>میزان بو</label>
           <input
@@ -322,7 +323,6 @@ function AddProduct({ mode, product }) {
           />
         </div>
 
-        {/* ===== تگ‌ها ===== */}
         <div className={styles.inputGroup}>
           <label>تگ های محصول</label>
           <input
@@ -333,7 +333,6 @@ function AddProduct({ mode, product }) {
           />
         </div>
 
-        {/* ===== موجودی ===== */}
         <div className={styles.inputGroup}>
           <label>
             موجودی <span className={styles.requiredStar}>*</span>
@@ -347,7 +346,6 @@ function AddProduct({ mode, product }) {
           />
         </div>
 
-        {/* ===== تصویر ===== */}
         <div className={styles.inputGroup}>
           <label>تصویر محصول</label>
           <input
@@ -358,7 +356,6 @@ function AddProduct({ mode, product }) {
         </div>
       </div>
 
-      {/* ===== توضیحات بلند ===== */}
       <div className={styles.fullWidth}>
         <label>
           توضیحات بلند <span className={styles.requiredStar}>*</span>
@@ -366,18 +363,27 @@ function AddProduct({ mode, product }) {
         <EditorWrapper value={longDescription} onChange={setLongDescription} />
       </div>
 
+      {/* ===== دکمه‌ها با چیدمان اصلی ===== */}
       {mode == "edit" ? (
         <div>
-          <button onClick={editProduct} className={styles.submitButton}>
-            ویرایش محصول
+          <button
+            onClick={editProduct}
+            className={`${styles.submitButton} ${isLoading ? styles.loading : ""}`}
+            disabled={isLoading}
+          >
+            {isLoading ? "در حال ویرایش..." : "ویرایش محصول"}
           </button>
           <button onClick={cancelEdit} className={styles.cancelBtn}>
             انصراف
           </button>
         </div>
       ) : (
-        <button onClick={addProduct} className={styles.submitButton}>
-          افزودن محصول
+        <button
+          onClick={addProduct}
+          className={`${styles.submitButton} ${isLoading ? styles.loading : ""}`}
+          disabled={isLoading}
+        >
+          {isLoading ? "در حال افزودن..." : "افزودن محصول"}
         </button>
       )}
     </section>

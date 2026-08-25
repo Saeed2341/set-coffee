@@ -17,9 +17,11 @@ const Register = ({ showloginForm }) => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
   const hideOtpForm = () => setIsRegisterWithOtp(false);
+
   const registerWithOtp = () => {
     if (!phone.trim()) {
       return swal({
@@ -39,8 +41,8 @@ const Register = ({ showloginForm }) => {
     }
     setIsRegisterWithOtp(true);
   };
+
   const signup = async () => {
-    // Validation
     if (!name.trim()) {
       return showSwal("نام نمیتواند خالی باشد", "error", "تلاش مجدد");
     }
@@ -54,35 +56,43 @@ const Register = ({ showloginForm }) => {
       return showSwal("رمز عبور باید پیچیده باشد", "error", "تلاش مجدد");
     }
 
+    setIsLoading(true);
+
     const user = { name, phone, email, password };
 
-    const res = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "applicatoin/json",
-      },
-      body: JSON.stringify(user),
-    });
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
 
-    if (res.status == 201) {
-      return swal({
-        title: "موفقیت",
-        icon: "success",
-        text: "ثبت نام شما با موفقیت انجام شد",
-        buttons: "ورود به حساب کاربری",
-      }).then(() => showloginForm());
-    } else if (res.status == 409) {
-      return showSwal(
-        "کاربر با این اطلاعات از قبل وجود دارد",
-        "error",
-        "تلاش مجدد",
-      );
-    } else if (res.status == 422) {
-      return showSwal(
-        "لطفا اطلاعات را با فرمت صحیح وارد کنید",
-        "error",
-        "تلاش مجدد",
-      );
+      if (res.status == 201) {
+        return swal({
+          title: "موفقیت",
+          icon: "success",
+          text: "ثبت نام شما با موفقیت انجام شد",
+          buttons: "ورود به حساب کاربری",
+        }).then(() => showloginForm());
+      } else if (res.status == 409) {
+        return showSwal(
+          "کاربر با این اطلاعات از قبل وجود دارد",
+          "error",
+          "تلاش مجدد",
+        );
+      } else if (res.status == 422) {
+        return showSwal(
+          "لطفا اطلاعات را با فرمت صحیح وارد کنید",
+          "error",
+          "تلاش مجدد",
+        );
+      }
+    } catch (error) {
+      showSwal("خطا در ارتباط با سرور", "error", "تلاش مجدد");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -112,7 +122,7 @@ const Register = ({ showloginForm }) => {
             <input
               className={styles.input}
               type="text"
-              placeholder="شماره موبایل  "
+              placeholder="شماره موبایل"
               value={phone}
               onChange={(event) => setPhone(event.target.value)}
             />
@@ -140,6 +150,8 @@ const Register = ({ showloginForm }) => {
             >
               ثبت نام با کد تایید
             </button>
+
+            {/* ===== دکمه ثبت نام با رمز عبور ===== */}
             <button
               onClick={() => {
                 if (isRegisterWithPass) {
@@ -149,10 +161,16 @@ const Register = ({ showloginForm }) => {
                 }
               }}
               style={{ marginTop: ".7rem" }}
-              className={styles.btn}
+              className={`${styles.btn} ${isLoading ? styles.loading : ""}`}
+              disabled={isLoading}
             >
-              ثبت نام با رمزعبور
+              {isLoading
+                ? "...در حال ثبت‌نام"
+                : isRegisterWithPass
+                  ? "ثبت نام با رمزعبور"
+                  : "ثبت نام با رمزعبور"}
             </button>
+
             <p onClick={showloginForm} className={styles.back_to_login}>
               برگشت به ورود
             </p>

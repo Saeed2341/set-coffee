@@ -126,10 +126,7 @@ const Table = () => {
                     <Link href={`/product/${item.id}`}>{item.name}</Link>
 
                     {item.img ? (
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${item.img}`}
-                        alt={item.name}
-                      />
+                      <img src={item.img} alt={item.name} />
                     ) : (
                       <img
                         src="https://set-coffee.com/wp-content/uploads/2021/10/041-430x430.png"

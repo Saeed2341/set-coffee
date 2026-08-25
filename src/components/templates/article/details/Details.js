@@ -35,10 +35,7 @@ const Details = ({ article }) => {
           <span>{new Date(article.createdAt).toLocaleDateString("fa-IR")}</span>
           {/* <span>بهمن</span> */}
         </div>
-        <img
-          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}articles/${article.img}`}
-          alt={article.title}
-        />
+        <img src={article.img} alt={article.title} />
       </div>
       <section
         className={styles.descriptionContent}

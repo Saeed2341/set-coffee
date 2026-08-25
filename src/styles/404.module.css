@@ -1,93 +1,104 @@
-.contents {
+/* ============================================ */
+/* ===== صفحه 404 ===== */
+/* ============================================ */
+.container {
+  min-height: 80vh;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 700px;
+  background: #faf6f0;
+  padding: 20px;
 }
 
-.left_number {
-  margin-right: 2%;
-  z-index: -1;
-  font-size: 25em;
-  text-shadow: 28px 21px #34180e;
-  color: #e4e6b2;
+.content {
+  text-align: center;
+  direction: rtl;
+  max-width: 500px;
 }
 
-.right_number {
-  margin-left: 2%;
-  font-size: 25em;
-  color: #e4e6b2;
-  z-index: -1;
-  text-shadow: 28px 21px #34180e;
+/* ===== کد 404 ===== */
+.code {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0 0 8px 0;
+  line-height: 1;
+  letter-spacing: -2px;
 }
 
-.mug {
-  background: #3f2616;
-  position: relative;
-  margin: 0;
-  width: 170px;
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 10px #442918, 0 0 0 25px #3c2415, 0 0 0 42px #e4e6b2,
-    0 0 0 65px #eff0d1, 0 120px 0 -25px #3c2415, 100px 70px 0 -25px #3c2415,
-    80px 140px 0 -10px #3c2415, 0px 210px 0 -55px #3c2415,
-    20px 250px 0 -65px #3c2415;
+/* ===== عنوان ===== */
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #3e2723;
+  margin: 0 0 12px 0;
 }
 
-.mug::before {
-  content: "";
-  position: absolute;
-  background: #eff0d1;
-  height: 80px;
-  width: 60px;
-  top: -85px;
-  right: -75px;
-  border-radius: 5px;
-  box-shadow: inset 0px 50px 0 0px #eff0d1;
-  transform: rotate(45deg);
+/* ===== توضیحات ===== */
+.description {
+  font-size: 1rem;
+  color: #6d4c41;
+  margin: 0 0 28px 0;
+  line-height: 1.8;
 }
 
-.mug::after {
-  content: "";
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  position: absolute;
-  border: 3px solid #77665c;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  top: 0;
-  bottom: 0;
-  margin-top: auto;
-  margin-bottom: auto;
-  opacity: 0.2;
-  animation: rings 3s ease-out infinite;
+/* ===== لینک بازگشت ===== */
+.homeLink {
+  display: inline-block;
+  padding: 12px 32px;
+  background: #6d4c41;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
 }
 
-@keyframes rings {
-  to {
-    width: 150px;
-    height: 150px;
-    opacity: 0;
+.homeLink:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.2);
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+  .code {
+    font-size: 4.5rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .homeLink {
+    padding: 10px 24px;
+    font-size: 0.85rem;
   }
 }
 
-.texts {
-  font-size: 1.5em;
-  margin-top: 40px;
-  text-align: center;
-  direction: rtl;
-  color: #3c2415;
-}
+@media (max-width: 480px) {
+  .code {
+    font-size: 3.5rem;
+  }
 
-.texts p {
-  margin-bottom: 10px;
-}
-.texts a {
-  border-bottom: 1px solid #414042;
-  color: #3c2415;
-  font-size: 1.2rem;
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+
+  .homeLink {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+  }
 }

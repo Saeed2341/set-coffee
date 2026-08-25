@@ -10,10 +10,6 @@ import styles from "@/styles/product.module.css"; // ← اضافه کردن imp
 
 const Gallery = ({ img }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const images = [
-    `${process.env.NEXT_PUBLIC_IMAGE_URL}${img}`,
-    // "https://set-coffee.com/wp-content/uploads/2020/12/Gold-box-DG--150x150.jpg",
-  ];
 
   return (
     <section className={styles.galleryWrapper}>
@@ -30,11 +26,9 @@ const Gallery = ({ img }) => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2 gallery-slider"
       >
-        {images.map((img, index) => (
-          <SwiperSlide key={index}>
-            <img src={img} alt="تصویر محصول" />
-          </SwiperSlide>
-        ))}
+        <SwiperSlide>
+          <img src={img} alt="تصویر محصول" />
+        </SwiperSlide>
       </Swiper>
       {/* <Swiper
         onSwiper={setThumbsSwiper}

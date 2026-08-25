@@ -19,7 +19,7 @@ const ArticleForm = ({ article }) => {
   const [tags, setTags] = useState("");
   const [status, setStatus] = useState("draft");
   const [author, setAuthor] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [img, setImg] = useState(null);
 
   // ===== پر کردن فرم در حالت ویرایش =====

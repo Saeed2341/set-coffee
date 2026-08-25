@@ -17,7 +17,7 @@ const Card = ({
     <div className={styles.card}>
       <div className={styles.details_container}>
         {img ? (
-          <img src={process.env.NEXT_PUBLIC_IMAGE_URL + img} alt={name} />
+          <img src={img} alt={name} />
         ) : (
           <img src="/images/prduct-default-image.png" alt={name} />
         )}

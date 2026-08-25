@@ -1,3 +1,17 @@
+/* ===== دکمه لودینگ (خاکستری) ===== */
+.btnLoading {
+  background: #b0aba4 !important;
+  color: #f5f4f2 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.btnLoading:hover {
+  background: #b0aba4 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
 /* ===== فرم ===== */
 .form {
   display: grid;

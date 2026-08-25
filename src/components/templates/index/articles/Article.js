@@ -15,10 +15,7 @@ const Card = ({ title, img, author, slug, createdAt, tags }) => {
   return (
     <div className={styles.card}>
       <Link className={styles.img_container} href={`/article/${slug}`}>
-        <img
-          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}articles/${img}`}
-          alt={title}
-        />
+        <img src={img} alt={title} />
       </Link>
       <div className={styles.date}>
         <span>{new Date(createdAt).toLocaleDateString("fa-IR")}</span>

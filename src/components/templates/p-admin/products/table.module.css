@@ -232,334 +232,6 @@
 }
 
 /* ============================================ */
-/* ===== فرم افزودن/ویرایش محصول ===== */
-/* ============================================ */
-.discount {
-  background: #ffffff;
-  padding: 28px 32px 32px;
-  border-radius: 16px;
-  border: 1px solid #e8e5e0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  margin-bottom: 32px;
-}
-
-/* ===== عنوان فرم ===== */
-.formTitle {
-  font-size: 22px;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin: 0 0 24px 0;
-  padding-bottom: 14px;
-  border-bottom: 2px solid #f0eeea;
-}
-
-/* ===== شبکه دو ستونه ===== */
-.discount_main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px 30px;
-}
-
-/* ===== هر گروه ورودی ===== */
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.inputGroup label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1a1a1a;
-}
-
-.requiredStar {
-  color: #e74c3c;
-}
-
-/* ===== فیلدهای ورودی ===== */
-.inputGroup input,
-.inputGroup select,
-.inputGroup textarea {
-  padding: 10px 14px;
-  background: #f4f3f0;
-  color: #1a1a1a;
-  border-radius: 10px;
-  border: 2px solid #e8e5e0;
-  outline: none;
-  transition: all 0.2s ease;
-  font-family: shabnam, sans-serif;
-  font-size: 14px;
-  width: 100%;
-  resize: vertical;
-}
-
-.inputGroup input:focus,
-.inputGroup select:focus,
-.inputGroup textarea:focus {
-  border-color: #a67c52;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
-}
-
-.inputGroup input::placeholder,
-.inputGroup textarea::placeholder {
-  color: #a09c96;
-}
-
-.inputGroup select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236a6762'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: left 12px center;
-  background-size: 20px;
-  cursor: pointer;
-}
-
-.inputGroup input[type="file"] {
-  padding: 8px 10px;
-  background: #f4f3f0;
-  border: 2px dashed #d4cfc8;
-  cursor: pointer;
-}
-
-.inputGroup input[type="file"]:hover {
-  border-color: #a67c52;
-}
-
-/* ===== عرض کامل برای توضیحات بلند ===== */
-.fullWidth {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.fullWidth label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1a1a1a;
-}
-
-.fullWidth textarea {
-  padding: 10px 14px;
-  background: #f4f3f0;
-  color: #1a1a1a;
-  border-radius: 10px;
-  border: 2px solid #e8e5e0;
-  outline: none;
-  transition: all 0.2s ease;
-  font-family: shabnam, sans-serif;
-  font-size: 14px;
-  width: 100%;
-  resize: vertical;
-  min-height: 120px;
-}
-
-.fullWidth textarea:focus {
-  border-color: #a67c52;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
-}
-
-.fullWidth textarea::placeholder {
-  color: #a09c96;
-}
-
-/* ===== دکمه‌ها ===== */
-.submitButton {
-  margin-right: auto;
-  width: max-content;
-  border: none;
-  border-radius: 50px;
-  background: #a67c52;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 12px 36px;
-  margin-top: 24px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(166, 124, 82, 0.15);
-  font-family: shabnam, sans-serif;
-  
-}
-
-.submitButton:hover:not(:disabled) {
-  background: #8b6a3e;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(166, 124, 82, 0.25);
-}
-
-.submitButton:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.cancelBtn {
-  margin-right: 15px !important;
-  background: transparent !important;
-  color: #6f5030 !important;
-  border: 1px solid #6f5030 !important;
-  width: max-content;
-  cursor: pointer;
-  padding: 12px 36px;
-  margin-top: 24px;
-  font-family: shabnam, sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.cancelBtn:hover {
-  background: #f5f0eb !important;
-  border-color: #5a3e2a !important;
-}
-
-/* ============================================ */
-/* ===== ریسپانسیو ===== */
-/* ============================================ */
-@media (max-width: 992px) {
-  .header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .searchInput {
-    width: 100%;
-  }
-
-  .table {
-    min-width: 750px;
-  }
-
-  .discount_main {
-    gap: 16px 24px;
-  }
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 18px;
-  }
-
-  .table tbody td,
-  .table thead th {
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-
-  .iconBtn {
-    width: 26px;
-    height: 26px;
-    font-size: 14px;
-  }
-
-  .productImage {
-    width: 40px;
-    height: 40px;
-  }
-
-  .tag {
-    font-size: 9px;
-    padding: 1px 6px;
-  }
-
-  .discount {
-    padding: 20px 16px 24px;
-    border-radius: 12px;
-  }
-
-  .formTitle {
-    font-size: 18px;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-  }
-
-  .discount_main {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .inputGroup label {
-    font-size: 13px;
-  }
-
-  .inputGroup input,
-  .inputGroup select,
-  .inputGroup textarea {
-    font-size: 13px;
-    padding: 8px 12px;
-  }
-
-  .submitButton {
-    width: 100%;
-    justify-content: center;
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .cancelBtn {
-    width: 100%;
-    justify-content: center;
-    margin-right: 0 !important;
-    margin-top: 8px;
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .fullWidth textarea {
-    font-size: 13px;
-    padding: 8px 12px;
-    min-height: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 16px;
-  }
-
-  .table tbody td,
-  .table thead th {
-    padding: 6px 8px;
-    font-size: 11px;
-  }
-
-  .productImage {
-    width: 32px;
-    height: 32px;
-  }
-
-  .discount {
-    padding: 14px 12px 18px;
-  }
-
-  .formTitle {
-    font-size: 16px;
-  }
-
-  .inputGroup input,
-  .inputGroup select,
-  .inputGroup textarea {
-    font-size: 12px;
-    padding: 8px 10px;
-  }
-
-  .submitButton {
-    font-size: 13px;
-    padding: 10px 16px;
-  }
-
-  .cancelBtn {
-    font-size: 13px;
-    padding: 10px 16px;
-  }
-}
-
-
-/* ============================================ */
 /* ===== کارت‌های محصولات در موبایل ===== */
 /* ============================================ */
 .cardsContainer {
@@ -733,9 +405,298 @@
 }
 
 /* ============================================ */
+/* ===== فرم افزودن/ویرایش محصول ===== */
+/* ============================================ */
+.discount {
+  background: #ffffff;
+  padding: 28px 32px 32px;
+  border-radius: 16px;
+  border: 1px solid #e8e5e0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  margin-bottom: 32px;
+}
+
+/* ===== عنوان فرم ===== */
+.formTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 24px 0;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #f0eeea;
+}
+
+/* ===== شبکه دو ستونه ===== */
+.discount_main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+/* ===== هر گروه ورودی ===== */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.requiredStar {
+  color: #e74c3c;
+}
+
+/* ===== فیلدهای ورودی ===== */
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  padding: 10px 14px;
+  background: #f4f3f0;
+  color: #1a1a1a;
+  border-radius: 10px;
+  border: 2px solid #e8e5e0;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  width: 100%;
+  resize: vertical;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+  border-color: #a67c52;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
+}
+
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder {
+  color: #a09c96;
+}
+
+.inputGroup select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236a6762'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+.inputGroup input[type="file"] {
+  padding: 8px 10px;
+  background: #f4f3f0;
+  border: 2px dashed #d4cfc8;
+  cursor: pointer;
+}
+
+.inputGroup input[type="file"]:hover {
+  border-color: #a67c52;
+}
+
+/* ===== عرض کامل برای توضیحات بلند ===== */
+.fullWidth {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fullWidth label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.fullWidth textarea {
+  padding: 10px 14px;
+  background: #f4f3f0;
+  color: #1a1a1a;
+  border-radius: 10px;
+  border: 2px solid #e8e5e0;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.fullWidth textarea:focus {
+  border-color: #a67c52;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
+}
+
+.fullWidth textarea::placeholder {
+  color: #a09c96;
+}
+
+/* ============================================ */
+/* ===== دکمه‌ها ===== */
+/* ============================================ */
+.submitButton {
+  margin-right: auto;
+  width: max-content;
+  border: none;
+  border-radius: 50px;
+  background: #a67c52;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 12px 36px;
+  margin-top: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(166, 124, 82, 0.15);
+  font-family: shabnam, sans-serif;
+  font-size: 15px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #8b6a3e;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(166, 124, 82, 0.25);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== حالت لودینگ ===== */
+.submitButton.loading {
+  background: #a09c96 !important;
+  color: #f5f4f2 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 0.8;
+}
+
+/* ===== دکمه انصراف ===== */
+.cancelBtn {
+  margin-right: 15px !important;
+  background: transparent !important;
+  color: #6f5030 !important;
+  border: 1px solid #6f5030 !important;
+  width: max-content;
+  cursor: pointer;
+  padding: 12px 36px;
+  margin-top: 24px;
+  font-family: shabnam, sans-serif;
+  font-size: 15px;
+
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+  background: #f5f0eb !important;
+  border-color: #5a3e2a !important;
+}
+
+/* ============================================ */
 /* ===== ریسپانسیو ===== */
 /* ============================================ */
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .table {
+    min-width: 750px;
+  }
+
+  .discount_main {
+    gap: 16px 24px;
+  }
+}
+
 @media (max-width: 768px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .table tbody td,
+  .table thead th {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .iconBtn {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  .productImage {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tag {
+    font-size: 9px;
+    padding: 1px 6px;
+  }
+
+  .discount {
+    padding: 20px 16px 24px;
+    border-radius: 12px;
+  }
+
+  .formTitle {
+    font-size: 18px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+  }
+
+  .discount_main {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .inputGroup label {
+    font-size: 13px;
+  }
+
+  .inputGroup input,
+  .inputGroup select,
+  .inputGroup textarea {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .submitButton,
+  .cancelBtn {
+    width: 100%;
+    justify-content: center;
+    margin-right: 0 !important;
+  }
+
+  .cancelBtn {
+    margin-top: 8px !important;
+  }
+
+  .fullWidth textarea {
+    font-size: 13px;
+    padding: 8px 12px;
+    min-height: 100px;
+  }
+
+  /* ===== کارت‌ها ===== */
   .cardsContainer {
     gap: 14px;
   }
@@ -774,6 +735,47 @@
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 16px;
+  }
+
+  .table tbody td,
+  .table thead th {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .productImage {
+    width: 32px;
+    height: 32px;
+  }
+
+  .discount {
+    padding: 14px 12px 18px;
+  }
+
+  .formTitle {
+    font-size: 16px;
+  }
+
+  .inputGroup input,
+  .inputGroup select,
+  .inputGroup textarea {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .submitButton {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .cancelBtn {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  /* ===== کارت‌ها ===== */
   .cardsContainer {
     gap: 12px;
   }

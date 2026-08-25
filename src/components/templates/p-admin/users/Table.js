@@ -2,7 +2,13 @@
 import React, { useState, useEffect } from "react";
 import styles from "./table.module.css";
 import { useRouter } from "next/navigation";
-import { FiEdit2, FiUserCheck, FiTrash2, FiUserX, FiSearch } from "react-icons/fi";
+import {
+  FiEdit2,
+  FiUserCheck,
+  FiTrash2,
+  FiUserX,
+  FiSearch,
+} from "react-icons/fi";
 
 export default function DataTable({ users, title }) {
   const router = useRouter();
@@ -21,7 +27,8 @@ export default function DataTable({ users, title }) {
   const filteredUsers = users.filter(
     (user) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase()))
+      (user.email &&
+        user.email.toLowerCase().includes(searchTerm.toLowerCase())),
   );
 
   const changeRole = async (userID) => {
@@ -96,7 +103,6 @@ export default function DataTable({ users, title }) {
 
   return (
     <div className={styles.container}>
-      {/* ===== هدر با عنوان + جستجو ===== */}
       <div className={styles.header}>
         <h1 className={styles.title}>{title}</h1>
         <div className={styles.searchWrapper}>
@@ -111,9 +117,8 @@ export default function DataTable({ users, title }) {
         </div>
       </div>
 
-      {/* ===== در دسکتاپ: نمایش جدول ===== */}
-      {!isMobile && (
-        filteredUsers.length > 0 ? (
+      {!isMobile &&
+        (filteredUsers.length > 0 ? (
           <div className={styles.tableWrapper}>
             <table className={styles.table}>
               <thead>
@@ -135,7 +140,11 @@ export default function DataTable({ users, title }) {
                     <td>
                       <div className={styles.actions}>
                         <span
-                          onClick={() => router.replace(`/p-admin/users?mode=edit&id=${user._id}`)}
+                          onClick={() =>
+                            router.replace(
+                              `/p-admin/users?mode=edit&id=${user._id}`,
+                            )
+                          }
                           className={styles.iconBtn}
                           title="ویرایش"
                         >
@@ -171,14 +180,16 @@ export default function DataTable({ users, title }) {
           </div>
         ) : (
           <div className={styles.empty}>
-            <p>{searchTerm ? "کاربری با این جستجو یافت نشد" : "کاربری وجود ندارد"}</p>
+            <p>
+              {searchTerm
+                ? "کاربری با این جستجو یافت نشد"
+                : "کاربری وجود ندارد"}
+            </p>
           </div>
-        )
-      )}
+        ))}
 
-      {/* ===== در موبایل: نمایش کارت ===== */}
-      {isMobile && (
-        filteredUsers.length > 0 ? (
+      {isMobile &&
+        (filteredUsers.length > 0 ? (
           <div className={styles.cardsContainer}>
             {filteredUsers.map((user) => (
               <div key={user._id} className={styles.userCard}>
@@ -198,7 +209,9 @@ export default function DataTable({ users, title }) {
 
                 <div className={styles.cardActions}>
                   <span
-                    onClick={() => router.replace(`/p-admin/users?mode=edit&id=${user._id}`)}
+                    onClick={() =>
+                      router.replace(`/p-admin/users?mode=edit&id=${user._id}`)
+                    }
                     className={styles.cardIcon}
                     title="ویرایش"
                   >
@@ -231,10 +244,13 @@ export default function DataTable({ users, title }) {
           </div>
         ) : (
           <div className={styles.empty}>
-            <p>{searchTerm ? "کاربری با این جستجو یافت نشد" : "کاربری وجود ندارد"}</p>
+            <p>
+              {searchTerm
+                ? "کاربری با این جستجو یافت نشد"
+                : "کاربری وجود ندارد"}
+            </p>
           </div>
-        )
-      )}
+        ))}
     </div>
   );
 }

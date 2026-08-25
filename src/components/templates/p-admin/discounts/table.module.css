@@ -430,3 +430,43 @@
 .cardIcon.dangerIcon:hover {
   background: #fde8e8;
 }
+/* ============================================ */
+/* ===== دکمه فرم افزودن تخفیف ===== */
+/* ============================================ */
+.submitButton {
+  margin-right: auto;
+  width: max-content;
+  border: none;
+  border-radius: 50px;
+  background: #a67c52;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 12px 36px;
+  margin-top: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(166, 124, 82, 0.15);
+  font-family: shabnam, sans-serif;
+  font-size: 15px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #8b6a3e;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(166, 124, 82, 0.25);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== حالت لودینگ ===== */
+.submitButton.loading {
+  background: #a09c96 !important;
+  color: #f5f4f2 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 0.8;
+}

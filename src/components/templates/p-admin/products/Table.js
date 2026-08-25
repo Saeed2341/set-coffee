@@ -3,7 +3,14 @@ import React, { useState, useEffect } from "react";
 import styles from "./table.module.css";
 import { useRouter } from "next/navigation";
 import swal from "sweetalert";
-import { FiEye, FiEdit2, FiTrash2, FiSearch, FiPackage, FiTag } from "react-icons/fi";
+import {
+  FiEye,
+  FiEdit2,
+  FiTrash2,
+  FiSearch,
+  FiPackage,
+  FiTag,
+} from "react-icons/fi";
 
 export default function DataTable({ products, title }) {
   const router = useRouter();
@@ -21,9 +28,11 @@ export default function DataTable({ products, title }) {
 
   // ===== فیلتر کردن محصولات بر اساس نام و تگ‌ها =====
   const filteredProducts = products.filter((product) => {
-    const nameMatch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const tagsMatch = product.tags?.some(tag =>
-      tag.toLowerCase().includes(searchTerm.toLowerCase())
+    const nameMatch = product.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const tagsMatch = product.tags?.some((tag) =>
+      tag.toLowerCase().includes(searchTerm.toLowerCase()),
     );
     return nameMatch || tagsMatch;
   });
@@ -90,8 +99,8 @@ export default function DataTable({ products, title }) {
       </div>
 
       {/* ===== در دسکتاپ: نمایش جدول ===== */}
-      {!isMobile && (
-        filteredProducts.length > 0 ? (
+      {!isMobile &&
+        (filteredProducts.length > 0 ? (
           <div className={styles.tableWrapper}>
             <table className={styles.table}>
               <thead>
@@ -115,7 +124,7 @@ export default function DataTable({ products, title }) {
                       <td>
                         {product.img ? (
                           <img
-                            src={`/uploads/${product.img}`}
+                            src={product.img}
                             width={50}
                             height={50}
                             className={styles.productImage}
@@ -132,21 +141,29 @@ export default function DataTable({ products, title }) {
                         )}
                       </td>
                       <td className={styles.nameCell}>
-                        <span className={styles.productName}>{product.name}</span>
+                        <span className={styles.productName}>
+                          {product.name}
+                        </span>
                         {product.tags?.length > 0 && (
                           <div className={styles.tags}>
                             {product.tags.slice(0, 3).map((tag) => (
-                              <span key={tag} className={styles.tag}>#{tag}</span>
+                              <span key={tag} className={styles.tag}>
+                                #{tag}
+                              </span>
                             ))}
                             {product.tags.length > 3 && (
-                              <span className={styles.tagMore}>+{product.tags.length - 3}</span>
+                              <span className={styles.tagMore}>
+                                +{product.tags.length - 3}
+                              </span>
                             )}
                           </div>
                         )}
                       </td>
                       <td>{product.weight ? `${product.weight}g` : "-"}</td>
                       <td>
-                        <span className={`${styles.stockBadge} ${stockStatus.className}`}>
+                        <span
+                          className={`${styles.stockBadge} ${stockStatus.className}`}
+                        >
                           {stockStatus.label}
                         </span>
                       </td>
@@ -155,14 +172,20 @@ export default function DataTable({ products, title }) {
                       <td>
                         <div className={styles.actions}>
                           <span
-                            onClick={() => router.push(`/product/${product._id}`)}
+                            onClick={() =>
+                              router.push(`/product/${product._id}`)
+                            }
                             className={styles.iconBtn}
                             title="جزئیات محصول"
                           >
                             <FiEye size={16} />
                           </span>
                           <span
-                            onClick={() => router.push(`/p-admin/products?mode=edit&id=${product._id}`)}
+                            onClick={() =>
+                              router.push(
+                                `/p-admin/products?mode=edit&id=${product._id}`,
+                              )
+                            }
                             className={styles.iconBtn}
                             title="ویرایش"
                           >
@@ -185,22 +208,29 @@ export default function DataTable({ products, title }) {
           </div>
         ) : (
           <div className={styles.empty}>
-            <p>{searchTerm ? "محصولی با این جستجو یافت نشد" : "هیچ محصولی وجود ندارد"}</p>
+            <p>
+              {searchTerm
+                ? "محصولی با این جستجو یافت نشد"
+                : "هیچ محصولی وجود ندارد"}
+            </p>
           </div>
-        )
-      )}
+        ))}
 
       {/* ===== در موبایل: نمایش کارت ===== */}
-      {isMobile && (
-        filteredProducts.length > 0 ? (
+      {isMobile &&
+        (filteredProducts.length > 0 ? (
           <div className={styles.cardsContainer}>
             {filteredProducts.map((product) => {
               const stockStatus = getStockStatus(product.stock);
               return (
                 <div key={product._id} className={styles.productCard}>
                   <div className={styles.cardHeader}>
-                    <span className={styles.cardId}>#{product._id.slice(-6)}</span>
-                    <span className={`${styles.cardStock} ${stockStatus.className}`}>
+                    <span className={styles.cardId}>
+                      #{product._id.slice(-6)}
+                    </span>
+                    <span
+                      className={`${styles.cardStock} ${stockStatus.className}`}
+                    >
                       {stockStatus.label}
                     </span>
                   </div>
@@ -229,10 +259,14 @@ export default function DataTable({ products, title }) {
                         {product.tags?.length > 0 && (
                           <div className={styles.cardTags}>
                             {product.tags.slice(0, 2).map((tag) => (
-                              <span key={tag} className={styles.cardTag}>#{tag}</span>
+                              <span key={tag} className={styles.cardTag}>
+                                #{tag}
+                              </span>
                             ))}
                             {product.tags.length > 2 && (
-                              <span className={styles.cardTagMore}>+{product.tags.length - 2}</span>
+                              <span className={styles.cardTagMore}>
+                                +{product.tags.length - 2}
+                              </span>
                             )}
                           </div>
                         )}
@@ -242,11 +276,15 @@ export default function DataTable({ products, title }) {
                     <div className={styles.cardDetails}>
                       <div className={styles.cardRow}>
                         <span className={styles.cardLabel}>وزن:</span>
-                        <span>{product.weight ? `${product.weight}g` : "-"}</span>
+                        <span>
+                          {product.weight ? `${product.weight}g` : "-"}
+                        </span>
                       </div>
                       <div className={styles.cardRow}>
                         <span className={styles.cardLabel}>قیمت:</span>
-                        <span className={styles.cardPrice}>{product.price.toLocaleString("fa-IR")} تومان</span>
+                        <span className={styles.cardPrice}>
+                          {product.price.toLocaleString("fa-IR")} تومان
+                        </span>
                       </div>
                       <div className={styles.cardRow}>
                         <span className={styles.cardLabel}>امتیاز:</span>
@@ -264,7 +302,11 @@ export default function DataTable({ products, title }) {
                       <FiEye size={16} />
                     </span>
                     <span
-                      onClick={() => router.push(`/p-admin/products?mode=edit&id=${product._id}`)}
+                      onClick={() =>
+                        router.push(
+                          `/p-admin/products?mode=edit&id=${product._id}`,
+                        )
+                      }
                       className={styles.cardIcon}
                       title="ویرایش"
                     >
@@ -284,10 +326,13 @@ export default function DataTable({ products, title }) {
           </div>
         ) : (
           <div className={styles.empty}>
-            <p>{searchTerm ? "محصولی با این جستجو یافت نشد" : "هیچ محصولی وجود ندارد"}</p>
+            <p>
+              {searchTerm
+                ? "محصولی با این جستجو یافت نشد"
+                : "هیچ محصولی وجود ندارد"}
+            </p>
           </div>
-        )
-      )}
+        ))}
     </div>
   );
 }

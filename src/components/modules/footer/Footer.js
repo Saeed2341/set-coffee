@@ -45,7 +45,7 @@ const Footer = async () => {
                 href={`/article/${article.slug}`}
                 data={new Date(article.createdAt).toLocaleDateString("fa-IR")}
                 comments="بدون دیدگاه"
-                img={`${process.env.NEXT_PUBLIC_IMAGE_URL}articles/${article.img}`}
+                img={article.img}
                 title={"..." + article.title.substring(0, 30)}
               />
               <hr />

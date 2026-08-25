@@ -175,8 +175,7 @@
   border: none;
   border-radius: 50px;
   font-size: 16px;
-  font-weight: 600;
-  font-family: shabnam, sans-serif;
+ 
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 20px rgba(109, 76, 65, 0.2);

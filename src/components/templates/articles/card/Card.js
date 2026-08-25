@@ -5,10 +5,7 @@ const Card = ({ img, slug, title, description }) => {
   return (
     <div className={styles.card}>
       <Link href={`/article/${slug}`}>
-        <img
-          src={`${process.env.NEXT_PUBLIC_IMAGE_URL}articles/${img}`}
-          alt={title}
-        />
+        <img src={img} alt={title} />
       </Link>
       <Link href={`/article/${slug}`} className={styles.title}>
         {title}

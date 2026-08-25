@@ -309,11 +309,11 @@ function AddUser({ user, mode }) {
       {mode == "edit" ? (
         <div>
           <button
-            className={styles.submitButton}
+            className={`${styles.submitButton} ${isLoading ? styles.loading : ""}`}
             onClick={editUser}
             disabled={isLoading}
           >
-            {isLoading ? "در حال ثبت..." : "ویرایش کاربر"}
+            {isLoading ? "در حال ویرایش..." : "ویرایش کاربر"}
           </button>
           <button onClick={cancelEdit} className={styles.cancelBtn}>
             انصراف
@@ -321,11 +321,11 @@ function AddUser({ user, mode }) {
         </div>
       ) : (
         <button
-          className={styles.submitButton}
+          className={`${styles.submitButton} ${isLoading ? styles.loading : ""}`}
           onClick={addUser}
           disabled={isLoading}
         >
-          {isLoading ? "در حال ثبت..." : "افزودن کاربر"}
+          {isLoading ? "در حال افزودن..." : "افزودن کاربر"}
         </button>
       )}
     </section>

@@ -1,9 +1,9 @@
 import connectToDB from "@/configs/db";
 import ArticleModel from "@/models/Article";
 import { authAdmin } from "@/utils/auth";
-import { writeFile } from "fs/promises";
+import cloudinary from "@/utils/cloudinary";
 import { NextResponse } from "next/server";
-import path from "path";
+
 export async function GET() {
   try {
     await connectToDB();
@@ -53,13 +53,27 @@ export async function POST(req) {
       );
     }
 
-    const buffer = Buffer.from(await img.arrayBuffer());
-    const extName = "." + img.type.slice(6);
-    const fileName = Math.floor(Math.random() * Date.now()) + extName;
-    writeFile(
-      path.join(process.cwd(), "public", "uploads", "articles", fileName),
-      buffer,
-    );
+    // --- آپلود تصویر به Cloudinary ---
+    let imageUrl = "";
+    if (img) {
+      const buffer = Buffer.from(await img.arrayBuffer());
+      const uploadResult = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream(
+            {
+              folder: "set-coffee/articles",
+              use_filename: true,
+              unique_filename: true,
+            },
+            (error, result) => {
+              if (error) reject(error);
+              else resolve(result);
+            },
+          )
+          .end(buffer);
+      });
+      imageUrl = uploadResult.secure_url;
+    }
 
     const article = await ArticleModel.create({
       title,
@@ -67,12 +81,13 @@ export async function POST(req) {
       description,
       content,
       author,
-      img: fileName,
+      img: imageUrl, // ← آدرس کامل تصویر
       tags,
       status: status ? status : "draft",
     });
+
     return NextResponse.json(
-      { message: "Article created successfully" },
+      { message: "Article created successfully", article },
       { status: 201 },
     );
   } catch (error) {

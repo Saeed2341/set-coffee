@@ -11,10 +11,12 @@ import {
 import { showSwal } from "@/utils/helper";
 import { useRouter } from "next/navigation";
 import swal from "sweetalert";
+
 const Login = ({ showRegisterForm }) => {
   const [isLoginWithOtp, setIsLoginWithOtp] = useState(false);
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
   const hideOtpForm = () => setIsLoginWithOtp(false);
@@ -33,26 +35,35 @@ const Login = ({ showRegisterForm }) => {
     if (!validatePassword(password))
       return showSwal("رمز عبور وارد شده معتبر نیست", "error", "تلاش مجدد ");
 
+    setIsLoading(true); // ← شروع لودینگ
+
     const user = { email: emailOrPhone, password };
-    const res = await fetch("/api/auth/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    });
-    if (res.status == 200) {
-      swal({
-        title: "ورود با موفقیت انجام شد",
-        icon: "success",
-        buttons: "ورود به پنل کاربری",
-      }).then(() => {
-        router.replace("/p-user");
+    try {
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
       });
-    } else if (res.status == 422) {
-      return showSwal("ایمیل یا رمز عبور نادرست است", "error", "تلاش مجدد");
-    } else if (res.status == 409) {
-      return showSwal("کاربری یافت نشد", "error", "تلاش مجدد");
+
+      if (res.status == 200) {
+        swal({
+          title: "ورود با موفقیت انجام شد",
+          icon: "success",
+          buttons: "ورود به پنل کاربری",
+        }).then(() => {
+          router.replace("/p-user");
+        });
+      } else if (res.status == 422) {
+        return showSwal("ایمیل یا رمز عبور نادرست است", "error", "تلاش مجدد");
+      } else if (res.status == 409) {
+        return showSwal("کاربری یافت نشد", "error", "تلاش مجدد");
+      }
+    } catch (error) {
+      showSwal("خطا در ارتباط با سرور", "error", "تلاش مجدد");
+    } finally {
+      setIsLoading(false); // ← پایان لودینگ
     }
   };
 
@@ -75,6 +86,7 @@ const Login = ({ showRegisterForm }) => {
     }
     setIsLoginWithOtp(true);
   };
+
   return (
     <>
       {!isLoginWithOtp ? (
@@ -84,7 +96,6 @@ const Login = ({ showRegisterForm }) => {
             data-aos="fade-up"
             suppressHydrationWarning
           >
-            {/* ===== دکمه بازگشت به صفحه اصلی (جایگزین لغو) ===== */}
             <Link href="/" className={styles.back_to_home}>
               ← بازگشت به صفحه اصلی
             </Link>
@@ -107,9 +118,16 @@ const Login = ({ showRegisterForm }) => {
               <input type="checkbox" name="" id="" />
               <p>مرا به یاد داشته باش</p>
             </div>
-            <button onClick={loginWithPass} className={styles.btn}>
-              ورود
+
+            {/* ===== دکمه ورود با لودینگ متنی ===== */}
+            <button
+              onClick={loginWithPass}
+              className={`${styles.btn} ${isLoading ? styles.btnLoading : ""}`}
+              disabled={isLoading}
+            >
+              {isLoading ? "...در حال ورود" : "ورود"}
             </button>
+
             <Link href={"/forget-password"} className={styles.forgot_pass}>
               رمز عبور را فراموش کرده اید؟
             </Link>

@@ -81,7 +81,7 @@
   color: #6d4c41;
 }
 
-/* ===== دکمه حذف ===== */
+/* ===== دکمه حذف (یک نسخه واحد) ===== */
 .delete_btn {
   width: 100%;
   padding: 8px 12px;
@@ -96,16 +96,34 @@
   transition: all 0.3s ease;
   margin-top: 14px;
   box-shadow: 0 2px 12px rgba(109, 76, 65, 0.15);
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.delete_btn:hover {
+.delete_btn:hover:not(:disabled) {
   background: #3e2723;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(62, 39, 35, 0.25);
 }
 
-.delete_btn:active {
+.delete_btn:active:not(:disabled) {
   transform: scale(0.96);
+}
+
+/* ===== حالت لودینگ ===== */
+.delete_btn.loading {
+  background: #a09c96 !important;
+  color: #f5f4f2 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 0.8;
+}
+
+.delete_btn:disabled {
+  cursor: not-allowed;
 }
 
 /* ===== ریسپانسیو ===== */
@@ -124,8 +142,9 @@
     font-size: 13px;
   }
   .delete_btn {
-    font-size: 11px;
-    padding: 6px 10px;
+    font-size: 12px;
+    padding: 6px 12px;
+    min-height: 36px;
   }
 }
 
@@ -144,7 +163,8 @@
     font-size: 12px;
   }
   .delete_btn {
-    font-size: 10px;
-    padding: 5px 8px;
+    font-size: 11px;
+    padding: 5px 10px;
+    min-height: 32px;
   }
 }

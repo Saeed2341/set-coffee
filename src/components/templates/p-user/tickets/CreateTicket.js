@@ -198,7 +198,7 @@ const CreateTicket = () => {
         {/* ===== دکمه ارسال ===== */}
         <button type="submit" className={styles.submitBtn} disabled={isLoading}>
           <IoIosSend size={20} />
-          {isLoading ? "در حال ارسال..." : "ارسال تیکت"}
+          {isLoading ? "...در حال ارسال" : "ارسال تیکت"}
         </button>
       </form>
     </div>

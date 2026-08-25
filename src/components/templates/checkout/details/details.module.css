@@ -122,13 +122,31 @@
     transition: all 0.3s ease;
     font-family: shabnam, sans-serif;
     margin-bottom: 12px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  .create_account section button:hover {
+  .create_account section button:hover:not(:disabled) {
     background: #6d4c41;
     color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(109, 76, 65, 0.15);
+  }
+  
+  /* ===== حالت لودینگ ===== */
+  .create_account section button.loading {
+    background: #a09c96 !important;
+    color: #f5f4f2 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+    opacity: 0.8;
+  }
+  
+  .create_account section button:disabled {
+    cursor: not-allowed;
   }
   
   /* ===== توضیحات سفارش ===== */
@@ -217,6 +235,7 @@
     .create_account section button {
       font-size: 13px;
       padding: 10px 20px;
+      min-height: 42px;
     }
   }
   
@@ -242,6 +261,7 @@
     .create_account section button {
       font-size: 12px;
       padding: 8px 16px;
+      min-height: 36px;
     }
     .form :global(.css-13cymwt-control),
     .form :global(.css-16xfy0z-control) {

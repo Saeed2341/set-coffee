@@ -297,7 +297,7 @@ const Order = ({ handleSubmit }) => {
               !isAcceptedRules || isSubmitting ? "not-allowed" : "pointer",
           }}
         >
-          {isSubmitting ? "در حال ثبت سفارش..." : "ثبت سفارش"}
+          {isSubmitting ? "...در حال ثبت سفارش" : "ثبت سفارش"}
         </button>
       </div>
     </div>

@@ -13,12 +13,12 @@ function AccountDetails() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
       const res = await fetch("/api/auth/me");
       const data = await res.json();
-
       setName(data.name);
       setEmail(data.email);
       setPhone(data.phone);
@@ -35,98 +35,114 @@ function AccountDetails() {
       );
     }
 
-    const userNewInfos = {
-      name,
-      email,
-      phone,
-    };
+    setIsLoading(true);
 
-    const res = await fetch("/api/user", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userNewInfos),
-    });
+    const userNewInfos = { name, email, phone };
 
-    if (res.status === 200) {
-      swal({
-        title: "اطلاعات مورد نظر با موفقیت آپدیت شد",
-        icon: "success",
-        buttons: "تایید",
-      }).then(async (result) => {
-        await fetch("/api/auth/signout", { method: "POST" });
-        location.replace("/login-register");
+    try {
+      const res = await fetch("/api/user", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userNewInfos),
       });
+
+      if (res.status === 200) {
+        swal({
+          title: "اطلاعات مورد نظر با موفقیت آپدیت شد",
+          icon: "success",
+          buttons: "تایید",
+        }).then(async () => {
+          await fetch("/api/auth/signout", { method: "POST" });
+          location.replace("/login-register");
+        });
+      }
+    } catch (error) {
+      showSwal("خطا در ارتباط با سرور", "error", "تلاش مجدد");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <main>
+    <main className={styles.container}>
       <div className={styles.details}>
         <h1 className={styles.title}>جزئیات اکانت</h1>
+
         <div className={styles.details_main}>
-          <section>
-            <div>
-              <label>نام کاربری</label>
-              <input
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                placeholder="لطفا نام کاربری خود را وارد کنید"
-                type="text"
-              />
-            </div>
-            <div>
-              <label>ایمیل</label>
-              <input
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                placeholder="لطفا ایمیل خود را وارد کنید"
-                type="text"
-              />
-            </div>
-            <div>
-              <label>شماره تماس</label>
-              <input
-                value={phone}
-                onChange={(event) => setPhone(event.target.value)}
-                placeholder="لطفا شماره تماس خود را وارد کنید"
-                type="number"
-              />
-            </div>
-          </section>
-          <section>
-            <div className={styles.uploader}>
-              <FaUserCircle size={84} color="#6d4c41" />
-              <div>
-                <div>
-                  <button>
-                    <IoCloudUploadOutline />
-                    تغییر
-                  </button>
-                  <input type="file" name="" id="" />
-                </div>
-                <button>
-                  <MdOutlineDelete />
-                  حذف
-                </button>
+          {/* ===== ستون اطلاعات ===== */}
+          <section className={styles.infoSection}>
+            <div className={styles.card}>
+              <div className={styles.inputGroup}>
+                <label>نام کاربری</label>
+                <input
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  placeholder="لطفا نام کاربری خود را وارد کنید"
+                  type="text"
+                />
+              </div>
+              <div className={styles.inputGroup}>
+                <label>ایمیل</label>
+                <input
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="لطفا ایمیل خود را وارد کنید"
+                  type="text"
+                />
+              </div>
+              <div className={styles.inputGroup}>
+                <label>شماره تماس</label>
+                <input
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                  placeholder="لطفا شماره تماس خود را وارد کنید"
+                  type="number"
+                />
               </div>
             </div>
-            <div>
-              <label>رمز عبور</label>
-              <div className={styles.password_group}>
-                <input type="password" />
-                <button>تغییر رمز عبور</button>
+          </section>
+
+          {/* ===== ستون تصویر و رمز عبور ===== */}
+          <section className={styles.imageSection}>
+            <div className={styles.card}>
+              <div className={styles.uploader}>
+                <FaUserCircle className={styles.avatarIcon} size={80} color="#6d4c41" />
+                <div className={styles.uploaderActions}>
+                  <div className={styles.uploadBtnWrapper}>
+                    <button className={styles.uploadBtn}>
+                      <IoCloudUploadOutline />
+                      تغییر
+                    </button>
+                    <input type="file" />
+                  </div>
+                  <button className={styles.deleteBtn}>
+                    <MdOutlineDelete />
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.card}>
+              <div className={styles.inputGroup}>
+                <label>رمز عبور</label>
+                <div className={styles.password_group}>
+                  <input type="password" placeholder="رمز عبور جدید" />
+                  <button className={styles.changePassBtn}>تغییر رمز عبور</button>
+                </div>
               </div>
             </div>
           </section>
         </div>
+
+        {/* ===== دکمه ثبت تغییرات ===== */}
         <button
           type="submit"
           onClick={updateUser}
-          className={styles.submit_btn}
+          className={`${styles.submit_btn} ${isLoading ? styles.loading : ""}`}
+          disabled={isLoading}
         >
-          ثبت تغییرات
+          {isLoading ? "در حال به‌روزرسانی..." : "ثبت تغییرات"}
         </button>
       </div>
     </main>
