@@ -19,10 +19,9 @@ const ArticleForm = ({ article }) => {
   const [tags, setTags] = useState("");
   const [status, setStatus] = useState("draft");
   const [author, setAuthor] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [img, setImg] = useState(null);
 
-  // ===== پر کردن فرم در حالت ویرایش =====
   useEffect(() => {
     if (article) {
       setTitle(article.title || "");
