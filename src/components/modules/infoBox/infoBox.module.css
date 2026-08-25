@@ -1,0 +1,97 @@
+/* ===== باکس آمار ===== */
+.box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px 24px 20px;
+  border: 1px solid #e8e5e0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.box:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  transform: translateY(-3px);
+  border-color: #d4cfc8;
+}
+
+/* ===== عدد اصلی ===== */
+.box span:first-child {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1a1a1a;
+  display: block;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+/* ===== بخش پایین (عنوان + آیکون) ===== */
+.box div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0eeea;
+  padding-top: 14px;
+}
+
+.box div p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6a6762;
+  margin: 0;
+}
+
+.box_chart_icon {
+  font-size: 2rem;
+  color: #a67c52;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.box:hover .box_chart_icon {
+  opacity: 1;
+  color: #8b6a3e;
+  transform: scale(1.05);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 1200px) {
+  .box {
+    min-width: 160px;
+    padding: 20px 18px 16px;
+  }
+  .box span:first-child {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    min-width: 140px;
+    padding: 16px 14px 14px;
+    border-radius: 12px;
+  }
+  .box span:first-child {
+    font-size: 24px;
+  }
+  .box div p {
+    font-size: 13px;
+  }
+  .box_chart_icon {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    min-width: 100%;
+    padding: 14px 12px 12px;
+  }
+  .box span:first-child {
+    font-size: 22px;
+  }
+}

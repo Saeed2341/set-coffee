@@ -1,0 +1,56 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+    max-width: 1222px;
+    width: 100%;
+    padding-right: 24px;
+    padding-left: 24px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 4rem;
+    direction: rtl;
+    color: #3e2723;
+  }
+  
+  /* ===== لیست مقالات ===== */
+  .articles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    row-gap: 40px;
+    margin-top: 10px;
+  }
+  
+  /* ===== ریسپانسیو ===== */
+  @media (max-width: 992px) {
+    .articles {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      row-gap: 32px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding-right: 16px;
+      padding-left: 16px;
+      margin-bottom: 3rem;
+    }
+    .articles {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      row-gap: 24px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .articles {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      row-gap: 24px;
+    }
+    .container {
+      padding-right: 12px;
+      padding-left: 12px;
+      margin-bottom: 2rem;
+    }
+  }

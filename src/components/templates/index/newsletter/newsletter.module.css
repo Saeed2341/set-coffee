@@ -1,0 +1,245 @@
+/* ============================================ */
+/* ===== بخش خبرنامه ===== */
+/* ============================================ */
+.container {
+  max-width: 1222px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.newsletter {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px 40px 40px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  border: 1px solid #f0eeea;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== دکوراسیون پس‌زمینه (اختیاری) ===== */
+.newsletter::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(166, 124, 82, 0.04);
+  z-index: 0;
+}
+
+.newsletter::after {
+  content: "";
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(166, 124, 82, 0.03);
+  z-index: 0;
+}
+
+.newsletter > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== آیکون ===== */
+.icon_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.icon {
+  font-size: 3.2rem;
+  color: #a67c52;
+  opacity: 0.6;
+}
+
+/* ===== عنوان و توضیحات ===== */
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.3px;
+}
+
+.description {
+  font-size: 15px;
+  color: #6a6762;
+  max-width: 520px;
+  margin: 0 auto 28px auto;
+  line-height: 1.8;
+}
+
+/* ===== فرم ===== */
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* ===== فیلد ورودی ===== */
+.input {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 20px;
+  background: #faf6f0;
+  border: 2px solid #f0eeea;
+  border-radius: 50px;
+  font-size: 15px;
+  font-family: shabnam, sans-serif;
+  color: #3e2723;
+  outline: none;
+  transition: all 0.3s ease;
+  direction: rtl;
+}
+
+.input:focus {
+  border-color: #a67c52;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
+}
+
+.input::placeholder {
+  color: #a09c96;
+  font-weight: 300;
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== دکمه ===== */
+.button {
+  padding: 14px 36px;
+  background: #a67c52;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: shabnam, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(166, 124, 82, 0.2);
+  white-space: nowrap;
+}
+
+.button:hover:not(:disabled) {
+  background: #8b6a3e;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(166, 124, 82, 0.3);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===== متن قانون ===== */
+.note {
+  font-size: 12px;
+  color: #a09c96;
+  margin: 16px 0 0 0;
+}
+
+.note a {
+  color: #a67c52;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.note a:hover {
+  color: #8b6a3e;
+  text-decoration: underline;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .newsletter {
+    padding: 32px 24px 28px;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .input {
+    min-width: unset;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .button {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .icon {
+    font-size: 2.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .newsletter {
+    padding: 24px 16px 24px;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .input {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .button {
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+
+  .icon {
+    font-size: 2.2rem;
+  }
+}

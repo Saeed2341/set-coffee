@@ -1,0 +1,183 @@
+/* ===== فرم ===== */
+.form {
+  display: grid;
+  background: #ffffff;
+  padding: 40px 32px 32px;
+  width: 100%;
+  max-width: 400px;
+  font-family: shabnam, sans-serif;
+  margin: 0 auto;
+  border-radius: 24px;
+  box-shadow: 0 8px 40px rgba(62, 39, 35, 0.08);
+  text-align: center;
+  color: #3e2723;
+  border: 1px solid rgba(215, 204, 200, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* ===== دکمه بازگشت (در بالای فرم) ===== */
+.back_btn {
+  display: inline-block;
+  margin: 0 auto 16px auto;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  color: #6d4c41;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 30px;
+  background: #f5ebe0;
+  border: 1px solid transparent;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.back_btn:hover {
+  background: #6d4c41;
+  color: #fff;
+  border-color: #6d4c41;
+  transform: translateX(-4px);
+}
+
+/* ===== عنوان اصلی ===== */
+.form p:first-child {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0 0 4px;
+  letter-spacing: -0.5px;
+}
+
+/* ===== توضیحات ===== */
+.code_title {
+  font-size: 13px;
+  margin-top: 12px;
+  color: #a1887f;
+  opacity: 1;
+  white-space: nowrap;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ===== شماره موبایل ===== */
+.number {
+  font-size: 16px;
+  margin-top: 8px;
+  color: #6d4c41;
+  opacity: 1;
+  white-space: nowrap;
+  font-weight: 600;
+  direction: ltr;
+  letter-spacing: 1px;
+}
+
+/* ===== فیلد ورودی کد ===== */
+.input {
+  font-family: shabnam, sans-serif;
+  padding: 14px 18px;
+  background: #faf6f0;
+  color: #3e2723;
+  border-radius: 12px;
+  border: 2px solid #f0e8dd;
+  direction: ltr;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 8px;
+  transition: all 0.3s ease;
+  outline: none;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 4px rgba(109, 76, 65, 0.08);
+  background: #ffffff;
+}
+
+.input::placeholder {
+  color: #d7ccc8;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+/* ===== دکمه ثبت کد ===== */
+.btn {
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-family: shabnam, sans-serif;
+  background: #6d4c41;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.2);
+  width: 100%;
+}
+
+.btn:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(62, 39, 35, 0.3);
+}
+
+/* ===== لینک ارسال مجدد ===== */
+.send_again_code {
+  font-size: 13px;
+  margin-top: 16px;
+  color: #a1887f;
+  opacity: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  padding: 4px 0;
+}
+
+.send_again_code:hover {
+  color: #6d4c41;
+  transform: translateX(-4px);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 576px) {
+  .form {
+    padding: 28px 18px 20px;
+    border-radius: 20px;
+    max-width: 100%;
+  }
+  .form p:first-child {
+    font-size: 20px;
+  }
+  .code_title {
+    font-size: 12px;
+    white-space: normal;
+  }
+  .number {
+    font-size: 14px;
+  }
+  .input {
+    padding: 12px 14px;
+    font-size: 18px;
+    letter-spacing: 6px;
+    margin-top: 16px;
+  }
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 14px;
+  }
+  .send_again_code {
+    font-size: 12px;
+    white-space: normal;
+  }
+  .back_btn {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+}

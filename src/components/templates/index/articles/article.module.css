@@ -1,0 +1,347 @@
+/* ===== کارت اصلی ===== */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(62, 39, 35, 0.15);
+}
+
+/* ===== محفظه تصویر ===== */
+.card .img_container:nth-child(1) {
+  position: relative;
+  display: block;
+  transition: transform 0.7s ease;
+  overflow: hidden;
+}
+
+.card:hover .img_container:nth-child(1) {
+  transform: scale(1.05);
+}
+
+.card .img_container img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== اورلی روی تصویر هنگام هاور ===== */
+.card:hover .img_container:nth-child(1)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(62, 39, 35, 0.3);
+  transition: opacity 0.7s ease;
+  z-index: 1;
+}
+
+/* ===== تاریخ (روی تصویر) ===== */
+.date {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 0.4rem 0.6rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  display: grid;
+  border-radius: 12px;
+  color: #3e2723;
+  text-align: center;
+  z-index: 2;
+  box-shadow: 0 2px 12px rgba(62, 39, 35, 0.08);
+  min-width: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.date span:nth-child(1) {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #3e2723;
+}
+
+.date span:nth-child(2) {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6d4c41;
+}
+
+/* ===== بخش پایین کارت (جزئیات) ===== */
+.details {
+  width: 100%;
+  text-align: center;
+  transition: box-shadow 0.6s ease;
+  padding: 30px 24px 24px;
+  position: absolute;
+  background: linear-gradient(
+    to bottom,
+    transparent 5%,
+    rgba(62, 39, 35, 0.4) 50%,
+    rgba(62, 39, 35, 0.85) 100%
+  );
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+/* ===== تگ دسته‌بندی ===== */
+.tag {
+  font-size: 12px;
+  background: #6d4c41;
+  color: #fff;
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(109, 76, 65, 0.2);
+}
+
+/* ===== عنوان مقاله ===== */
+.title {
+  word-wrap: break-word;
+  margin: 12px 0 16px;
+  line-height: 1.5;
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: #f5b342; /* طلایی */
+}
+
+/* ===== اطلاعات نویسنده و آیکون‌ها ===== */
+.details div {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.details div img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.details div p {
+  margin: 0;
+  font-weight: 400;
+}
+
+.details div div {
+  position: relative;
+  gap: 4px;
+}
+
+.details div div span {
+  position: absolute;
+  font-size: 9px;
+  top: -8px;
+  left: -8px;
+  border-radius: 50%;
+  padding: 0.1rem 0.35rem;
+  background: #f5b342;
+  color: #3e2723;
+  font-weight: 700;
+  min-width: 18px;
+}
+
+.details div svg {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.details div svg:hover {
+  color: #f5b342;
+}
+
+/* ===== دکمه اشتراک‌گذاری ===== */
+.share {
+  position: relative;
+  bottom: 2px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.share:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ===== تولتیپ اشتراک‌گذاری ===== */
+.tooltip {
+  position: absolute !important;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #3e2723;
+  padding: 0.5rem 0.6rem;
+  border-radius: 12px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  color: #fff !important;
+  display: flex;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #3e2723;
+}
+
+.tooltip svg {
+  font-size: 1.1rem !important;
+  color: #fff !important;
+  transition: all 0.3s ease;
+}
+
+.tooltip svg:hover {
+  color: #f5b342 !important;
+  transform: scale(1.15);
+}
+
+.tooltip a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.tooltip a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .card .img_container img {
+    height: 220px;
+  }
+  .details {
+    padding: 24px 18px 18px;
+  }
+  .title {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card .img_container img {
+    height: 200px;
+  }
+  .date {
+    top: 12px;
+    right: 12px;
+    padding: 0.3rem 0.5rem;
+    min-width: 40px;
+  }
+  .date span:nth-child(1) {
+    font-size: 18px;
+  }
+  .date span:nth-child(2) {
+    font-size: 10px;
+  }
+  .details {
+    padding: 20px 14px 14px;
+  }
+  .title {
+    font-size: 17px;
+    margin: 8px 0 12px;
+  }
+  .tag {
+    font-size: 10px;
+    padding: 0.2rem 0.8rem;
+  }
+  .details div {
+    font-size: 11px;
+    gap: 10px;
+  }
+  .details div img {
+    width: 22px;
+    height: 22px;
+  }
+  .details div svg {
+    font-size: 1rem;
+  }
+  .tooltip {
+    padding: 0.4rem 0.5rem;
+    gap: 6px;
+    bottom: 28px;
+  }
+  .tooltip svg {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card .img_container img {
+    height: 170px;
+  }
+  .title {
+    font-size: 15px;
+  }
+  .date {
+    top: 10px;
+    right: 10px;
+    padding: 0.2rem 0.4rem;
+    min-width: 34px;
+  }
+  .date span:nth-child(1) {
+    font-size: 16px;
+  }
+  .date span:nth-child(2) {
+    font-size: 9px;
+  }
+  .details {
+    padding: 16px 10px 10px;
+  }
+  .details div {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .details div img {
+    width: 20px;
+    height: 20px;
+  }
+  .tooltip {
+    padding: 0.3rem 0.4rem;
+    gap: 4px;
+    bottom: 24px;
+  }
+  .tooltip svg {
+    font-size: 0.8rem !important;
+  }
+}

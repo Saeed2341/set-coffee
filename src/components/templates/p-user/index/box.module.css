@@ -1,0 +1,56 @@
+/* ===== باکس آمار ===== */
+.box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px 24px 20px;
+  border: 1px solid rgba(215, 204, 200, 0.2);
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(62, 39, 35, 0.12);
+  border-color: rgba(166, 124, 82, 0.3);
+}
+
+/* ===== عدد اصلی ===== */
+.box span:first-child {
+  font-size: 32px;
+  font-weight: 700;
+  color: #3e2723;
+  display: block;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+/* ===== بخش پایین (عنوان + آیکون) ===== */
+.box div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #f0e8dd;
+  padding-top: 12px;
+}
+
+.box div p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #5d4037;
+  margin: 0;
+}
+
+.box_chart_icon {
+  font-size: 2rem;
+  color: #6d4c41;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.box:hover .box_chart_icon {
+  opacity: 1;
+  color: #a67c52;
+  transform: scale(1.05);
+}

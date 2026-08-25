@@ -1,0 +1,76 @@
+/* ===== مسیریابی (Breadcrumb) ===== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  direction: rtl;
+  gap: 8px;
+  font-size: 14px;
+  color: #a1887f;
+  margin-bottom: 16px;
+  padding: 8px 0;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* ===== لینک‌ها ===== */
+.breadcrumb a {
+  color: #a1887f;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.breadcrumb a:hover {
+  color: #6d4c41;
+  transform: translateX(-2px);
+}
+
+/* ===== جداکننده ===== */
+.breadcrumb span {
+  color: #d7ccc8;
+  font-size: 14px;
+  user-select: none;
+}
+
+/* ===== عنوان فعلی (غیرقابل کلیک) ===== */
+.breadcrumb p {
+  margin: 0;
+  color: #3e2723;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 13px;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .breadcrumb a {
+    font-size: 13px;
+  }
+  .breadcrumb span {
+    font-size: 13px;
+  }
+  .breadcrumb p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .breadcrumb a {
+    font-size: 12px;
+  }
+  .breadcrumb span {
+    font-size: 12px;
+  }
+  .breadcrumb p {
+    font-size: 12px;
+  }
+}

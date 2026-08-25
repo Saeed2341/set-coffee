@@ -1,0 +1,219 @@
+/* ===== بخش نظرات ===== */
+.comment {
+  margin-top: 40px;
+  padding: 32px 32px 36px;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #f0e8dd;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.04);
+}
+
+/* ===== عنوان ===== */
+.title {
+  font-weight: 700;
+  font-size: 22px;
+  color: #3e2723;
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.comment > p {
+  font-size: 14px;
+  color: #a1887f;
+  margin-bottom: 20px;
+}
+
+.comment > p span {
+  color: #6d4c41;
+}
+
+/* ===== گروه‌های فرم ===== */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  direction: rtl;
+}
+
+.group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.group label span {
+  color: #6d4c41;
+}
+
+.group textarea,
+.group input {
+  padding: 12px 16px;
+  border: 2px solid #f0e8dd;
+  border-radius: 12px;
+  background: #faf6f0;
+  color: #3e2723;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  outline: none;
+  width: 100%;
+  resize: vertical;
+}
+
+.group textarea:focus,
+.group input:focus {
+  border-color: #6d4c41;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(109, 76, 65, 0.06);
+}
+
+.group textarea {
+  min-height: 120px;
+}
+
+/* ===== گروه‌های دو ستونه ===== */
+.groups {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.groups .group {
+  margin-top: 0;
+}
+
+/* ===== چک‌باکس ===== */
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+
+.checkbox input {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid #d7ccc8;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-top: 2px;
+}
+
+.checkbox input:checked {
+  background-color: #6d4c41;
+  border-color: #6d4c41;
+}
+
+.checkbox input:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.checkbox input:focus,
+.checkbox input:hover {
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 3px rgba(109, 76, 65, 0.1);
+}
+
+.checkbox p {
+  margin: 0;
+  font-size: 13px;
+  color: #5d4037;
+  line-height: 1.6;
+}
+
+/* ===== دکمه ارسال ===== */
+.comment button {
+  padding: 12px 36px;
+  font-size: 15px;
+  font-weight: 100;
+  background: #6d4c41;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 24px;
+  font-family: shabnam, sans-serif;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.2);
+}
+
+.comment button:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(62, 39, 35, 0.3);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .comment {
+    padding: 28px 24px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .comment {
+    padding: 24px 18px 28px;
+    border-radius: 20px;
+    margin-top: 30px;
+  }
+  .title {
+    font-size: 19px;
+  }
+  .groups {
+    flex-direction: column;
+    gap: 0;
+  }
+  .group textarea,
+  .group input {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .comment button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  .checkbox p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comment {
+    padding: 18px 14px 22px;
+    border-radius: 16px;
+    margin-top: 24px;
+  }
+  .title {
+    font-size: 17px;
+  }
+  .comment > p {
+    font-size: 13px;
+  }
+  .group label {
+    font-size: 13px;
+  }
+  .group textarea,
+  .group input {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+}

@@ -1,0 +1,508 @@
+/* ===== تگ دسته‌بندی ===== */
+.tag {
+  font-size: 13px;
+  background: #6d4c41;
+  color: #ffffff;
+  padding: 6px 18px;
+  border-radius: 30px;
+  margin: 0 auto;
+  width: max-content;
+  font-weight: 500;
+}
+
+/* ===== عنوان اصلی ===== */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #3e2723;
+  text-align: center;
+  margin: 20px 0 16px;
+  line-height: 1.4;
+}
+
+/* ===== بخش نویسنده ===== */
+.author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #a1887f;
+  flex-direction: row-reverse;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.author img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f0e8dd;
+}
+
+/* ===== تصویر اصلی ===== */
+.main_img {
+  position: relative;
+  margin-top: 24px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+}
+
+.main_img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== تاریخ روی تصویر ===== */
+.date {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  display: grid;
+  border-radius: 12px;
+  text-align: center;
+  color: #3e2723;
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.date span:first-child {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #3e2723;
+}
+
+.date span:last-child {
+  font-size: 13px;
+  color: #6d4c41;
+  font-weight: 500;
+}
+
+/* ===== تصویر با توضیحات ===== */
+.img_content {
+  margin: 24px 0;
+}
+
+.img_content img {
+  width: 100%;
+  max-width: 747px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+}
+
+.img_content p {
+  color: #a1887f;
+  padding: 8px 0 0;
+  font-style: italic;
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 747px;
+  margin: 0 auto;
+  display: block;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ===== آیکون‌های اشتراک‌گذاری ===== */
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.08);
+}
+
+.icons a:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 28px rgba(62, 39, 35, 0.15);
+}
+
+/* ===== رنگ‌های شبکه‌های اجتماعی (با تم قهوه‌ای) ===== */
+.icons a:nth-child(1) {
+  background: #37aee2; /* تلگرام */
+}
+.icons a:nth-child(2) {
+  background: #0274b3; /* لینکدین */
+}
+.icons a:nth-child(3) {
+  background: #cb2027; /* پینترست */
+}
+.icons a:nth-child(4) {
+  background: #1da1f2; /* توییتر */
+}
+.icons a:nth-child(5) {
+  background: #365493; /* فیسبوک */
+}
+
+/* ===== بخش مطالب قبلی و بعدی ===== */
+.contents {
+  padding: 24px 0;
+  border-top: 2px solid #f0e8dd;
+  border-bottom: 2px solid #f0e8dd;
+  margin-top: 8px;
+}
+
+.more_articles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.more_articles > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.more_articles > div:last-child {
+  flex-direction: row-reverse;
+}
+
+/* ===== دکمه‌های قبلی و بعدی ===== */
+.prev_article,
+.next_article {
+  flex: 1;
+}
+
+.prev_article {
+  justify-content: flex-start;
+}
+
+.next_article {
+  justify-content: flex-end;
+}
+
+.prev_article p:first-child,
+.next_article p:first-child {
+  color: #a1887f;
+  font-size: 13px;
+  margin: 0;
+}
+
+.prev_article a:not(.icon),
+.next_article a:not(.icon) {
+  color: #3e2723;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 14px;
+}
+
+.prev_article a:not(.icon):hover,
+.next_article a:not(.icon):hover {
+  color: #a67c52;
+}
+
+.more_articles > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.next_article > div {
+  align-items: flex-end;
+}
+
+/* ===== آیکون گرد ===== */
+.icon {
+  border: 2px solid #d7ccc8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #6d4c41;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.icon:hover {
+  background: #6d4c41;
+  color: #ffffff;
+  border-color: #6d4c41;
+  transform: scale(1.05);
+}
+
+/* ===== لینک شبکه مطالب ===== */
+.link {
+  color: #a1887f;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.link:hover {
+  color: #6d4c41;
+  transform: scale(1.1);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .title {
+    font-size: 28px;
+  }
+  .img_content img {
+    max-width: 100%;
+  }
+  .img_content p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 24px;
+    margin: 16px 0 12px;
+  }
+  .more_articles {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .prev_article,
+  .next_article {
+    width: 100%;
+    justify-content: center !important;
+  }
+  .more_articles > div > div {
+    align-items: center !important;
+  }
+  .next_article > div {
+    align-items: center !important;
+  }
+  .icon {
+    width: 36px;
+    height: 36px;
+  }
+  .prev_article a:not(.icon),
+  .next_article a:not(.icon) {
+    font-size: 13px;
+  }
+  .date {
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+  }
+  .date span:first-child {
+    font-size: 20px;
+  }
+  .date span:last-child {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+  .tag {
+    font-size: 12px;
+    padding: 4px 14px;
+  }
+  .author {
+    font-size: 13px;
+    gap: 8px;
+  }
+  .author img {
+    width: 24px;
+    height: 24px;
+  }
+  .icons {
+    gap: 8px;
+  }
+  .icons a {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  .date {
+    top: 10px;
+    right: 10px;
+    padding: 4px 10px;
+  }
+  .date span:first-child {
+    font-size: 18px;
+  }
+  .date span:last-child {
+    font-size: 11px;
+  }
+  .img_content img {
+    border-radius: 12px;
+  }
+  .img_content p {
+    font-size: 13px;
+  }
+}
+
+.productDescription {
+  padding: 16px 0;
+  font-family: shabnam, sans-serif;
+  color: #3e2723;
+}
+
+/* ===== استایل‌های محتوای داخلی (هماهنگ با CKEditor) ===== */
+.descriptionContent {
+  line-height: 1.8;
+  font-size: 15px;
+  text-align: justify;
+}
+
+/* ===== عنوان‌ها ===== */
+.descriptionContent h1 {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0.8em 0 0.4em;
+  color: #3e2723;
+}
+
+.descriptionContent h2 {
+  font-size: 1.6em;
+  font-weight: 600;
+  margin: 0.6em 0 0.3em;
+  color: #3e2723;
+}
+
+.descriptionContent h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin: 0.5em 0 0.2em;
+  color: #3e2723;
+}
+
+.descriptionContent h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 0.4em 0 0.2em;
+  color: #3e2723;
+}
+
+/* ===== پاراگراف‌ها ===== */
+.descriptionContent p {
+  margin: 0.6em 0;
+  line-height: 1.9;
+  color: #5d4037;
+}
+
+/* ===== لیست‌ها ===== */
+.descriptionContent ul,
+.descriptionContent ol {
+  display: block !important;
+  padding-right: 5px !important;
+  margin: 0.6em 0 !important;
+}
+
+.descriptionContent li {
+  display: list-item !important;
+  list-style-type: inherit;
+  margin-bottom: 4px !important;
+  line-height: 1.8 !important;
+  text-align: right !important;
+}
+
+/* ===== لینک‌ها ===== */
+.descriptionContent a {
+  color: #6d4c41;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.descriptionContent a:hover {
+  color: #a67c52;
+}
+
+/* ===== بلوک نقل قول ===== */
+.descriptionContent blockquote {
+  border-right: 4px solid #6d4c41;
+  padding-right: 16px;
+  margin: 0.6em 0;
+  color: #5d4037;
+  font-style: italic;
+  background: #faf6f0;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+/* ===== تصاویر ===== */
+.descriptionContent img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 12px auto; /* ← وسط‌چین */
+}
+
+/* ===== جداول ===== */
+.descriptionContent table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.descriptionContent th,
+.descriptionContent td {
+  border: 1px solid #e8e5e0;
+  padding: 8px 12px;
+  text-align: right;
+}
+
+.descriptionContent th {
+  background: #f4f3f0;
+  font-weight: 600;
+}
+
+/* ===== کد ===== */
+.descriptionContent pre {
+  background: #f4f3f0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: monospace;
+  direction: ltr;
+}
+
+.descriptionContent code {
+  background: #f4f3f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ===== خط جداکننده ===== */
+.descriptionContent hr {
+  border: none;
+  border-top: 2px solid #f0e8dd;
+  margin: 16px 0;
+}
+
+.description {
+  margin: 0.6em 0 !important;
+  line-height: 1.9 !important;
+  color: #5d4037 !important;
+  direction: rtl;
+}

@@ -1,0 +1,210 @@
+/* ===== کانتینر تب‌ها ===== */
+.tabs {
+  position: relative;
+  padding: 30px 0 40px;
+  width: 100%;
+}
+
+/* ===== مخفی کردن رادیوها ===== */
+.tabs input[name="tab-control"] {
+  display: none;
+}
+
+/* ===== لیست تب‌ها ===== */
+.tabs ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #f0e8dd;
+  position: relative;
+}
+
+.tabs ul li {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 100px;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.tabs ul li label {
+  transition: all 0.3s ease-in-out;
+  color: #a1887f;
+  font-size: 16px;
+  position: relative;
+  padding: 16px 0 12px;
+  display: block;
+  cursor: pointer;
+  font-family: shabnam, sans-serif;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+}
+
+/* ===== هاور ===== */
+.tabs ul li label:hover {
+  color: #6d4c41;
+}
+
+/* ===== تب فعال ===== */
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ ul > li:nth-child(1) > label,
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ ul > li:nth-child(2) > label,
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ ul > li:nth-child(3) > label {
+  color: #3e2723;
+  border-bottom-color: #6d4c41;
+}
+
+/* ===== محتوای تب‌ها ===== */
+.contents {
+  margin-top: 24px;
+}
+
+.tabs_content {
+  display: none;
+  animation: contentFade 0.4s ease;
+}
+
+.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .contents > section:nth-child(1),
+.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .contents > section:nth-child(2),
+.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .contents > section:nth-child(3) {
+  display: block;
+}
+
+/* ===== انیمیشن ===== */
+@keyframes contentFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== محتوای داخلی تب‌ها (توضیحات، اطلاعات بیشتر، نظرات) ===== */
+.tabs_content section {
+  padding: 16px 4px;
+}
+
+.tabs_content section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #3e2723;
+  margin-bottom: 12px;
+}
+
+.tabs_content section p {
+  font-size: 15px;
+  line-height: 2;
+  color: #5d4037;
+  text-align: justify;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .tabs {
+    padding: 20px 0 30px;
+  }
+  .tabs ul li {
+    min-width: 60px;
+    padding: 0 6px;
+  }
+  .tabs ul li label {
+    font-size: 13px;
+    padding: 12px 0 8px;
+  }
+  .tabs_content section p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs ul li {
+    min-width: 50px;
+    padding: 0 4px;
+  }
+  .tabs ul li label {
+    font-size: 11px;
+    padding: 10px 0 6px;
+  }
+  .tabs_content section p {
+    font-size: 13px;
+  }
+}
+
+/* ===== توضیحات محصول ===== */
+.tabs_content .description {
+  padding: 4px 0;
+}
+
+.tabs_content .description p {
+  font-size: 15px;
+  line-height: 2.2;
+  color: #5d4037;
+  text-align: justify;
+  margin-bottom: 16px;
+}
+
+.tabs_content .description hr {
+  margin: 16px 0 20px;
+  border-color: #f0e8dd;
+}
+
+.tabs_content .description h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 16px 0 8px;
+}
+
+/* ===== اطلاعات بیشتر ===== */
+.tabs_content .moreInfoes {
+  padding: 4px 0;
+}
+
+.tabs_content .moreInfoes hr {
+  margin: 12px 0 20px;
+  border-color: #f0e8dd;
+}
+
+.tabs_content .moreInfoes main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #faf6f0;
+  padding: 16px 20px;
+  border-radius: 16px;
+  border: 1px solid #f0e8dd;
+}
+
+.tabs_content .moreInfoes main div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.tabs_content .moreInfoes main div:last-child {
+  border-bottom: none;
+}
+
+.tabs_content .moreInfoes main div p:first-child {
+  font-weight: 500;
+  color: #3e2723;
+  margin: 0;
+  font-size: 14px;
+}
+
+.tabs_content .moreInfoes main div p:last-child {
+  color: #6d4c41;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}

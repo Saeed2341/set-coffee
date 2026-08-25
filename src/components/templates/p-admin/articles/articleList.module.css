@@ -1,0 +1,318 @@
+/* ============================================ */
+/* ===== کانتینر اصلی ===== */
+/* ============================================ */
+.container {
+  padding: 0 4px;
+}
+
+/* ============================================ */
+/* ===== هدر با جستجو ===== */
+/* ============================================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0eeea;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ===== جستجو ===== */
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  background: #f5f4f2;
+  border-radius: 30px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.searchWrapper:focus-within {
+  background: #ffffff;
+  border-color: #a67c52;
+  box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.08);
+}
+
+.searchIcon {
+  color: #a09c96;
+  font-size: 14px;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  font-family: shabnam, sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  outline: none;
+  width: 180px;
+}
+
+.searchInput::placeholder {
+  color: #b0aba4;
+}
+
+/* ===== دکمه مقاله جدید ===== */
+.createBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: #a67c52;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
+  white-space: nowrap;
+}
+
+.createBtn:hover {
+  background: #8b6a3e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(166, 124, 82, 0.25);
+}
+
+/* ============================================ */
+/* ===== جدول ===== */
+/* ============================================ */
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 600px;
+}
+
+/* ===== هدر ===== */
+.table thead th {
+  background: #f8f7f5;
+  padding: 12px 16px;
+  text-align: right;  /* ← راست‌چین */
+  font-weight: 500;
+  font-size: 12px;
+  color: #6a6762;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #f0eeea;
+  white-space: nowrap;
+}
+
+/* ===== سلول‌ها ===== */
+.table tbody td {
+  padding: 12px 16px;
+  text-align: right;  /* ← راست‌چین */
+  vertical-align: middle;
+  border-bottom: 1px solid #f5f4f2;
+  color: #1a1a1a;
+  font-size: 13px;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: #faf9f7;
+}
+
+/* ===== ستون عنوان ===== */
+.titleCell {
+  max-width: 250px;
+}
+
+.titleText {
+  display: block;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== هشتگ‌ها ===== */
+.tags {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 11px;
+  color: #a09c96;
+  background: #f4f3f0;
+  padding: 1px 8px;
+  border-radius: 12px;
+}
+
+.tagMore {
+  font-size: 11px;
+  color: #a09c96;
+}
+
+/* ===== وضعیت ===== */
+.statusBadge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.statusPublished {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.statusDraft {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* ============================================ */
+/* ===== عملیات (آیکون‌ها از راست) ===== */
+/* ============================================ */
+.actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-start;  /* ← آیکون‌ها از راست شروع می‌شوند */
+  align-items: center;
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.iconBtn:hover {
+  background: #f0eeea;
+  transform: translateY(-2px);
+}
+
+.dangerIcon {
+  color: #e74c3c;
+}
+
+.dangerIcon:hover {
+  background: #fde8e8;
+}
+
+/* ============================================ */
+/* ===== حالت خالی ===== */
+/* ============================================ */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a09c96;
+  font-size: 14px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+}
+
+.empty p {
+  margin: 0 0 16px;
+}
+
+.emptyLink {
+  display: inline-block;
+  padding: 10px 28px;
+  background: #a67c52;
+  color: #ffffff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.emptyLink:hover {
+  background: #8b6a3e;
+  transform: translateY(-2px);
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .headerActions {
+    justify-content: stretch;
+  }
+
+  .searchWrapper {
+    flex: 1;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .createBtn {
+    justify-content: center;
+  }
+
+  .table {
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .table tbody td,
+  .table thead th {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .iconBtn {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+}

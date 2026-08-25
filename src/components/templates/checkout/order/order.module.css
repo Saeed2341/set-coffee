@@ -1,0 +1,498 @@
+/* ===== بخش سفارش ===== */
+.order {
+  color: #3e2723;
+  width: 50%;
+  text-align: right;
+  position: relative;
+  background: #faf6f0;
+  padding: 28px 28px 32px;
+  border-radius: 24px;
+  border: 1px solid #f0e8dd;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.04);
+}
+
+.order:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -10px;
+  width: 100%;
+  height: 10px;
+  background-color: transparent;
+  background-image: radial-gradient(farthest-side, transparent 6px, #faf6f0 0);
+  background-size: 15px 15px;
+}
+
+/* ===== عنوان ===== */
+.title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0 0 8px;
+}
+
+/* ===== محتوای اصلی ===== */
+.main {
+  background: #ffffff;
+  margin-top: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(62, 39, 35, 0.04);
+  padding: 0 4px;
+  overflow: hidden;
+}
+
+.main div {
+  display: flex;
+  padding: 16px 16px;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0e8dd;
+  align-items: center;
+}
+
+.main div:last-child {
+  border-bottom: none;
+}
+
+.main div p {
+  margin: 0;
+  font-size: 14px;
+  direction: rtl;
+  color: #5d4037;
+}
+
+.main div p:last-child {
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.main div:nth-child(2) p {
+  color: #a1887f;
+  font-weight: 400;
+}
+
+.product_name {
+  width: 50%;
+  direction: rtl;
+  font-size: 13px !important;
+  line-height: 1.6;
+}
+
+/* ===== جمع کل ===== */
+.main div:last-child {
+  background: #f5ebe0;
+  border-radius: 0 0 16px 16px;
+  padding: 18px 16px;
+}
+
+.main div:last-child div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-end;
+  padding: 0;
+  border: none;
+}
+
+.main div:last-child div h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #6d4c41;
+  direction: rtl;
+}
+
+.main div:last-child div p {
+  font-size: 13px;
+  color: #a1887f;
+}
+
+.main div:last-child h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3e2723;
+}
+
+/* ===== بخش پرداخت ===== */
+.transaction {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.transaction > div:not(.paymentBox):not(.warning):not(.accept_rules) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: right;
+  flex-direction: row-reverse;
+  padding: 10px 14px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #f0e8dd;
+  transition: border-color 0.3s ease;
+}
+
+.transaction > div:not(.paymentBox):not(.warning):not(.accept_rules):hover {
+  border-color: #d7ccc8;
+}
+
+.transaction label {
+  font-size: 14px;
+  color: #3e2723;
+  cursor: pointer;
+}
+
+.transaction img {
+  border-radius: 4px;
+}
+
+/* ===== رادیو دکمه ===== */
+.order input[type="radio"] {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d7ccc8;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.order input[type="radio"]:checked {
+  background-color: #6d4c41;
+  border-color: #6d4c41;
+}
+
+.order input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.order input[type="radio"]:focus,
+.order input[type="radio"]:hover {
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 3px rgba(109, 76, 65, 0.1);
+}
+
+/* ===== باکس زرین پال ===== */
+.paymentBox {
+  background: #ffffff;
+  color: #5d4037;
+  position: relative;
+  margin-top: 4px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #f0e8dd;
+  box-shadow: 0 2px 12px rgba(62, 39, 35, 0.04);
+}
+
+.paymentBox p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* ===== هشدار ===== */
+.warning {
+  margin: 8px 0;
+  padding: 16px 0;
+  color: #5d4037;
+  border-top: 1px solid #f0e8dd;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.warning p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.warning strong {
+  color: #6d4c41;
+}
+
+/* ===== پذیرش قوانین ===== */
+.accept_rules {
+  display: flex;
+  gap: 10px;
+  flex-direction: row !important;
+  align-items: center;
+  direction: rtl;
+  padding: 6px 0;
+}
+
+.accept_rules input[type="checkbox"] {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d7ccc8;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.accept_rules input[type="checkbox"]:checked {
+  background-color: #6d4c41;
+  border-color: #6d4c41;
+}
+
+.accept_rules input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.accept_rules input[type="checkbox"]:focus,
+.accept_rules input[type="checkbox"]:hover {
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 3px rgba(109, 76, 65, 0.1);
+}
+
+.accept_rules p {
+  margin: 0;
+  font-size: 14px;
+  color: #5d4037;
+}
+
+.accept_rules strong {
+  color: #6d4c41;
+}
+
+.accept_rules span {
+  color: #6d4c41;
+}
+
+/* ===== دکمه ثبت سفارش ===== */
+.submit {
+  padding: 14px 28px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 50px !important;
+  line-height: 20px;
+  width: 100%;
+  margin-top: 16px;
+  color: #ffffff;
+  background: #6d4c41;
+  box-shadow: 0 4px 20px rgba(109, 76, 65, 0.25);
+  font-family: shabnam, sans-serif;
+}
+.submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+  background: #a1887f;
+}
+.submit:hover {
+  background: #3e2723;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(62, 39, 35, 0.3);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .order {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .order {
+    padding: 20px 16px 24px;
+    border-radius: 20px;
+  }
+  .title {
+    font-size: 19px;
+  }
+  .main div {
+    padding: 12px 12px;
+    font-size: 13px;
+  }
+  .product_name {
+    width: 60%;
+    font-size: 12px !important;
+  }
+  .main div:last-child div h2 {
+    font-size: 19px;
+  }
+  .transaction > div:not(.paymentBox):not(.warning):not(.accept_rules) {
+    padding: 8px 12px;
+  }
+  .submit {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .order {
+    padding: 16px 12px 20px;
+    border-radius: 16px;
+  }
+  .title {
+    font-size: 17px;
+  }
+  .main div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px 12px;
+  }
+  .product_name {
+    width: 100%;
+    font-size: 12px !important;
+  }
+  .main div:last-child {
+    flex-direction: row;
+    align-items: center;
+  }
+  .main div:last-child div {
+    align-items: flex-end;
+  }
+  .main div:last-child div h2 {
+    font-size: 17px;
+  }
+  .accept_rules {
+    align-items: flex-start;
+  }
+  .accept_rules p {
+    font-size: 13px;
+  }
+}
+
+/* ===== بخش تخفیف (تاگل‌شونده) ===== */
+.discountSection {
+  margin-top: 16px;
+  padding: 12px 0;
+  border-top: 1px solid #f0e8dd;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.discountToggle {
+  cursor: pointer;
+  color: #6d4c41;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.discountToggle:hover {
+  color: #3e2723;
+}
+
+.discountBox {
+  margin-top: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.discountInput {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  /* flex-direction: row-reverse; */
+}
+
+.discountInput input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid #f0e8dd;
+  border-radius: 12px;
+  font-size: 14px;
+  background: #ffffff;
+  transition: border-color 0.3s ease;
+  direction: rtl;
+  font-family: shabnam, sans-serif;
+}
+
+.discountInput input:focus {
+  border-color: #6d4c41;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(109, 76, 65, 0.1);
+}
+
+.discountInput input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.discountInput button {
+  padding: 10px 24px;
+  background: #6d4c41;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+}
+
+.discountInput button:hover:not(:disabled) {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.2);
+}
+
+.discountInput button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.discountApplied {
+  color: #2e7d32;
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* ===== ریسپانسیو برای بخش تخفیف ===== */
+@media (max-width: 480px) {
+  .discountInput {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .discountInput button {
+    width: 100%;
+    justify-content: center;
+  }
+}

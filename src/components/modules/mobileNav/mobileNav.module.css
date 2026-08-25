@@ -1,0 +1,96 @@
+/* ===== منوی موبایل ===== */
+.mobileNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: #ffffff;
+  border-top: 2px solid #f0e8dd;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 998;
+  box-shadow: 0 -4px 20px rgba(62, 39, 35, 0.08);
+  padding: 0 10px;
+  direction: rtl;
+}
+
+/* ===== هر آیتم ===== */
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-decoration: none;
+  color: #a1887f;
+  font-size: 11px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 6px 16px;
+  border-radius: 12px;
+  position: relative;
+  min-width: 60px;
+  font-family: shabnam, sans-serif;
+}
+
+.navItem .icon {
+  font-size: 24px;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.navItem .label {
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+/* ===== آیتم فعال ===== */
+.navItem.active {
+  color: #6d4c41;
+}
+
+.navItem.active .icon {
+  transform: translateY(-4px);
+}
+
+.navItem.active::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: #6d4c41;
+  border-radius: 0 0 6px 6px;
+}
+
+/* ===== هاور ===== */
+.navItem:hover {
+  color: #6d4c41;
+  background: rgba(109, 76, 65, 0.04);
+}
+
+.navItem:hover .icon {
+  transform: scale(1.1);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 480px) {
+  .mobileNav {
+    height: 57px;
+    padding: 0 6px;
+  }
+  .navItem {
+    padding: 4px 12px;
+    min-width: 50px;
+  }
+  .navItem .icon {
+    font-size: 22px;
+  }
+  .navItem .label {
+    font-size: 10px;
+  }
+}

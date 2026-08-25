@@ -1,0 +1,47 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+  max-width: 100%;
+  padding: 25px 24px 5rem;
+
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 4rem;
+  color: #3e2723;
+}
+
+/* ===== بخش اصلی (محصولات + فیلتر) ===== */
+.category {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .category {
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-bottom: 3rem;
+  }
+  .category {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-bottom: 2rem;
+  }
+  .category {
+    gap: 20px;
+  }
+}

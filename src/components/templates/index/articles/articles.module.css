@@ -1,0 +1,135 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+  max-width: 1222px;
+  margin: 0 auto;
+  direction: rtl;
+  padding: 0 1rem;
+}
+
+/* ===== عنوان و توضیحات ===== */
+.title {
+  color: #3e2723;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.5px;
+}
+
+.description {
+  color: #a1887f;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== محفظه اسلایدر ===== */
+.container main {
+  margin: 40px 0 90px;
+}
+
+/* ============================================ */
+/* ===== اسلایدر مقالات (دکمه‌های ناوبری) ===== */
+/* ============================================ */
+
+.articles_slider {
+  position: relative;
+}
+
+.articles_slider :global(.swiper-button-prev),
+.articles_slider :global(.swiper-button-next) {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  background: #e3e3e3d8 !important;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+  color: rgb(54, 54, 54);
+}
+
+.articles_slider :global(.swiper-button-prev):focus,
+.articles_slider :global(.swiper-button-next):focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.articles_slider :global(.swiper-button-prev):active,
+.articles_slider :global(.swiper-button-next):active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.articles_slider :global(.swiper-button-prev):hover,
+.articles_slider :global(.swiper-button-next):hover {
+  background-color: #e9e9e971 !important;
+  transition: background 0.3s ease;
+
+}
+
+.articles_slider :global(.swiper-button-prev)::after,
+.articles_slider :global(.swiper-button-next)::after {
+  color: #bababa9a !important;
+  font-size: 18px !important;
+  font-weight: 700;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+
+@media (max-width: 992px) {
+  .articles_slider :global(.swiper-button-prev),
+  .articles_slider :global(.swiper-button-next) {
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+  }
+  .articles_slider :global(.swiper-button-prev)::after,
+  .articles_slider :global(.swiper-button-next)::after {
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+  }
+  .description {
+    font-size: 13px;
+  }
+  .container main {
+    margin: 30px 0 60px;
+  }
+  .articles_slider :global(.swiper-button-prev),
+  .articles_slider :global(.swiper-button-next) {
+    width: 34px;
+    height: 34px;
+    padding: 6px;
+  }
+  .articles_slider :global(.swiper-button-prev)::after,
+  .articles_slider :global(.swiper-button-next)::after {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+  .container main {
+    margin: 20px 0 40px;
+  }
+  .articles_slider :global(.swiper-button-prev),
+  .articles_slider :global(.swiper-button-next) {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+  }
+  .articles_slider :global(.swiper-button-prev)::after,
+  .articles_slider :global(.swiper-button-next)::after {
+    font-size: 10px !important;
+  }
+}

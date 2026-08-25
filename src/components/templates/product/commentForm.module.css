@@ -1,0 +1,247 @@
+/* ===== فرم ===== */
+.form {
+  width: 100%;
+  background: #ffffff;
+  padding: 24px 28px 28px;
+  border-radius: 20px;
+  border: 1px solid #f0e8dd;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.04);
+}
+
+/* ===== عنوان ===== */
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0 0 6px;
+}
+
+/* ===== توضیحات ===== */
+.form > p {
+  font-size: 13px;
+  color: #a1887f;
+  margin: 0 0 16px;
+}
+
+/* ===== امتیازدهی ===== */
+.rate {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.rate p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.rate div {
+  display: flex;
+  gap: 4px;
+  direction: ltr;
+  font-size: 1.3rem;
+  color: #d7ccc8;
+}
+
+.rate div > div {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.rate div > div:hover {
+  transform: scale(1.15);
+}
+
+.rate div svg {
+  color: #d7ccc8;
+  transition: color 0.2s ease;
+}
+
+.rate div svg[style*="orange"] {
+  color: #f5b342;
+}
+
+/* ===== گروه‌های فرم ===== */
+.group {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.group label span {
+  color: #6d4c41;
+}
+
+.group input,
+.group textarea {
+  background: #faf6f0;
+  color: #3e2723;
+  border: 2px solid #f0e8dd;
+  width: 100%;
+  font-family: shabnam, sans-serif;
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+  outline: none;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.group input:focus,
+.group textarea:focus {
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 4px rgba(109, 76, 65, 0.06);
+  background: #ffffff;
+}
+
+.group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ===== دو ستونه (نام و ایمیل) ===== */
+.groups {
+  display: flex;
+  gap: 24px;
+}
+
+.groups .group {
+  flex: 1;
+}
+
+/* ===== چک‌باکس ===== */
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 20px 0 10px;
+}
+
+.checkbox input {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid #d7ccc8;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-top: 2px;
+}
+
+.checkbox input:checked {
+  background-color: #6d4c41;
+  border-color: #6d4c41;
+}
+
+.checkbox input:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.checkbox input:focus,
+.checkbox input:hover {
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 3px rgba(109, 76, 65, 0.1);
+}
+
+.checkbox p {
+  margin: 0;
+  font-size: 13px;
+  color: #5d4037;
+  line-height: 1.6;
+}
+
+/* ===== دکمه ثبت ===== */
+.form button {
+  background: #6d4c41;
+  color: #ffffff;
+  padding: 12px 36px;
+  cursor: pointer;
+  margin-top: 8px;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.2);
+}
+
+.form button:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(62, 39, 35, 0.3);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .form {
+    padding: 20px 20px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form {
+    padding: 16px 16px 20px;
+  }
+  .groups {
+    flex-direction: column;
+    gap: 0;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .rate {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .rate div {
+    font-size: 1.1rem;
+  }
+  .form button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+  .checkbox {
+    align-items: flex-start;
+  }
+  .checkbox p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    padding: 14px 12px 16px;
+    border-radius: 16px;
+  }
+  .title {
+    font-size: 14px;
+  }
+  .group input,
+  .group textarea {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}

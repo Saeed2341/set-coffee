@@ -1,0 +1,238 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+  overflow-x: hidden;
+  background: #faf6f0;
+  min-height: 100vh;
+}
+
+/* ===== محتوای اصلی ===== */
+.contents {
+  max-width: 1222px;
+  margin: 0 auto;
+  margin-top: 140px;
+  text-align: right;
+  padding: 25px 24px 5rem;
+  color: #3e2723;
+  direction: rtl;
+  font-family: shabnam, sans-serif;
+}
+
+.contents hr {
+  border-top-color: rgba(62, 39, 35, 0.08);
+  margin: 24px 0;
+}
+
+/* ===== بخش اصلی (گالری + جزئیات) ===== */
+.main {
+  gap: 48px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+/* ===== استایل اسلایدر گالری ===== */
+.main :global(.gallery-slider) {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+}
+
+.main :global(.gallery-slider .swiper-slide img) {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* ===== دکمه‌های ناوبری گالری ===== */
+.main :global(.gallery-slider .swiper-button-prev),
+.main :global(.gallery-slider .swiper-button-next) {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.08);
+  transition: all 0.3s ease;
+}
+
+.main :global(.gallery-slider .swiper-button-prev:hover),
+.main :global(.gallery-slider .swiper-button-next:hover) {
+  background: #6d4c41;
+  border-color: #6d4c41;
+}
+
+.main :global(.gallery-slider .swiper-button-prev:after),
+.main :global(.gallery-slider .swiper-button-next:after) {
+  font-size: 16px !important;
+  color: #3e2723 !important;
+  font-weight: 700;
+}
+
+.main :global(.gallery-slider .swiper-button-prev:hover:after),
+.main :global(.gallery-slider .swiper-button-next:hover:after) {
+  color: #ffffff !important;
+}
+
+/* ===== گالری تصاویر کوچک (thumbnail) ===== */
+.main :global(.gallery-slider-2) {
+  margin-top: 12px;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+.main :global(.gallery-slider-2 .swiper-slide) {
+  opacity: 0.5;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.main :global(.gallery-slider-2 .swiper-slide:hover) {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.main :global(.gallery-slider-2 .swiper-slide-thumb-active) {
+  opacity: 1;
+  border: 2px solid #6d4c41;
+  border-radius: 12px;
+}
+
+.main :global(.gallery-slider-2 .swiper-slide img) {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .contents {
+    margin-top: 110px;
+    padding: 20px 16px 3rem;
+  }
+  .main {
+    flex-direction: column !important;
+    gap: 30px;
+  }
+  .main :global(.gallery-slider .swiper-slide img) {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contents {
+    margin-top: 80px;
+    padding: 16px 12px 2rem;
+
+  }
+  .main :global(.gallery-slider .swiper-slide img) {
+    height: 280px;
+  }
+  .main :global(.gallery-slider-2 .swiper-slide img) {
+    height: 60px;
+  }
+  .main :global(.gallery-slider .swiper-button-prev),
+  .main :global(.gallery-slider .swiper-button-next) {
+    width: 32px;
+    height: 32px;
+  }
+  .main :global(.gallery-slider .swiper-button-prev:after),
+  .main :global(.gallery-slider .swiper-button-next:after) {
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .main :global(.gallery-slider .swiper-slide img) {
+    height: 220px;
+  }
+  .main :global(.gallery-slider-2 .swiper-slide img) {
+    height: 50px;
+  }
+}
+
+/* ===== محصولات مرتبط ===== */
+.moreProducts {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid #f0e8dd;
+}
+
+.moreProducts h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3e2723;
+  margin-bottom: 6px;
+}
+
+.moreProducts .divider {
+  height: 3px;
+  width: 70px;
+  background: #6d4c41;
+  margin-top: 8px;
+  border-radius: 10px;
+}
+
+/* ===== استایل اسلایدر محصولات مرتبط ===== */
+.moreProducts :global(.swiper) {
+  padding: 20px 4px 10px;
+}
+
+.moreProducts :global(.swiper .swiper-button-prev),
+.moreProducts :global(.swiper .swiper-button-next) {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.08);
+  transition: all 0.3s ease;
+}
+
+.moreProducts :global(.swiper .swiper-button-prev:hover),
+.moreProducts :global(.swiper .swiper-button-next:hover) {
+  background: #6d4c41;
+  border-color: #6d4c41;
+}
+
+.moreProducts :global(.swiper .swiper-button-prev:after),
+.moreProducts :global(.swiper .swiper-button-next:after) {
+  font-size: 14px !important;
+  color: #3e2723 !important;
+  font-weight: 700;
+}
+
+.moreProducts :global(.swiper .swiper-button-prev:hover:after),
+.moreProducts :global(.swiper .swiper-button-next:hover:after) {
+  color: #ffffff !important;
+}
+
+.moreProducts :global(.swiper .swiper-slide) {
+  background: transparent;
+  height: auto;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .moreProducts h2 {
+    font-size: 18px;
+  }
+  .moreProducts :global(.swiper .swiper-button-prev),
+  .moreProducts :global(.swiper .swiper-button-next) {
+    width: 28px;
+    height: 28px;
+  }
+  .moreProducts :global(.swiper .swiper-button-prev:after),
+  .moreProducts :global(.swiper .swiper-button-next:after) {
+    font-size: 10px !important;
+  }
+}

@@ -1,0 +1,64 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+  color: #3e2723;
+  text-align: right;
+  max-width: 1222px;
+  width: 100%;
+  padding: 0 24px;
+  margin: 0 auto 4rem;
+}
+
+/* ===== بخش نقشه‌ها ===== */
+.maps {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.maps section {
+  width: 50%;
+}
+
+/* ===== محتوای اصلی (فرم + اطلاعات) ===== */
+.contents {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.contents section,
+.contents form {
+  width: 50%;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .maps {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .maps section {
+    width: 100%;
+  }
+  .contents {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .contents section,
+  .contents form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+    margin-bottom: 3rem;
+  }
+  .maps {
+    gap: 16px;
+  }
+  .contents {
+    gap: 24px;
+  }
+}

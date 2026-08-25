@@ -1,0 +1,383 @@
+/* ===== بخش اصلی ===== */
+.readable {
+  background: #faf6f0;
+  padding: 2rem 0 4rem;
+}
+
+.container {
+  max-width: 1222px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===== هر ردیف ===== */
+.main {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin-top: 4rem;
+  text-align: right;
+  margin-bottom: 3rem;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.main section {
+  font-family: shabnam, sans-serif;
+  color: #3e2723;
+  width: 50%;
+}
+
+/* ===== بخش اول (سمت راست با تصویر قهوه) ===== */
+.main section:nth-child(1) {
+  padding: 40px 30px 30px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main section:nth-child(1) span {
+  color: #3e2723;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  display: block;
+}
+
+.main section:nth-child(1) p {
+  color: #a1887f;
+  margin: 12px 0 30px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.main section:nth-child(1) img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(62, 39, 35, 0.12);
+  transition: transform 0.5s ease;
+}
+
+.main section:nth-child(1) img:hover {
+  transform: scale(1.02);
+}
+
+/* ===== بخش باشگاه مشتریان ===== */
+.club {
+  background-image: url("/images/clubset1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 60% !important;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 380px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.08);
+}
+
+.club::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(62, 39, 35, 0.1) 0%,
+    rgba(62, 39, 35, 0.5) 100%
+  );
+  z-index: 1;
+}
+
+.club div {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  padding: 28px 32px;
+  width: 411px;
+  max-width: 85%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  z-index: 2;
+  box-shadow: 0 8px 32px rgba(62, 39, 35, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.club div span {
+  font-size: 24px !important;
+  font-weight: 700;
+  color: #3e2723 !important;
+  display: block;
+}
+
+.club p {
+  margin-top: 8px;
+  color: #6d4c41 !important;
+  font-size: 15px !important;
+  font-weight: 400;
+}
+
+/* ===== بخش دوم (چرا قهوه ست) ===== */
+.why_coffee {
+  padding: 60px 40px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 80px;
+  margin-left: auto;
+  opacity: 0.9;
+  transition: transform 0.4s ease;
+}
+
+.logo:hover {
+  transform: rotate(8deg) scale(1.05);
+}
+
+.title {
+  color: #3e2723;
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 0;
+  letter-spacing: -0.5px;
+}
+
+.why_coffee p:nth-child(3) {
+  margin-top: 1.2rem;
+  direction: rtl;
+  line-height: 2rem;
+  color: #5d4037;
+  font-size: 15px;
+  text-align: justify;
+  font-weight: 400;
+}
+
+.why_coffee div {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: right;
+  gap: 14px;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.why_coffee div button {
+  padding: 0.7rem 1.8rem;
+  cursor: pointer;
+  border: 2px solid #d7ccc8;
+  margin-top: 0.5rem;
+  color: #3e2723;
+  background: #fff;
+  font-family: shabnam, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.why_coffee div button:hover {
+  background: #f5ebe0;
+  border-color: #a1887f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.08);
+}
+
+/* ===== دکمه قرمز (بیشتر بخوانید) ===== */
+.red_btn {
+  background: #6d4c41 !important;
+  border: 2px solid #6d4c41 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.25);
+}
+
+.red_btn:hover {
+  background: #3e2723 !important;
+  border-color: #3e2723 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(62, 39, 35, 0.3) !important;
+}
+
+/* ===== تصویر اصلی (ریسپانسیو) ===== */
+.mainImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  transition: transform 0.4s ease;
+  aspect-ratio: 660 / 530; /* حفظ نسبت تصویر */
+}
+
+.mainImage:hover {
+  transform: scale(1.01);
+}
+
+/* ===== ردیف معکوس (برای چیدمان بهتر) ===== */
+.mainReverse {
+  flex-direction: row; /* عکس در سمت چپ و متن در سمت راست */
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+
+@media (max-width: 992px) {
+  .main {
+    flex-direction: column !important;
+    gap: 2rem;
+  }
+  .main section {
+    width: 100% !important;
+  }
+  .club {
+    width: 100% !important;
+    min-height: 300px;
+  }
+  .club div {
+    width: 90%;
+    left: 5%;
+    bottom: 20px;
+  }
+  .main section:nth-child(1) {
+    padding: 30px 20px;
+  }
+  .main section:nth-child(1) span {
+    font-size: 28px;
+  }
+  .why_coffee {
+    padding: 40px 24px;
+  }
+  .title {
+    font-size: 34px;
+  }
+  .why_coffee div button {
+    padding: 0.5rem 1.4rem;
+    font-size: 13px;
+  }
+  .mainImage {
+    max-height: 400px;
+    aspect-ratio: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .readable {
+    padding: 1rem 0 2.5rem;
+  }
+  .main {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+  }
+  .main section:nth-child(1) span {
+    font-size: 24px;
+  }
+  .main section:nth-child(1) p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .main section:nth-child(1) img {
+    max-height: 200px;
+  }
+  .club {
+    min-height: 240px;
+  }
+  .club div {
+    padding: 20px 24px;
+    bottom: 16px;
+    left: 5%;
+  }
+  .club div span {
+    font-size: 20px !important;
+  }
+  .club p {
+    font-size: 13px !important;
+  }
+  .why_coffee {
+    padding: 30px 18px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .why_coffee p:nth-child(3) {
+    font-size: 14px;
+    line-height: 1.8rem;
+  }
+  .logo {
+    width: 60px;
+  }
+  .why_coffee div {
+    flex-direction: column !important;
+    align-items: center;
+    gap: 10px;
+  }
+  .why_coffee div button {
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem 1.2rem;
+  }
+  .mainImage {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .readable {
+    padding: 0.5rem 0 2rem;
+  }
+  .main {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+  }
+  .main section:nth-child(1) {
+    padding: 20px 14px;
+  }
+  .main section:nth-child(1) span {
+    font-size: 20px;
+  }
+  .main section:nth-child(1) img {
+    max-height: 300px;
+  }
+  .club {
+    min-height: 200px;
+  }
+  .club div {
+    padding: 16px 18px;
+    bottom: 12px;
+  }
+  .club div span {
+    font-size: 18px !important;
+  }
+  .why_coffee {
+    padding: 24px 14px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .why_coffee p:nth-child(3) {
+    font-size: 13px;
+    line-height: 1.7rem;
+  }
+  .mainImage {
+    max-height: 220px;
+    border-radius: 16px;
+  }
+}

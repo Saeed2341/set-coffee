@@ -1,0 +1,321 @@
+/* ============================================ */
+/* ===== کانتینر اصلی ===== */
+/* ============================================ */
+.container {
+  padding: 0 4px;
+}
+
+/* ============================================ */
+/* ===== هدر با جستجو و فیلتر ===== */
+/* ============================================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0eeea;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ===== جستجو ===== */
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  background: #f5f4f2;
+  border-radius: 30px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.searchWrapper:focus-within {
+  background: #ffffff;
+  border-color: #a67c52;
+  box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.08);
+}
+
+.searchIcon {
+  color: #a09c96;
+  font-size: 14px;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  font-family: shabnam, sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  outline: none;
+  width: 180px;
+}
+
+.searchInput::placeholder {
+  color: #b0aba4;
+}
+
+/* ===== فیلتر ===== */
+.filterWrapper {
+  display: flex;
+  align-items: center;
+  background: #f5f4f2;
+  border-radius: 30px;
+  padding: 0 4px 0 16px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.filterWrapper:focus-within {
+  background: #ffffff;
+  border-color: #a67c52;
+  box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.08);
+}
+
+.filterIcon {
+  color: #a09c96;
+  font-size: 14px;
+}
+
+.filterSelect {
+  border: none;
+  background: transparent;
+  padding: 8px 8px;
+  font-family: shabnam, sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  outline: none;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+/* ============================================ */
+/* ===== جدول ===== */
+/* ============================================ */
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 900px;
+}
+
+.table thead th {
+  background: #f8f7f5;
+  padding: 12px 16px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 12px;
+  color: #6a6762;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #f0eeea;
+  white-space: nowrap;
+}
+
+.table tbody td {
+  padding: 12px 16px;
+  text-align: right;
+  vertical-align: middle;
+  border-bottom: 1px solid #f5f4f2;
+  color: #1a1a1a;
+  font-size: 13px;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: #faf9f7;
+}
+
+/* ===== کد سفارش ===== */
+.codeCell {
+  direction: ltr;
+}
+
+.orderCode {
+  font-family: monospace;
+  font-size: 12px;
+  background: #f0eeea;
+  padding: 2px 10px;
+  border-radius: 12px;
+  color: #1a1a1a;
+}
+
+/* ===== وضعیت ===== */
+.statusBadge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ============================================ */
+/* ===== عملیات ===== */
+/* ============================================ */
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.iconBtn:hover {
+  background: #f0eeea;
+  transform: translateY(-2px);
+}
+
+/* ===== دراپ‌داون وضعیت ===== */
+.statusDropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.statusSelect {
+  padding: 6px 30px 6px 12px;
+  border: 2px solid #e8e5e0;
+  border-radius: 30px;
+  font-size: 12px;
+  background: #ffffff;
+  cursor: pointer;
+  font-family: shabnam, sans-serif;
+  outline: none;
+  min-width: 100px;
+  appearance: none;
+  transition: all 0.2s ease;
+}
+
+.statusSelect:focus {
+  border-color: #a67c52;
+  box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.06);
+}
+
+.statusSelect:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dropdownIcon {
+  position: absolute;
+  left: 10px;
+  color: #a09c96;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* ============================================ */
+/* ===== حالت خالی ===== */
+/* ============================================ */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a09c96;
+  font-size: 14px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+}
+
+.empty p {
+  margin: 0;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .headerActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchWrapper {
+    width: 100%;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .filterWrapper {
+    width: 100%;
+  }
+
+  .filterSelect {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .table {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .table tbody td,
+  .table thead th {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .iconBtn {
+    width: 26px;
+    height: 26px;
+  }
+
+  .statusSelect {
+    font-size: 11px;
+    padding: 4px 24px 4px 8px;
+    min-width: 80px;
+  }
+}

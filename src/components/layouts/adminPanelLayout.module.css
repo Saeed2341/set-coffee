@@ -1,0 +1,14 @@
+/* ===== لایه اصلی ===== */
+.layout {
+  background: #f4f3f0;
+  width: 100%;
+  direction: rtl;
+  min-height: 100vh;
+  color: #1a1a1a;
+}
+
+.section {
+  display: flex;
+  min-height: 100vh;
+}
+

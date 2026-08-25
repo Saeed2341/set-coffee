@@ -1,0 +1,89 @@
+/* ===== بخش اطلاعات ===== */
+.Information {
+  background: #ffffff;
+  padding: 32px 28px 28px;
+  border-radius: 24px;
+  border: 1px solid #f0e8dd;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.04);
+}
+
+/* ===== عنوان ===== */
+.Information span {
+  color: #a1887f;
+  font-size: 14px;
+  display: block;
+}
+
+.Information > p {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 6px 0 24px;
+}
+
+/* ===== آیتم‌های اطلاعات ===== */
+.Information div {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex-direction: row-reverse;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #faf6f0;
+  transition: background 0.3s ease;
+}
+
+.Information div:hover {
+  background: #f5ebe0;
+}
+
+.Information div svg {
+  font-size: 1.6rem;
+  color: #6d4c41;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.Information div p {
+  margin: 0;
+  font-size: 15px !important;
+  color: #5d4037;
+  line-height: 1.6;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .Information {
+    padding: 24px 18px 20px;
+  }
+  .Information > p {
+    font-size: 19px;
+  }
+  .Information div {
+    padding: 10px 14px;
+    gap: 12px;
+  }
+  .Information div svg {
+    font-size: 1.3rem;
+  }
+  .Information div p {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .Information {
+    padding: 18px 14px 16px;
+    border-radius: 20px;
+  }
+  .Information > p {
+    font-size: 17px;
+  }
+  .Information div {
+    padding: 8px 12px;
+  }
+  .Information div p {
+    font-size: 13px !important;
+  }
+}

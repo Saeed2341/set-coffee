@@ -1,0 +1,52 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+  max-width: 1222px;
+  width: 100%;
+  padding-right: 24px;
+  padding-left: 24px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 4rem;
+  color: #3e2723;
+  text-align: right;
+}
+
+/* ===== محتوای مقاله ===== */
+.container section {
+  margin-top: 24px;
+  direction: rtl;
+}
+
+.container section p {
+  margin-bottom: 16px;
+  direction: rtl;
+  font-size: 1.05rem;
+  line-height: 2.2rem;
+  color: #5d4037;
+  text-align: justify;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .container {
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-bottom: 3rem;
+  }
+  .container section p {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-bottom: 2rem;
+  }
+  .container section p {
+    font-size: 0.95rem;
+    line-height: 1.9rem;
+  }
+}

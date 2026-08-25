@@ -1,0 +1,37 @@
+import "./globals.css";
+// import { ViewTransition } from "react";
+import { Inter } from "next/font/google";
+import AOSInit from "@/utils/aos";
+import ScrollToTop from "@/utils/SctollToTop";
+import "@/utils/cron";
+const inter = Inter({ subsets: ["latin"], display: "swap" });
+
+export const metadata = {
+  title: "صفحه اصلی - SET Coffee | فروشگاه اینترنتی قهوه ست",
+  description: "Sabzlearn coffee project with next.js v13",
+
+  // icons: {
+  //   icon: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/36190/coffee-logo-clipart-md.png",
+  // },
+};
+// let user = null;
+// try {
+//   user = await authUser();
+// } catch (error) {
+//   // در زمان Build خطا می‌خورد، پس user = null می‌مونه
+//   console.warn("authUser failed (probably during build):", error.message);
+// }
+export default function RootLayout({ children }) {
+  return (
+    <html lang="fa">
+      {/* <ViewTransition> */}
+      <body className={inter.className}>
+        <AOSInit />
+        {children}
+        <ScrollToTop />
+        
+      </body>
+      {/* </ViewTransition> */}
+    </html>
+  );
+}

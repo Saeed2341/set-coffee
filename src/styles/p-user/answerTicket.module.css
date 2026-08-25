@@ -1,0 +1,92 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+  padding: 0 24px;
+}
+
+/* ===== عنوان صفحه ===== */
+.title {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-size: 28px;
+  font-weight: 700;
+  color: #3e2723;
+  margin-bottom: 30px;
+}
+
+.title span {
+  background: #ffffff;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.title a {
+  background: transparent;
+  color: #6d4c41;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 30px;
+  padding: 8px 20px;
+  border: 2px solid #6d4c41;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.title a:hover {
+  background: #6d4c41;
+  color: #ffffff;
+  transform: translateX(-4px);
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.25);
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: #f0e8dd;
+  z-index: 0;
+}
+
+/* ===== حالت خالی ===== */
+.empty {
+  width: 100%;
+  border-radius: 16px;
+  background: #faf6f0;
+  text-align: center;
+  margin-top: 60px;
+  padding: 40px 20px;
+  color: #a1887f;
+  border: 2px dashed #d7ccc8;
+}
+
+.empty p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  .title {
+    font-size: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .title a {
+    font-size: 13px;
+    padding: 6px 16px;
+  }
+}

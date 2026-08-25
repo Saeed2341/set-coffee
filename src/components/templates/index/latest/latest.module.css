@@ -1,0 +1,128 @@
+.container {
+  max-width: 1222px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  
+}
+
+.title {
+  color: #3e2723;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  text-align: center;
+  font-family: shabnam, sans-serif;
+  margin-top: 2.5rem;
+  align-items: center;
+  border-bottom: 2px solid #f0e8dd;
+  padding-bottom: 1.2rem;
+}
+
+.title p {
+  color: #3e2723;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.title span {
+  color: #a1887f;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: block;
+  margin-top: 4px;
+}
+
+.title div {
+  text-align: right;
+}
+
+.link {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 8px;
+  color: #6d4c41;
+  font-weight: 500;
+  font-size: 15px;
+  background: #f5ebe0;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.link:hover {
+  background: #6d4c41;
+  color: #fff;
+  border-color: #6d4c41;
+  transform: translateX(-4px);
+  box-shadow: 0 4px 12px rgba(109, 76, 65, 0.25);
+}
+
+.link svg {
+  transition: transform 0.3s ease;
+}
+
+.link:hover svg {
+  transform: translateX(-4px);
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 30px 0 20px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 1200px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 992px) {
+  .title p {
+    font-size: 28px;
+  }
+  .title span {
+    font-size: 12px;
+  }
+  .link {
+    font-size: 13px;
+    padding: 0.4rem 1rem;
+  }
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-bottom: 0.8rem;
+  }
+  .title p {
+    font-size: 24px;
+  }
+  .title span {
+    font-size: 11px;
+  }
+  .link {
+    font-size: 12px;
+    padding: 0.3rem 0.9rem;
+  }
+  .products {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 15px 0;
+  }
+}

@@ -1,0 +1,348 @@
+@font-face {
+  font-family: shabnam;
+  src: url("/fonts/shabnam/Shabnam-Medium.woff");
+}
+
+@font-face {
+  font-family: shabnam-Bold;
+  src: url("/fonts/shabnam/Shabnam-Bold.woff");
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: shabnam, sans-serif;
+}
+:root {
+  --ck-content-font-family: "shabnam";
+}
+/* ===== اسکرول بار به رنگ قهوه‌ای ===== */
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5ebe0 !important;
+  border-radius: 6px !important;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #6d4c41 !important;
+  border-radius: 6px !important;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #3e2723 !important;
+}
+
+html,
+body {
+  max-width: 100vw;
+  background: #faf6f0;
+  color: #3e2723;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: #a67c52;
+}
+
+/* ===== کانتینر اصلی ===== */
+.container {
+  max-width: 1222px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ===== استایل دکمه‌های عمومی ===== */
+button,
+.btn-coffee {
+  background: #6d4c41;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.8rem;
+  border-radius: 30px;
+  font-family: shabnam, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(109, 76, 65, 0.25);
+}
+
+button:hover,
+.btn-coffee:hover {
+  background: #3e2723;
+  /* transform: translateY(-2px); */
+  box-shadow: 0 8px 20px rgba(62, 39, 35, 0.3);
+}
+
+/* ===== اسلایدرها ===== */
+.mySwiper .swiper-button-prev:after,
+.mySwiper .swiper-button-next:after {
+  font-size: 26px !important;
+  color: #3e2723 !important;
+  font-weight: 1000;
+}
+
+.home-slider .swiper-button-prev:after,
+.home-slider .swiper-button-next:after {
+  font-size: 14px !important;
+  color: #3e2723 !important;
+  font-weight: 1000;
+}
+
+.home-slider img {
+  position: relative;
+  right: 1px;
+}
+
+.gallery-slider .swiper-button-prev:after,
+.gallery-slider .swiper-button-next:after {
+  font-size: 26px !important;
+  color: #3e2723 !important;
+  font-weight: 1000;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #faf6f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.gallery-slider-2 {
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.gallery-slider-2 .swiper-slide {
+  opacity: 0.4;
+}
+
+.gallery-slider-2 .swiper-slide-thumb-active {
+  opacity: 1;
+  border: 2px solid #a67c52;
+  border-radius: 12px;
+}
+
+.articles_slider .swiper-button-prev,
+.articles_slider .swiper-button-next {
+  opacity: 0;
+}
+
+.articles_slider:hover .swiper-button-prev,
+.articles_slider:hover .swiper-button-next {
+  opacity: 1;
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+}
+
+/* ============================================ */
+/* ===== استایل SweetAlert (رفع سایه ضربدر) ===== */
+/* ============================================ */
+/* ===== استایل SweetAlert (هماهنگ با تم) ===== */
+.swal-footer {
+  text-align: center;
+}
+
+.swal-modal {
+  background: #ffffff !important; /* ← پس‌زمینه سفید برای تضاد بهتر */
+  border: 2px solid #6d4c41;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 48px rgba(62, 39, 35, 0.15) !important;
+}
+
+.swal-title {
+  color: #3e2723 !important;
+  direction: rtl;
+  font-family: shabnam, sans-serif !important;
+  line-height: 50px;
+}
+
+.swal-text {
+  color: #5d4037 !important;
+  font-family: shabnam, sans-serif !important;
+}
+
+/* ===== دکمه‌ها ===== */
+.swal-button--confirm {
+  background: #6d4c41 !important;
+  color: #fff !important;
+  border-radius: 30px !important;
+  font-weight: 100 !important;
+  padding: 10px 28px !important;
+
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.swal-button--confirm:hover {
+  background: #3e2723 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(62, 39, 35, 0.3) !important;
+}
+
+.swal-button--cancel {
+  background: #f5ebe0 !important;
+  color: #3e2723 !important;
+  font-weight: 100 !important;
+  border-radius: 30px !important;
+
+  transition: all 0.3s ease !important;
+}
+
+.swal-button--cancel:hover {
+  background: #e8ddd0 !important;
+}
+
+/* ===== آیکون‌ها (دایره‌های موفقیت/خطا/هشدار) ===== */
+.swal-icon--success {
+  border-color: #27ae60 !important;
+}
+
+.swal-icon--success .swal-icon--success__line {
+  background-color: #27ae60 !important;
+}
+
+.swal-icon--success .swal-icon--success__ring {
+  border-color: #27ae60 !important;
+}
+
+.swal-icon--error {
+  border-color: #e74c3c !important;
+}
+
+.swal-icon--error .swal-icon--error__line {
+  background-color: #e74c3c !important;
+}
+
+.swal-icon--error .swal-icon--error__ring {
+  border-color: #e74c3c !important;
+}
+
+.swal-icon--warning {
+  border-color: #f39c12 !important;
+}
+
+.swal-icon--warning .swal-icon--warning__body {
+  background-color: #f39c12 !important;
+}
+
+.swal-icon--warning .swal-icon--warning__dot {
+  background-color: #f39c12 !important;
+}
+
+.swal-icon--info {
+  border-color: #3498db !important;
+}
+
+.swal-icon--info .swal-icon--info__body {
+  background-color: #3498db !important;
+}
+
+.swal-icon--info .swal-icon--info__dot {
+  background-color: #3498db !important;
+}
+
+/* ===== آیکون‌های سفارشی (صورت‌هایکون‌ها) ===== */
+.swal-icon--success__hide-corners {
+  background-color: transparent !important;
+}
+
+.swal-icon--error__hide-corners {
+  background-color: transparent !important;
+}
+
+/* ===== استایل ورودی (اینپوت) SweetAlert ===== */
+.swal-content input,
+.swal-input {
+  direction: rtl !important; /* راست‌چین کردن متن */
+  text-align: right !important; /* چینش متن از راست */
+  font-family: shabnam, sans-serif !important;
+  background-color: #faf6f0 !important;
+  border: 2px solid #d7ccc8 !important;
+  border-radius: 12px !important;
+  padding: 12px 18px !important;
+  font-size: 15px !important;
+  color: #3e2723 !important;
+  outline: none !important;
+  transition: all 0.3s ease !important;
+  /* width: 95% !important; */
+  margin: 10px auto !important;
+  display: block !important;
+}
+
+/* ===== افکت فوکوس (زمانی که روی اینپوت کلیک می‌شود) ===== */
+.swal-content input:focus,
+.swal-input:focus {
+  border-color: #6d4c41 !important;
+  box-shadow: 0 0 0 4px rgba(109, 76, 65, 0.15) !important;
+  background-color: #ffffff !important;
+}
+
+/* ===== استایل پلیس‌هولدر (متن راهنما در صورت وجود) ===== */
+.swal-content input::placeholder,
+.swal-input::placeholder {
+  color: #a67c52 !important;
+  opacity: 0.6 !important;
+}
+
+/* ============================================ */
+/* ===== چارت‌ها ===== */
+/* ============================================ */
+.yAxis .recharts-cartesian-axis-tick-value {
+  text-anchor: start !important;
+}
+
+.css-13cymwt-control,
+.css-16xfy0z-control {
+  height: 51px;
+  margin-top: 0.3rem;
+  border-color: #d7ccc8 !important;
+}
+
+/* ============================================ */
+/* ===== نقشه (Leaflet) ===== */
+/* ============================================ */
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background-color: #faf6f0 !important;
+  color: #3e2723 !important;
+  border: 1px solid #d7ccc8 !important;
+}
+
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png) !important;
+}
+
+.leaflet-top {
+  right: 12px !important;
+  bottom: 12px !important;
+  left: unset !important;
+  top: unset !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 50px;
+  }
+}

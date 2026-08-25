@@ -1,0 +1,135 @@
+/* ===== بخش اصلی Breadcrumb با تصویر پس‌زمینه ===== */
+.breadcrumb {
+  background-image: url(https://set-coffee.com/wp-content/uploads/2022/06/back1.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-bottom: 40px;
+  padding: 140px 60px 60px;
+  text-align: center;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== لایه تیره ساده روی تصویر (بدون محو شدن) ===== */
+.breadcrumb::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.breadcrumb > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== عنوان اصلی ===== */
+.title {
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== بخش مسیریابی (خانه / صفحه فعلی) ===== */
+.breadcrumb div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  gap: 8px;
+}
+
+/* ===== لینک‌ها ===== */
+.breadcrumb div a {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.breadcrumb div a:hover {
+  color: #f5b342;
+}
+
+/* ===== جداکننده ===== */
+.breadcrumb div span {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  user-select: none;
+  margin: 0 2px;
+}
+
+/* ===== عنوان فعلی (غیرقابل کلیک) ===== */
+.breadcrumb div p {
+  display: inline-block;
+  color: #f5b342;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .breadcrumb {
+    padding: 110px 40px 50px;
+    min-height: 220px;
+  }
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .breadcrumb {
+    padding: 90px 30px 40px;
+    min-height: 180px;
+    margin-bottom: 30px;
+  }
+  .title {
+    font-size: 2.4rem;
+  }
+  .breadcrumb div a,
+  .breadcrumb div span,
+  .breadcrumb div p {
+    font-size: 13px;
+  }
+  .breadcrumb div {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb {
+    padding: 70px 16px 30px;
+    min-height: 150px;
+    margin-bottom: 24px;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .breadcrumb div a,
+  .breadcrumb div span,
+  .breadcrumb div p {
+    font-size: 12px;
+  }
+  .breadcrumb div {
+    gap: 4px;
+  }
+}

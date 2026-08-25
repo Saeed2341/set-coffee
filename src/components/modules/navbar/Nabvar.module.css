@@ -1,0 +1,461 @@
+/* ===== نوار اصلی (حالت عادی) ===== */
+.navbar main {
+  background: #faf6f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 16px rgba(62, 39, 35, 0.08);
+  color: #3e2723;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 0 30px;
+  height: 90px;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1192px;
+
+  border-radius: 0 0 20px 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* ===== فاصله بالا (فقط دسکتاپ) ===== */
+.navbar:before {
+  content: "";
+  display: block;
+  height: 30px;
+}
+
+/* ===== حالت Fixed (کل هدر شیشه‌ای) ===== */
+.navbar_fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(250, 246, 240, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.1);
+  animation: fadeInDownBig 0.4s ease;
+}
+
+.navbar_fixed main {
+  height: 73px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  max-width: 1192px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===== حذف فاصله بالا در حالت Fixed ===== */
+.navbar_fixed:before {
+  display: none;
+}
+
+@keyframes fadeInDownBig {
+  0% {
+    transform: translate3d(0, -100%, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 300;
+}
+
+/* ===== لوگو ===== */
+.logo_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar main .logo_wrapper img,
+.navbar_fixed main .logo_wrapper img {
+  max-height: 55px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.navbar main .logo_wrapper img:hover,
+.navbar_fixed main .logo_wrapper img:hover {
+  transform: scale(1.04);
+}
+
+/* ===== دکمه همبرگر (فقط موبایل - سمت راست) ===== */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #3e2723;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.3s ease;
+  z-index: 10;
+  order: 1; /* راست */
+}
+
+.hamburger:hover {
+  color: #a67c52;
+}
+
+/* ===== لینک‌های منو ===== */
+.links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex-direction: row-reverse;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.links li {
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "shabnam", sans-serif;
+  color: #3e2723;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.links li:hover {
+  color: #a67c52;
+}
+
+.links li a {
+  position: relative;
+  padding-bottom: 4px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.links li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background: #a67c52;
+  transition: width 0.3s ease;
+}
+
+.links li a:hover::after {
+  width: 100%;
+}
+
+/* ===== آیکون‌های سبد خرید و علاقه‌مندی ===== */
+.navbar_icons {
+  display: flex;
+  gap: 28px;
+  margin-top: 0.2rem;
+  font-size: 1.3rem;
+  color: #3e2723;
+  flex-shrink: 0;
+  order: 3; /* چپ */
+}
+
+.navbar_icons a {
+  position: relative;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+  color: #3e2723;
+  text-decoration: none;
+}
+
+.navbar_icons a:hover {
+  color: #a67c52;
+  transform: scale(1.1);
+}
+
+.navbar_icons a span {
+  left: -9px;
+  border-radius: 50%;
+  top: -8px;
+  font-size: 0.5rem;
+  padding: 0.2rem 0.45rem;
+  background: #6d4c41;
+  color: #fff;
+  position: absolute;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(109, 76, 65, 0.3);
+}
+
+/* ===== دراپ‌داون حساب کاربری ===== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+  font-family: "shabnam", sans-serif;
+}
+
+.dropdown a {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.dropdown_content a:hover {
+  color: #3e2723;
+  background: #f5ebe0;
+  border-radius: 8px;
+}
+
+.dropdown_content a {
+  padding: 10px 16px;
+  cursor: pointer;
+  color: #5d4037;
+  transition: all 0.25s ease;
+  font-size: 14px;
+  justify-content: right !important;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown_content {
+  display: none !important;
+  top: 22px;
+  padding-top: 16px !important;
+  right: -6px;
+  text-align: right;
+  flex-direction: column;
+  position: absolute;
+  background: #ffffff;
+  min-width: 220px;
+  box-shadow: 0 8px 30px rgba(62, 39, 35, 0.15);
+  padding: 10px 6px;
+  z-index: 1;
+  border-radius: 16px;
+  border: 1px solid #f0e8dd;
+}
+
+.dropdown_icons {
+  font-size: 0.7rem;
+  position: relative;
+  right: 3px;
+  color: #a1887f;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown_icons {
+  transform: rotate(180deg);
+}
+
+.dropdown:hover .dropdown_content {
+  display: flex !important;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+
+@media (max-width: 992px) {
+  .links {
+    gap: 16px;
+  }
+  .links li {
+    font-size: 13px;
+  }
+  .navbar_icons {
+    gap: 18px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar main,
+  .navbar_fixed main {
+    padding: 0 16px;
+    height: 70px;
+    border-radius: 0 0;
+  }
+
+  /* ===== حذف فاصله بالا در موبایل ===== */
+  .navbar:before {
+    display: none;
+  }
+
+  /* ===== نمایش دکمه همبرگر (راست) ===== */
+  .hamburger {
+    display: block;
+    order: 1;
+  }
+
+  /* ===== لوگو وسط ===== */
+  .logo_wrapper {
+    order: 2;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar main .logo_wrapper img,
+  .navbar_fixed main .logo_wrapper img {
+    max-height: 45px;
+  }
+
+  /* ===== آیکون‌ها چپ ===== */
+  .navbar_icons {
+    order: 3;
+    gap: 16px;
+    font-size: 1.1rem;
+  }
+
+  /* ===== منوی موبایل ===== */
+  .links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #ffffff;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 12px 40px rgba(62, 39, 35, 0.1);
+    border-radius: 0 0 20px 20px !important;
+    border-top: 1px solid #f0e8dd;
+    z-index: 999;
+    margin-top: -1px;
+    /* border-radius: 10px !important; */
+  }
+
+  .links_open {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    padding: 12px 0 20px;
+    overflow-y: auto;
+  }
+
+  .links li {
+    width: 100%;
+    text-align: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #f5ebe0;
+    font-size: 15px;
+    white-space: normal;
+  }
+
+  .links li:last-child {
+    border-bottom: none;
+  }
+
+  .links li a::after {
+    display: none;
+  }
+
+  /* ===== دراپ‌داون در موبایل ===== */
+  .dropdown {
+    width: 100%;
+    padding-bottom: 0;
+  }
+
+  .dropdown > a {
+    justify-content: center;
+    padding: 10px 20px;
+    width: 100%;
+    border-bottom: 1px solid #f5ebe0;
+  }
+
+  .dropdown_content {
+    position: static !important;
+    display: none !important;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0 !important;
+    min-width: unset;
+    background: #faf6f0;
+    margin: 0;
+  }
+
+  .dropdown:hover .dropdown_content {
+    display: flex !important;
+  }
+
+  .dropdown_content a {
+    padding: 10px 30px;
+    justify-content: center !important;
+    font-size: 14px;
+    border-bottom: 1px solid #f0e8dd;
+    border-radius: 0;
+  }
+
+  .dropdown_content a:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar main,
+  .navbar_fixed main {
+    height: 60px;
+    padding: 0 12px;
+  }
+
+  .navbar main .logo_wrapper img,
+  .navbar_fixed main .logo_wrapper img {
+    max-height: 38px;
+  }
+
+  .hamburger {
+    font-size: 1.5rem;
+  }
+
+  .navbar_icons {
+    gap: 14px;
+    font-size: 1rem;
+  }
+
+  .navbar_icons a span {
+    font-size: 0.4rem;
+    padding: 0.1rem 0.35rem;
+    top: -6px;
+    left: -7px;
+  }
+
+  .links li {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .dropdown > a {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .dropdown_content a {
+    font-size: 13px;
+    padding: 8px 20px;
+  }
+}

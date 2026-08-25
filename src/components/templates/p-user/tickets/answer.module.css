@@ -1,0 +1,158 @@
+/* ===== بخش پاسخ کاربر ===== */
+.userTicket {
+  width: 60%;
+  background: #6d4c41;
+  border-radius: 20px;
+  padding: 0 0 12px 0;
+  color: #ffffff;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(109, 76, 65, 0.15);
+}
+
+/* ===== بخش پاسخ ادمین ===== */
+.adminticket {
+  width: 60%;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 0 0 12px 0;
+  border: 2px solid #6d4c41;
+  margin-bottom: 20px;
+  margin-right: auto;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+}
+
+/* ===== هدر پاسخ (عکس + نام + تاریخ) ===== */
+.ticket_main {
+  display: flex;
+  padding: 14px 16px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.adminticket .ticket_main {
+  border-bottom: 1px solid #f0e8dd;
+}
+
+/* ===== بخش اطلاعات کاربر ===== */
+.ticket_main > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-direction: row-reverse;
+}
+
+.ticket_main > div > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ticket_main > div > div p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.ticket_main > div > div span {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.adminticket .ticket_main > div > div span {
+  color: #a1887f;
+}
+
+/* ===== تاریخ ===== */
+.ticket_main > p {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  direction: ltr;
+}
+
+.adminticket .ticket_main > p {
+  color: #a1887f;
+}
+
+/* ===== تصویر پروفایل ===== */
+.userTicket img,
+.adminticket img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.adminticket img {
+  border-color: #d7ccc8;
+}
+
+/* ===== متن تیکت ===== */
+.ticket_text {
+  background: rgba(255, 255, 255, 0.08);
+  margin: 12px 16px 4px;
+  border-radius: 16px;
+  padding: 16px 20px;
+}
+
+.adminticket .ticket_text {
+  background: #faf6f0;
+}
+
+.ticket_text p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.adminticket .ticket_text p {
+  color: #3e2723;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .userTicket,
+  .adminticket {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .userTicket,
+  .adminticket {
+    width: 100%;
+  }
+  .ticket_main {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+  .ticket_main > div {
+    flex-direction: row-reverse;
+    width: 100%;
+  }
+  .ticket_main > p {
+    font-size: 11px;
+  }
+  .ticket_main > div > div {
+    align-items: flex-start;
+  }
+  .userTicket img,
+  .adminticket img {
+    width: 40px;
+    height: 40px;
+  }
+  .ticket_text {
+    padding: 12px 16px;
+    margin: 8px 12px 4px;
+  }
+  .ticket_text p {
+    font-size: 14px;
+  }
+}

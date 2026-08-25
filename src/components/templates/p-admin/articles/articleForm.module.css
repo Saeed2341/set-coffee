@@ -1,0 +1,253 @@
+/* ============================================ */
+/* ===== کانتینر اصلی ===== */
+/* ============================================ */
+.container {
+  padding: 0 24px;
+}
+
+/* ============================================ */
+/* ===== هدر ===== */
+/* ============================================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px 0 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #e8e5e0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  background: transparent;
+  color: #6a6762;
+  border: 2px solid #e8e5e0;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
+}
+
+.backBtn:hover {
+  background: #f0eeea;
+  border-color: #d7ccc8;
+}
+
+/* ============================================ */
+/* ===== فرم ===== */
+/* ============================================ */
+.form {
+  background: #ffffff;
+  padding: 32px 28px;
+  border-radius: 16px;
+  border: 1px solid #e8e5e0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.group label span {
+  color: #e74c3c;
+}
+
+.group input,
+.group select,
+.group textarea {
+  padding: 10px 14px;
+  background: #faf8f6;
+  color: #1a1a1a;
+  border-radius: 12px;
+  border: 2px solid #f0eeea;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  width: 100%;
+}
+
+.group input:focus,
+.group select:focus,
+.group textarea:focus {
+  border-color: #a67c52;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
+}
+
+.group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236a6762'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+.hint {
+  font-size: 12px;
+  color: #a09c96;
+}
+
+/* ===== گروه با عرض کامل ===== */
+.groupFull {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.groupFull label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.groupFull label span {
+  color: #e74c3c;
+}
+
+.groupFull textarea {
+  padding: 14px 16px;
+  background: #faf8f6;
+  color: #1a1a1a;
+  border-radius: 12px;
+  border: 2px solid #f0eeea;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.group input[type="file"] {
+  padding: 8px 10px;
+  background: #f4f3f0;
+  border: 2px dashed #d4cfc8;
+  cursor: pointer;
+}
+
+.group input[type="file"]:hover {
+  border-color: #a67c52;
+}
+
+.groupFull textarea:focus {
+  border-color: #a67c52;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
+}
+
+/* ============================================ */
+/* ===== دکمه ذخیره ===== */
+/* ============================================ */
+.actions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 36px;
+  background: #a67c52;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(166, 124, 82, 0.15);
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #8b6a3e;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(166, 124, 82, 0.25);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .backBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form {
+    padding: 20px 16px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .groupFull {
+    grid-column: 1;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  .submitBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

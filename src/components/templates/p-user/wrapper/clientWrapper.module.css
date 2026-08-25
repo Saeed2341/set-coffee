@@ -1,0 +1,45 @@
+.contents {
+  width: 100%;
+  padding: 20px 24px 40px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ===== اوورلی ===== */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+}
+
+.overlay_open {
+  display: block;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+
+@media (max-width: 992px) {
+  .contents {
+    padding: 16px 16px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contents {
+    padding: 12px 12px 24px;
+  }
+  .overlay {
+    display: none;
+  }
+  .overlay_open {
+    display: block;
+  }
+}

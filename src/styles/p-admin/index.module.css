@@ -1,0 +1,73 @@
+/* ===== کانتینر محتوای داشبورد ===== */
+.dashboard_contents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 28px;
+  padding: 0 32px;
+}
+
+/* ===== بخش چارت‌ها ===== */
+.dashboard_charts {
+  display: flex;
+  gap: 24px;
+  padding: 0 32px;
+  margin-top: 32px;
+}
+
+.dashboard_charts section {
+  background: #ffffff;
+  padding: 24px 28px 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e8e5e0;
+  text-align: right;
+  width: 50%;
+  min-height: 420px;
+  transition: box-shadow 0.3s ease;
+}
+
+.dashboard_charts section:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard_charts section p {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.3px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 1200px) {
+  .dashboard_contents {
+    padding: 0 20px;
+  }
+  .dashboard_charts {
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+  .dashboard_charts section {
+    width: 100%;
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard_contents {
+    padding: 0 12px;
+    gap: 14px;
+  }
+  .dashboard_charts {
+    padding: 0 12px;
+    margin-top: 20px;
+  }
+  .dashboard_charts section {
+    padding: 16px 18px 24px;
+    min-height: 280px;
+  }
+  .dashboard_charts section p {
+    font-size: 16px;
+  }
+}

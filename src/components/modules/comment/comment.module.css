@@ -1,0 +1,138 @@
+/* ===== کامنت ===== */
+.comment {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+/* ===== آواتار ===== */
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f0e8dd;
+  background: #f5ebe0;
+  flex-shrink: 0;
+}
+
+/* ===== محتوای کامنت ===== */
+.comment > div {
+  flex: 1;
+}
+
+/* ===== ردیف اصلی (نام + تاریخ + امتیاز) ===== */
+.main_details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ===== اطلاعات کاربر ===== */
+.user_info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user_info strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3e2723;
+}
+
+.user_info p {
+  margin: 0;
+  font-size: 12px;
+  color: #a1887f;
+}
+
+/* ===== ستاره‌ها ===== */
+.stars {
+  display: flex;
+  gap: 3px;
+  color: #f5b342;
+  font-size: 0.9rem;
+}
+
+/* ===== متن کامنت ===== */
+.comment > div > p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #5d4037;
+  text-align: justify;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .comment {
+    gap: 14px;
+    padding: 16px 0;
+  }
+  .avatar {
+    width: 42px;
+    height: 42px;
+  }
+  .user_info strong {
+    font-size: 14px;
+  }
+  .user_info p {
+    font-size: 11px;
+  }
+  .stars {
+    font-size: 0.8rem;
+  }
+  .comment > div > p {
+    font-size: 13px;
+  }
+  .main_details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .comment {
+    gap: 10px;
+  }
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+  .comment > div > p {
+    font-size: 12px;
+  }
+}
+
+/* ===== کامنت پاسخ ===== */
+.replyComment {
+  margin-right: 40px;
+  border-right: 3px solid #a67c52;
+  padding-right: 20px;
+  background-color: #faf6f0;
+  border-radius: 8px;
+  padding-left: 16px;
+}
+
+@media (max-width: 768px) {
+  .replyComment {
+    margin-right: 16px;
+    padding-right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .replyComment {
+    margin-right: 8px;
+    padding-right: 8px;
+  }
+}

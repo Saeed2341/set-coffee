@@ -1,0 +1,303 @@
+/* ===== بخش جزئیات ===== */
+.detailsMain {
+  width: 63%;
+}
+
+/* ===== عنوان محصول ===== */
+.detailsMain h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 8px 0 12px;
+  line-height: 1.4;
+}
+
+/* ===== امتیاز ===== */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.rating > div {
+  display: flex;
+  gap: 3px;
+}
+
+.rating svg {
+  color: #f5b342;
+  font-size: 1.2rem;
+}
+
+.rating p {
+  margin: 0;
+  font-size: 14px;
+  color: #a1887f;
+}
+
+/* ===== قیمت ===== */
+.price {
+  color: #6d4c41;
+  font-size: 1.8rem;
+  font-family: shabnam-Bold, sans-serif;
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ===== توضیحات کوتاه ===== */
+.description {
+  font-size: 15px;
+  display: block;
+  width: 93%;
+  color: #8d7a6b;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ===== موجودی ===== */
+.Available {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0 28px;
+}
+
+.Available svg {
+  font-size: 1.5rem;
+  color: #2e7d32;
+}
+
+.Available p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #2e7d32;
+}
+
+/* ===== سبد خرید ===== */
+.cart {
+  display: flex;
+  gap: 14px;
+  justify-content: right;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-direction: row-reverse;
+}
+
+.cart button {
+  background: #6d4c41;
+  color: #ffffff;
+  padding: 12px 32px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.2);
+}
+
+.cart button:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(62, 39, 35, 0.3);
+}
+
+.cart div {
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #f0e8dd;
+  border-radius: 50px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.cart div span {
+  width: 33.33%;
+  cursor: pointer;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: 500;
+  color: #3e2723;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.cart div span:first-child {
+  border-left: 2px solid #f0e8dd;
+}
+
+.cart div span:last-child {
+  border-right: 2px solid #f0e8dd;
+}
+
+.cart div span:hover {
+  background: #f5ebe0;
+  color: #6d4c41;
+}
+
+.cart div span:nth-child(2) {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* ===== علاقه‌مندی و مقایسه ===== */
+.wishlist {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.wishlist > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wishlist > div svg {
+  font-size: 1.3rem;
+  color: #6d4c41;
+}
+
+.wishlist > div a {
+  font-size: 14px;
+  color: #6d4c41;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.wishlist > div a:hover {
+  color: #a67c52;
+  cursor: pointer;
+}
+
+/* ===== شناسه، دسته، برچسب ===== */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: #faf6f0;
+  border-radius: 16px;
+  border: 1px solid #f0e8dd;
+}
+
+.details strong {
+  color: #3e2723;
+}
+
+.details p {
+  margin: 0;
+  color: #5d4037;
+  font-size: 14px;
+}
+
+.details p strong {
+  color: #3e2723;
+}
+
+/* ===== اشتراک‌گذاری ===== */
+.share {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.share p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.share a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f5ebe0;
+  color: #3e2723;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.share a:hover {
+  background: #6d4c41;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.2);
+}
+
+.share a svg {
+  font-size: 1.1rem;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .detailsMain {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .detailsMain h2 {
+    font-size: 22px;
+  }
+  .price {
+    font-size: 1.5rem;
+  }
+  .description {
+    width: 100%;
+    font-size: 14px;
+  }
+  .cart {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .cart button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  .cart div {
+    width: 100%;
+    max-width: 120px;
+  }
+  .details {
+    padding: 14px 16px;
+  }
+  .wishlist {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .share {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .detailsMain h2 {
+    font-size: 19px;
+  }
+  .price {
+    font-size: 1.3rem;
+  }
+  .rating svg {
+    font-size: 1rem;
+  }
+  .rating p {
+    font-size: 12px;
+  }
+  .details p {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,166 @@
+/* ============================================ */
+/* ===== استایل‌های CKEditor (هماهنگ با فرم) ===== */
+/* ============================================ */
+
+/* ===== کانتینر ادیتور ===== */
+.editorWrapper {
+  width: 100%;
+}
+
+/* ===== نوار ابزار (حالت عادی) ===== */
+.editorWrapper :global(.ck-toolbar) {
+  background: #f4f3f0 !important;
+  border: 2px solid #e8e5e0 !important;
+  border-bottom: none !important;
+  border-radius: 10px 10px 0 0 !important;
+  padding: 8px 12px !important;
+  transition: all 0.2s ease !important;
+  direction: rtl !important;
+}
+
+/* ===== نوار ابزار (وقتی ادیتور فوکوس می‌شود) ===== */
+.editorWrapper:focus-within :global(.ck-toolbar) {
+  background: #ffffff !important;
+  border-color: #a67c52 !important;
+  border-bottom: none !important;
+}
+
+/* ===== دکمه‌های نوار ابزار ===== */
+.editorWrapper :global(.ck-button) {
+  font-family: shabnam, sans-serif !important;
+  color: #1a1a1a !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.editorWrapper :global(.ck-button:hover) {
+  background: #e8e5e0 !important;
+}
+
+.editorWrapper :global(.ck-button.ck-on) {
+  background: #a67c52 !important;
+  color: #ffffff !important;
+}
+
+/* ===== ناحیه ویرایش (حالت عادی) ===== */
+.editorWrapper :global(.ck-editor__editable_inline) {
+  background: #f4f3f0 !important;
+  border: 2px solid #e8e5e0 !important;
+  border-top: none !important;
+  border-radius: 0 0 10px 10px !important;
+  min-height: 250px !important;
+  padding: 16px !important;
+  font-family: shabnam, sans-serif !important;
+  font-size: 14px !important;
+  color: #1a1a1a !important;
+  transition: all 0.2s ease !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* ===== ناحیه ویرایش (فوکوس) ===== */
+.editorWrapper:focus-within :global(.ck-editor__editable_inline) {
+  border-color: #a67c52 !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06) !important;
+}
+
+/* ===== Placeholder ===== */
+.editorWrapper :global(.ck-placeholder)::before {
+  font-family: shabnam, sans-serif !important;
+  color: #a09c96 !important;
+}
+
+/* ===== محتوای داخل ادیتور ===== */
+.editorWrapper :global(.ck-content) {
+  font-family: shabnam, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.8 !important;
+  color: #1a1a1a !important;
+}
+
+.editorWrapper :global(.ck-content p) {
+  margin: 0.5em 0 !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+}
+
+.editorWrapper :global(.ck-content h1) {
+  font-size: 2em !important;
+  font-weight: 700 !important;
+}
+
+.editorWrapper :global(.ck-content h2) {
+  font-size: 1.5em !important;
+  font-weight: 600 !important;
+}
+
+.editorWrapper :global(.ck-content h3) {
+  font-size: 1.3em !important;
+  font-weight: 600 !important;
+}
+
+.editorWrapper :global(.ck-content h4) {
+  font-size: 1.1em !important;
+  font-weight: 600 !important;
+}
+
+.editorWrapper :global(.ck-content ul),
+.editorWrapper :global(.ck-content ol) {
+  padding-right: 24px !important;
+}
+
+.editorWrapper :global(.ck-content li) {
+  margin: 0.2em 0 !important;
+}
+
+/* ============================================ */
+/* ===== منوی هدر (Heading Dropdown) ===== */
+/* ============================================ */
+
+.editorWrapper :global(.ck-heading-dropdown) {
+  direction: rtl !important;
+}
+
+.editorWrapper :global(.ck-heading-dropdown .ck-list) {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: shabnam, sans-serif !important;
+}
+
+.editorWrapper :global(.ck-heading-dropdown .ck-list-item) {
+  font-family: shabnam, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  text-align: right !important;
+  padding: 8px 16px !important;
+  direction: rtl !important;
+  color: #1a1a1a !important;
+}
+
+.editorWrapper :global(.ck-heading-dropdown .ck-list-item.ck-on) {
+  background: #a67c52 !important;
+  color: #ffffff !important;
+}
+
+.editorWrapper :global(.ck-heading-dropdown .ck-list-item:hover) {
+  background: #f4f3f0 !important;
+}
+
+.editorWrapper :global(.ck-heading-dropdown .ck-dropdown__button) {
+  font-family: shabnam, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.editorWrapper :global(.ck-heading-dropdown .ck-dropdown__button .ck-icon) {
+  margin-right: 8px !important;
+  margin-left: 0 !important;
+}
+
+.editorWrapper :global(.ck-heading-dropdown .ck-dropdown__button .ck-button__label) {
+  font-family: shabnam, sans-serif !important;
+  font-weight: 400 !important;
+}

@@ -1,0 +1,108 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+  max-width: 1222px;
+  width: 100%;
+  padding-right: 24px;
+  padding-left: 24px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 4rem;
+  direction: rtl;
+  color: #3e2723;
+}
+
+/* ===== کارت محتوا ===== */
+.container {
+  background: #ffffff;
+  padding: 48px 56px 56px;
+  border-radius: 24px;
+  border: 1px solid #f0e8dd;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.04);
+}
+
+/* ===== پاراگراف‌ها ===== */
+.container p {
+  font-size: 15px;
+  line-height: 2.2;
+  color: #5d4037;
+  text-align: justify;
+  margin-bottom: 24px;
+  margin-top: 0;
+}
+
+/* ===== پاراگراف آخر (با اطلاعات تماس) ===== */
+.container p:last-child {
+  margin-bottom: 0;
+  padding-top: 20px;
+  border-top: 2px solid #f0e8dd;
+  font-weight: 500;
+  color: #3e2723;
+}
+
+/* ===== متن‌های قوی (strong) ===== */
+.container strong {
+  color: #6d4c41;
+  font-weight: 700;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .container {
+    padding: 36px 32px 40px;
+    border-radius: 20px;
+  }
+  .container p {
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 28px 20px 32px;
+    border-radius: 16px;
+    margin-bottom: 3rem;
+  }
+  .container p {
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: 18px;
+  }
+  .container p:last-child {
+    padding-top: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 20px;
+    padding-bottom: 24px;
+    border-radius: 14px;
+    margin-bottom: 2rem;
+  }
+  .container p {
+    font-size: 13px;
+    line-height: 2;
+    margin-bottom: 16px;
+  }
+  .container p:last-child {
+    padding-top: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 16px;
+    padding-bottom: 20px;
+  }
+  .container p {
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 14px;
+  }
+}

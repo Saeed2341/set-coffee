@@ -1,0 +1,150 @@
+/* ===== کارت محصول ===== */
+.card {
+  width: 220px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 16px 14px 18px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(215, 204, 200, 0.15);
+  text-align: center;
+  color: #3e2723;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(62, 39, 35, 0.12);
+  border-color: rgba(166, 124, 82, 0.2);
+}
+
+/* ===== تصویر ===== */
+.card a {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f5ebe0;
+}
+
+.card a img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card a:hover img {
+  transform: scale(1.04);
+}
+
+/* ===== نام محصول ===== */
+.card p:first-of-type {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 12px 0 6px;
+  color: #3e2723;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ===== بخش امتیاز و قیمت ===== */
+.card > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.card > div > div {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.card svg {
+  font-size: 1.1rem;
+  color: #f5b342;
+}
+
+.card span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #6d4c41;
+}
+
+/* ===== دکمه حذف ===== */
+.delete_btn {
+  width: 100%;
+  padding: 8px 12px;
+  color: #ffffff;
+  background: #6d4c41;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: shabnam, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 14px;
+  box-shadow: 0 2px 12px rgba(109, 76, 65, 0.15);
+}
+
+.delete_btn:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(62, 39, 35, 0.25);
+}
+
+.delete_btn:active {
+  transform: scale(0.96);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .card {
+    width: 180px;
+    padding: 12px 10px 14px;
+  }
+  .card p:first-of-type {
+    font-size: 13px;
+  }
+  .card svg {
+    font-size: 0.9rem;
+  }
+  .card span {
+    font-size: 13px;
+  }
+  .delete_btn {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    width: 165px;
+    padding: 10px 8px 12px;
+  }
+  .card p:first-of-type {
+    font-size: 12px;
+  }
+  .card svg {
+    font-size: 0.8rem;
+  }
+  .card span {
+    font-size: 12px;
+  }
+  .delete_btn {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+}

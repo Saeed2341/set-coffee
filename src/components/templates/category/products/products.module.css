@@ -1,0 +1,218 @@
+/* ===== بخش محصولات ===== */
+.products {
+  width: 80%;
+  direction: rtl;
+}
+
+/* ===== ردیف فیلترهای بالایی (نمایش + مرتب‌سازی) ===== */
+.filtering {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 0 16px;
+  border-bottom: 2px solid #f0e8dd;
+  margin-bottom: 20px;
+}
+
+/* ===== دکمه‌های نمایش (آیکون‌ها) ===== */
+.view {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a1887f;
+  font-size: 1.6rem;
+}
+
+.view svg {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #d7ccc8;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.view svg:hover {
+  color: #6d4c41;
+}
+
+.view .active {
+  color: #3e2723;
+  cursor: default !important;
+  background: #f5ebe0;
+}
+
+.view .active:hover {
+  color: #3e2723 !important;
+}
+
+.view svg:nth-child(1) {
+  font-size: 1.3rem;
+}
+.view svg:nth-child(2) {
+  font-size: 1.8rem;
+}
+.view svg:nth-child(3) {
+  font-size: 1.5rem;
+}
+
+/* ===== انتخابگر مرتب‌سازی ===== */
+.filtering select {
+  background: #ffffff;
+  color: #3e2723;
+  direction: rtl;
+  padding: 8px 32px 8px 16px;
+  outline: none;
+  border: 2px solid #f0e8dd;
+  border-radius: 12px;
+  appearance: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%236d4c41' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-position: left 12px top 50%;
+  background-size: 18px;
+  background-repeat: no-repeat;
+  font-family: shabnam, sans-serif;
+}
+
+.filtering select:focus {
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 4px rgba(109, 76, 65, 0.06);
+}
+
+.filtering select:hover {
+  border-color: #d7ccc8;
+}
+
+/* ===== تگ‌های فیلترهای اعمال‌شده ===== */
+.available_filters {
+  display: flex;
+  direction: rtl;
+  gap: 12px;
+  justify-content: flex-start;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.available_filters div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  cursor: pointer;
+  flex-direction: row-reverse;
+  background: #f5ebe0;
+  padding: 4px 12px 4px 8px;
+  border-radius: 30px;
+  font-size: 13px;
+  color: #3e2723;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.available_filters div:hover {
+  background: #f0e8dd;
+  border-color: #d7ccc8;
+  color: #6d4c41;
+}
+
+.available_filters div svg {
+  font-size: 1rem;
+  color: #a1887f;
+  transition: color 0.2s ease;
+}
+
+.available_filters div:hover svg {
+  color: #6d4c41;
+}
+
+.available_filters div:first-child {
+  background: transparent;
+  padding: 4px 12px 4px 8px;
+  border-left: 2px solid #d7ccc8;
+  border-radius: 0;
+  color: #a1887f;
+}
+
+.available_filters div:first-child:hover {
+  background: transparent;
+  border-color: #6d4c41;
+  color: #6d4c41;
+}
+
+/* ===== گرید محصولات ===== */
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 8px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 1200px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 992px) {
+  .products {
+    width: 100%;
+  }
+  .filtering {
+    padding: 8px 0 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .filtering select {
+    font-size: 13px;
+    padding: 6px 28px 6px 12px;
+    background-size: 16px;
+  }
+  .view {
+    font-size: 1.3rem;
+  }
+  .view svg:nth-child(2) {
+    font-size: 1.5rem;
+  }
+  .available_filters {
+    gap: 8px;
+  }
+  .available_filters div {
+    font-size: 12px;
+    padding: 3px 10px 3px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .filtering {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .view {
+    justify-content: center;
+  }
+  .filtering select {
+    width: 100%;
+    text-align: center;
+  }
+  .available_filters {
+    justify-content: center;
+  }
+}

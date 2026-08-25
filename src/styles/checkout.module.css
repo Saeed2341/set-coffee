@@ -1,0 +1,184 @@
+/* ===== کانتینر اصلی ===== */
+.container {
+  max-width: 1222px;
+  width: 100%;
+  gap: 20px;
+
+  margin-bottom: 60px;
+  padding-right: 24px;
+  padding-left: 24px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* ===== بخش کد تخفیف ===== */
+.discount {
+  color: #3e2723;
+  margin-bottom: 24px;
+}
+
+.discount > div:first-child {
+  display: flex;
+  gap: 10px;
+  flex-direction: row-reverse;
+  justify-content: right;
+  align-items: center;
+}
+
+.discount > div:first-child p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.discount span {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #6d4c41;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.discount span:hover {
+  color: #a67c52;
+}
+
+/* ===== فرم کد تخفیف ===== */
+.discount_container {
+  text-align: right;
+  padding: 24px 28px;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 16px;
+  margin-left: auto;
+  margin-right: 0;
+  display: grid;
+  border: 2px solid #f0e8dd;
+  border-radius: 20px;
+  gap: 8px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.04);
+}
+
+.discount_container p {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #5d4037;
+}
+
+.discount_container div {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 12px;
+  align-items: center;
+}
+
+.discount_container input {
+  outline: none;
+  border: 2px solid #f0e8dd;
+  background: #faf6f0;
+  width: 100%;
+  border-radius: 12px;
+  direction: rtl;
+  color: #3e2723;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+}
+
+.discount_container input:focus {
+  border-color: #6d4c41;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(109, 76, 65, 0.06);
+}
+
+.discount_container button {
+  padding: 12px 28px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px !important;
+  outline: none;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #ffffff;
+  background: #6d4c41;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.15);
+  font-family: shabnam, sans-serif;
+}
+
+.discount_container button:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(62, 39, 35, 0.25);
+}
+
+/* ===== بخش اصلی تسویه حساب (دو ستونه) ===== */
+.checkout {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .container {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  .checkout {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .discount_container {
+    max-width: 100%;
+    padding: 20px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-bottom: 40px;
+  }
+  .checkout {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 16px;
+  }
+  .discount > div:first-child {
+    flex-wrap: wrap;
+  }
+  .discount_container div {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .discount_container button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .discount_container {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+  .discount_container input {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+  .discount_container button {
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+}

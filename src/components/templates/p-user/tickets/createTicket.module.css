@@ -1,0 +1,261 @@
+/* ============================================ */
+/* ===== کانتینر اصلی ===== */
+/* ============================================ */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================ */
+/* ===== هدر ===== */
+/* ============================================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f0eeea;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0;
+}
+
+.backBtn {
+  background: transparent;
+  color: #6d4c41;
+  font-size: 14px;
+  border: 2px solid #6d4c41;
+  border-radius: 30px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.backBtn:hover {
+  background: #6d4c41;
+  color: #ffffff;
+  transform: translateX(-4px);
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.25);
+}
+
+/* ============================================ */
+/* ===== فرم ===== */
+/* ============================================ */
+.form {
+  background: #ffffff;
+  padding: 32px 28px;
+  border-radius: 24px;
+  border: 1px solid #f0eeea;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.group label span {
+  color: #e74c3c;
+}
+
+.group input,
+.group select {
+  padding: 10px 14px;
+  background: #faf8f6;
+  color: #3e2723;
+  border-radius: 12px;
+  border: 2px solid #f0eeea;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  width: 100%;
+}
+
+.group input:focus,
+.group select:focus {
+  border-color: #a67c52;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
+}
+
+.group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236a6762'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+.group select:disabled,
+.group input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== گروه با عرض کامل ===== */
+.groupFull {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.groupFull label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.groupFull label span {
+  color: #e74c3c;
+}
+
+.groupFull textarea {
+  padding: 14px 16px;
+  background: #faf8f6;
+  color: #3e2723;
+  border-radius: 12px;
+  border: 2px solid #f0eeea;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  width: 100%;
+  resize: vertical;
+  min-height: 150px;
+}
+
+.groupFull textarea:focus {
+  border-color: #a67c52;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
+}
+
+.groupFull textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== دکمه ارسال ===== */
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 36px;
+  margin-top: 24px;
+  background: #6d4c41;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: shabnam, sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(109, 76, 65, 0.2);
+  width: 100%;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #3e2723;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(62, 39, 35, 0.3);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .backBtn {
+    font-size: 13px;
+    padding: 6px 16px;
+  }
+
+  .form {
+    padding: 24px 16px;
+    border-radius: 20px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .groupFull {
+    margin-top: 16px;
+  }
+
+  .submitBtn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 19px;
+  }
+
+  .form {
+    padding: 18px 12px;
+  }
+
+  .group input,
+  .group select,
+  .groupFull textarea {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .submitBtn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}

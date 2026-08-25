@@ -1,0 +1,177 @@
+/* ===== سایدبار ===== */
+.sidebar {
+  width: 280px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #3e2723 0%, #2c1810 100%);
+  color: #ffffff;
+  padding: 16px 12px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1000 !important;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 30px rgba(62, 39, 35, 0.15);
+  flex-shrink: 0;
+  transition: right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===== هدر سایدبار ===== */
+.sidebar_header {
+  text-align: center;
+  margin-top: 0.5rem;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar_header p {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  color: #f5ebe0;
+}
+
+/* ===== منوی اصلی ===== */
+.sidebar_main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 0;
+  flex: 1;
+}
+
+.sidebar_main a {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+
+.sidebar_main a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  transform: translateX(-4px);
+}
+
+.sidebar_main a svg {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* ===== لینک فعال ===== */
+.sidebar_link_active {
+  background: rgba(166, 124, 82, 0.2) !important;
+  color: #f5b342 !important;
+  opacity: 1 !important;
+  border-right: 3px solid #a67c52;
+}
+
+/* ===== دکمه خروج ===== */
+.logout {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  cursor: pointer;
+  padding: 14px 14px;
+  font-size: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.logout:hover {
+  color: #f5b342;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+}
+
+.logout svg {
+  font-size: 1.3rem;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 72px;
+    padding: 12px 8px;
+  }
+  .sidebar_header p {
+    display: none;
+  }
+  .sidebar_main a {
+    justify-content: center;
+    padding: 14px;
+    font-size: 0;
+  }
+  .sidebar_main a svg {
+    font-size: 1.4rem;
+  }
+  .logout {
+    justify-content: center;
+    font-size: 0;
+    padding: 14px;
+  }
+  .logout svg {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    z-index: 9999;
+    border-radius: 20px 0 0 20px;
+    padding: 20px 16px;
+    box-shadow: 4px 0 40px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .sidebar_open {
+    right: 0;
+  }
+
+  .sidebar_header p {
+    display: block;
+  }
+
+  .sidebar_main a {
+    justify-content: flex-start;
+    font-size: 15px;
+    padding: 12px 14px;
+  }
+
+  .sidebar_main a svg {
+    font-size: 1.2rem;
+  }
+
+  .logout {
+    justify-content: space-between;
+    font-size: 1.1rem;
+    padding: 14px;
+  }
+
+  .logout svg {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 240px;
+    padding: 16px 12px;
+  }
+}

@@ -1,0 +1,393 @@
+/* ===== کانتینر جدول ===== */
+.tabel_container {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #f0e8dd;
+  padding: 24px 24px 3px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.04);
+}
+
+/* ===== جدول ===== */
+.table {
+  width: 100%;
+  border-spacing: 0;
+  color: #3e2723;
+  background: transparent;
+}
+
+.table thead th {
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f0e8dd;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  color: #3e2723;
+}
+
+.table tbody tr td {
+  padding: 16px 10px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #f5ebe0;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== ستون محصول ===== */
+.product {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+}
+
+.product img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #f0e8dd;
+  flex-shrink: 0;
+}
+
+.product a {
+  font-size: 14px;
+  color: #3e2723;
+  text-decoration: none;
+  line-height: 1.5;
+  text-align: right;
+  transition: color 0.3s ease;
+  max-width: 200px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product a:hover {
+  color: #a67c52;
+}
+
+/* ===== قیمت ===== */
+.price {
+  color: #6d4c41 !important;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* ===== شمارنده ===== */
+.counter div {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #f0e8dd;
+  border-radius: 50px;
+  overflow: hidden;
+  width: fit-content;
+  margin: 0 auto;
+  background: #faf6f0;
+}
+
+.counter span {
+  cursor: pointer;
+  padding: 6px 14px;
+  transition: all 0.3s ease;
+  user-select: none;
+  color: #3e2723;
+  font-weight: 500;
+}
+
+.counter span:hover {
+  background: #6d4c41;
+  color: #ffffff;
+}
+
+.counter span:nth-child(3) {
+  border-right: 2px solid #f0e8dd;
+}
+
+.counter span:nth-child(1) {
+  border-left: 2px solid #f0e8dd;
+}
+
+.counter p {
+  padding: 6px 14px;
+  margin: 0;
+  font-weight: 600;
+  color: #3e2723;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* ===== آیکون حذف ===== */
+.delete_icon {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #a1887f;
+  transition: all 0.3s ease;
+}
+
+.delete_icon:hover {
+  color: #6d4c41;
+  transform: scale(1.1);
+}
+
+/* ===== بخش پایین جدول (بروزرسانی و کوپن) ===== */
+.tabel_container section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid #f0e8dd;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tabel_container section div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ===== دکمه بروزرسانی ===== */
+.update_btn {
+  padding: 12px 28px;
+
+  line-height: 18px;
+  background: #f5ebe0;
+  color: #3e2723;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
+}
+
+.update_btn:hover {
+  background: #6d4c41;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.15);
+}
+
+/* ===== فیلد و دکمه کوپن ===== */
+.tabel_container section input {
+  padding: 12px 16px;
+  border-radius: 50px;
+  background: #faf6f0;
+  color: #3e2723;
+  width: 200px;
+  direction: rtl;
+  border: 2px solid #f0e8dd;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+}
+
+.tabel_container section input:focus {
+  border-color: #6d4c41;
+  box-shadow: 0 0 0 4px rgba(109, 76, 65, 0.06);
+  background: #ffffff;
+}
+
+.set_off_btn {
+  padding: 12px 28px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+
+  border-radius: 50px;
+  color: #ffffff;
+  background: #6d4c41;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.15);
+  font-family: shabnam, sans-serif;
+}
+
+.set_off_btn:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(62, 39, 35, 0.25);
+}
+
+.cart_empty {
+  position: relative;
+  text-align: center;
+  line-height: 1.2;
+  color: #3e2723;
+  width: 100%;
+  direction: rtl;
+}
+
+.cart_empty svg {
+  font-size: 8.2em;
+  color: #f0e8dd;
+}
+
+.cart_empty p {
+  font-size: 26px;
+  font-weight: 700;
+  color: #3e2723;
+  margin-bottom: 1.5rem;
+}
+
+.cart_empty span {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #a1887f;
+  font-size: 15px;
+}
+
+.cart_empty span:nth-child(4) {
+  margin-bottom: 2.8rem !important;
+}
+
+.cart_empty a {
+  display: inline-block;
+  padding: 14px 36px;
+  transition: all 0.3s ease;
+
+  border-radius: 50px;
+  color: #ffffff;
+  background: #6d4c41;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.2);
+}
+
+.cart_empty a:hover {
+  background: #3e2723;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(62, 39, 35, 0.3);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .tabel_container {
+    padding: 16px 16px 24px;
+  }
+  .table thead th {
+    font-size: 13px;
+    padding-bottom: 12px;
+  }
+  .table tbody tr td {
+    padding: 12px 6px;
+    font-size: 13px;
+  }
+  .product img {
+    width: 56px;
+    height: 56px;
+  }
+  .product a {
+    font-size: 13px;
+    max-width: 150px;
+  }
+  .counter span,
+  .counter p {
+    padding: 4px 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabel_container {
+    padding: 12px 8px 20px;
+    border-radius: 16px;
+  }
+  .table {
+    font-size: 12px;
+  }
+  .table thead th {
+    font-size: 11px;
+    padding-bottom: 8px;
+  }
+  .table tbody tr td {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  .product {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .product img {
+    width: 48px;
+    height: 48px;
+  }
+  .product a {
+    font-size: 12px;
+    max-width: 100px;
+  }
+  .counter span,
+  .counter p {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  .tabel_container section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .tabel_container section div {
+    flex-direction: column;
+    width: 100%;
+  }
+  .tabel_container section input {
+    width: 100%;
+  }
+  .update_btn,
+  .set_off_btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 20px;
+  }
+  .cart_empty p {
+    font-size: 32px;
+  }
+  .cart_empty svg {
+    font-size: 10em;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    font-size: 10px;
+  }
+  .table thead th {
+    font-size: 10px;
+    padding-bottom: 6px;
+  }
+  .table tbody tr td {
+    padding: 6px 2px;
+    font-size: 10px;
+  }
+  .product img {
+    width: 36px;
+    height: 36px;
+  }
+  .product a {
+    font-size: 10px;
+    max-width: 70px;
+  }
+  .counter span,
+  .counter p {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+  .delete_icon {
+    font-size: rem;
+  }
+  .cart_empty p {
+    font-size: 20px;
+  }
+  .cart_empty span {
+    font-size: 12px;
+  }
+  .cart_empty a {
+    padding: 12px 28px;
+    font-size: 13px;
+  }
+}

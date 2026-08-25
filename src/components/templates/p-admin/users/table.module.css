@@ -1,0 +1,393 @@
+/* ============================================ */
+/* ===== کانتینر اصلی ===== */
+/* ============================================ */
+.container {
+  padding: 0 4px;
+}
+
+/* ============================================ */
+/* ===== هدر با جستجو ===== */
+/* ============================================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0eeea;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* ===== جستجو ===== */
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  background: #f5f4f2;
+  border-radius: 30px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.searchWrapper:focus-within {
+  background: #ffffff;
+  border-color: #a67c52;
+  box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.08);
+}
+
+.searchIcon {
+  color: #a09c96;
+  font-size: 14px;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  font-family: shabnam, sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  outline: none;
+  width: 180px;
+}
+
+.searchInput::placeholder {
+  color: #b0aba4;
+}
+
+/* ============================================ */
+/* ===== جدول ===== */
+/* ============================================ */
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 700px;
+}
+
+.table thead th {
+  background: #f8f7f5;
+  padding: 12px 16px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 12px;
+  color: #6a6762;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #f0eeea;
+  white-space: nowrap;
+}
+
+.table tbody td {
+  padding: 12px 16px;
+  text-align: right;
+  vertical-align: middle;
+  border-bottom: 1px solid #f5f4f2;
+  color: #1a1a1a;
+  font-size: 13px;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: #faf9f7;
+}
+
+/* ============================================ */
+/* ===== عملیات (آیکون‌ها از راست) ===== */
+/* ============================================ */
+.actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 16px;
+}
+
+.iconBtn:hover {
+  background: #f0eeea;
+  transform: translateY(-2px);
+}
+
+.dangerIcon {
+  color: #e74c3c;
+}
+
+.dangerIcon:hover {
+  background: #fde8e8;
+}
+
+/* ============================================ */
+/* ===== حالت خالی ===== */
+/* ============================================ */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a09c96;
+  font-size: 14px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+}
+
+.empty p {
+  margin: 0;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .table {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .table tbody td,
+  .table thead th {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .iconBtn {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================ */
+/* ===== کانتینر اصلی فرم ===== */
+/* ============================================ */
+.formContainer {
+  background: #ffffff;
+  padding: 28px 32px 32px;
+  border-radius: 16px;
+  border: 1px solid #e8e5e0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  margin-bottom: 32px;
+}
+
+/* ===== عنوان فرم ===== */
+.formTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 24px 0;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #f0eeea;
+}
+
+/* ===== شبکه دو ستونه ===== */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+/* ===== هر گروه ورودی ===== */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.requiredStar {
+  color: #e74c3c;
+}
+
+/* ===== فیلدهای ورودی ===== */
+.inputGroup input,
+.inputGroup select {
+  padding: 10px 14px;
+  background: #f4f3f0;
+  color: #1a1a1a;
+  border-radius: 10px;
+  border: 2px solid #e8e5e0;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+  width: 100%;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  border-color: #a67c52;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(166, 124, 82, 0.06);
+}
+
+.inputGroup input::placeholder {
+  color: #a09c96;
+}
+
+.inputGroup select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236a6762'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 12px center;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+/* ===== دکمه ارسال ===== */
+.submitButton {
+  margin-right: auto;
+  width: max-content;
+  border: none;
+  border-radius: 50px;
+  background: #a67c52;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 12px 36px;
+  margin-top: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(166, 124, 82, 0.15);
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #8b6a3e;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(166, 124, 82, 0.25);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cancelBtn {
+  margin-right: 15px !important;
+  background: transparent !important;
+  color: #6f5030 !important;
+  border: 1px solid #6f5030 !important;
+  width: max-content;
+  cursor: pointer;
+  padding: 12px 36px;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 992px) {
+  .formGrid {
+    gap: 16px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 20px 16px 24px;
+    border-radius: 12px;
+  }
+
+  .formTitle {
+    font-size: 18px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .inputGroup label {
+    font-size: 13px;
+  }
+
+  .inputGroup input,
+  .inputGroup select {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .submitButton {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .cancelBtn {
+    width: 100%;
+    justify-content: center;
+    margin-right: 0 !important;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formContainer {
+    padding: 14px 12px 18px;
+  }
+
+  .formTitle {
+    font-size: 16px;
+  }
+
+  .inputGroup input,
+  .inputGroup select {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .submitButton {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}

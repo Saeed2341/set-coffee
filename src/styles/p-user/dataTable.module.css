@@ -1,0 +1,256 @@
+/* ===== عنوان صفحه ===== */
+.title {
+  margin-top: 30px;
+  text-align: right;
+  position: relative;
+  font-size: 28px;
+  font-weight: 700;
+  color: #3e2723;
+  margin-bottom: 30px;
+}
+
+.title span {
+  background: #ffffff;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: #f0e8dd;
+  z-index: 0;
+}
+
+/* ===== کانتینر جدول ===== */
+.table_container {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 20px 16px 24px;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+  border: 1px solid rgba(215, 204, 200, 0.15);
+  overflow-x: auto;
+}
+
+/* ===== جدول ===== */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: shabnam, sans-serif;
+  font-size: 14px;
+}
+
+/* ===== هدر جدول ===== */
+.table thead tr {
+  background: #faf6f0;
+  border-radius: 16px 16px 0 0;
+}
+
+.table th {
+  padding: 14px 20px;
+  text-align: center;
+  font-weight: 700;
+  color: #3e2723;
+  border-bottom: 2px solid #f0e8dd;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ===== ردیف‌های جدول ===== */
+.table tbody tr {
+  background: #ffffff;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #f5f0ea;
+}
+
+.table tbody tr:hover {
+  background: #faf6f0;
+}
+
+.table td {
+  padding: 12px 16px;
+  text-align: center;
+  color: #3e2723;
+  vertical-align: middle;
+}
+
+/* ===== ستاره‌ها ===== */
+.table td svg {
+  color: #f5b342;
+  font-size: 14px;
+  margin: 0 1px;
+}
+
+/* ===== وضعیت کامنت ===== */
+.check,
+.no_check {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: default;
+  font-family: shabnam, sans-serif;
+  white-space: nowrap;
+}
+
+.check {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.no_check {
+  background: #fff3e0 !important;
+  color: #e65100 !important;
+}
+
+/* ===== دکمه مشاهده ===== */
+.btn {
+  padding: 6px 20px;
+  background: #6d4c41;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: shabnam, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.2);
+}
+
+/* ===== دکمه‌های دیگر (در صورت استفاده) ===== */
+.delete_btn {
+  padding: 6px 16px;
+  background: #c62828;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: shabnam, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.delete_btn:hover {
+  background: #b71c1c;
+  transform: translateY(-2px);
+}
+
+.edit_btn {
+  padding: 6px 16px;
+  background: #1565c0;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: shabnam, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.edit_btn:hover {
+  background: #0d47a1;
+  transform: translateY(-2px);
+}
+
+/* ===== حالت خالی ===== */
+.empty {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: #a1887f;
+  font-size: 1.4rem;
+  font-weight: 400;
+  background: #faf6f0;
+  border-radius: 24px;
+  border: 2px dashed #d7ccc8;
+  padding: 60px 20px;
+  margin: 20px 0;
+}
+
+.empty p {
+  margin: 0;
+}
+
+/* ===== پاسخگویی (در صورت استفاده) ===== */
+.answer_contact,
+.answer_comment {
+  background: #1565c0 !important;
+  color: white !important;
+}
+
+.no_answer_contact,
+.no_answer_comment {
+  background: #c62828 !important;
+  color: white !important;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+  .title span {
+    padding: 0 12px;
+  }
+  .table_container {
+    padding: 12px 8px 16px;
+    border-radius: 16px;
+  }
+  .table th,
+  .table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .table td svg {
+    font-size: 12px;
+  }
+  .btn,
+  .check,
+  .no_check,
+  .delete_btn,
+  .edit_btn {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .table {
+    font-size: 12px;
+  }
+  .table th,
+  .table td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+  .table td svg {
+    font-size: 10px;
+  }
+  .btn,
+  .check,
+  .no_check,
+  .delete_btn,
+  .edit_btn {
+    font-size: 10px;
+    padding: 3px 10px;
+  }
+}

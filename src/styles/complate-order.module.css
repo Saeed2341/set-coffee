@@ -1,0 +1,299 @@
+/* ============================================ */
+/* ===== کانتینر اصلی ===== */
+/* ============================================ */
+.container {
+    max-width: 1222px;
+    width: 100%;
+    padding-right: 24px;
+    padding-left: 24px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+  }
+  
+  /* ============================================ */
+  /* ===== باکس اصلی ===== */
+  /* ============================================ */
+  .box {
+    background: #ffffff;
+    border-radius: 24px;
+    border: 1px solid #f0eeea;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+    padding: 40px 48px 36px;
+    width: 100%;
+    max-width: 520px;
+    direction: rtl;
+    transition: all 0.3s ease;
+  }
+  
+  .box:hover {
+    box-shadow: 0 12px 56px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* ============================================ */
+  /* ===== لیست اطلاعات سفارش ===== */
+  /* ============================================ */
+  .box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .box ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 15px;
+    color: #5d5a55;
+    border-bottom: 1px solid #f5f3ef;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  
+  .box ul li:last-child {
+    border-bottom: none;
+  }
+  
+  /* ===== آیتم قیمت نهایی ===== */
+  .box ul li:nth-child(3) {
+    font-size: 17px;
+    color: #1a1a1a;
+    font-weight: 500;
+    padding: 14px 0 10px;
+    border-bottom: 2px solid #f0eeea;
+  }
+  
+  .box ul li:nth-child(3) strong {
+    color: #a67c52;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  /* ============================================ */
+  /* ===== دکمه‌ها ===== */
+  /* ============================================ */
+  .box div {
+    display: flex;
+    gap: 12px;
+    flex-direction: row-reverse;
+    margin-top: 4px;
+  }
+  
+  /* ===== دکمه پرداخت (اصلی) ===== */
+  .box div button:first-child {
+    flex: 1;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    background: #a67c52;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: shabnam, sans-serif;
+    box-shadow: 0 4px 20px rgba(166, 124, 82, 0.2);
+    letter-spacing: 0.3px;
+    text-transform: none;
+  }
+  
+  .box div button:first-child:hover {
+    background: #8b6a3e;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(166, 124, 82, 0.3);
+  }
+  
+  .box div button:first-child:active {
+    transform: translateY(-1px);
+  }
+  
+  /* ===== دکمه بازگشت (ثانویه) ===== */
+  .box div a button {
+    flex: 0 1 auto;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #f4f3f0;
+    color: #1a1a1a;
+    border: 2px solid #e8e5e0;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: shabnam, sans-serif;
+    text-transform: none;
+    white-space: nowrap;
+  }
+  
+  .box div a button:hover {
+    background: #e8e5e0;
+    border-color: #d4cfc8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+  
+  /* ============================================ */
+  /* ===== وضعیت موفق ===== */
+  /* ============================================ */
+  .success {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .success svg {
+    font-size: 4rem;
+    color: #27ae60;
+    margin-bottom: 16px;
+  }
+  
+  .success h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+  }
+  
+  .success p {
+    color: #5d5a55;
+    font-size: 15px;
+    margin: 0;
+  }
+  
+  /* ============================================ */
+  /* ===== ریسپانسیو ===== */
+  /* ============================================ */
+  @media (max-width: 768px) {
+    .container {
+      padding-right: 16px;
+      padding-left: 16px;
+      margin-bottom: 3rem;
+      min-height: 40vh;
+    }
+  
+    .box {
+      padding: 28px 24px 28px;
+      border-radius: 20px;
+    }
+  
+    .box ul li {
+      font-size: 14px;
+      padding: 8px 0;
+    }
+  
+    .box ul li:nth-child(3) {
+      font-size: 15px;
+      padding: 12px 0 8px;
+    }
+  
+    .box ul li:nth-child(3) strong {
+      font-size: 18px;
+    }
+  
+    .box div {
+      flex-direction: column-reverse;
+      gap: 10px;
+    }
+  
+    .box div button:first-child,
+    .box div a button {
+      width: 100%;
+      justify-content: center;
+      padding: 12px 20px;
+      font-size: 14px;
+    }
+  
+    .box div a button {
+      flex: 1;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding-right: 12px;
+      padding-left: 12px;
+      margin-bottom: 2rem;
+    }
+  
+    .box {
+      padding: 20px 16px 24px;
+      border-radius: 16px;
+    }
+  
+    .box ul {
+      gap: 10px;
+    }
+  
+    .box ul li {
+      font-size: 13px;
+      padding: 6px 0;
+    }
+  
+    .box ul li:nth-child(3) {
+      font-size: 14px;
+    }
+  
+    .box ul li:nth-child(3) strong {
+      font-size: 16px;
+    }
+  
+    .box div button:first-child,
+    .box div a button {
+      font-size: 13px;
+      padding: 10px 16px;
+    }
+  }
+  .success {
+  text-align: center;
+  padding: 20px 0 16px;
+  border-bottom: 1px solid #f5f3ef;
+  margin-bottom: 20px;
+}
+
+.success svg {
+  font-size: 4rem;
+  margin-bottom: 12px;
+}
+
+.success h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.success p {
+  color: #5d5a55;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ===== وضعیت ===== */
+.status {
+  text-align: center;
+  padding: 20px 0 16px;
+  border-bottom: 1px solid #f5f3ef;
+  margin-bottom: 20px;
+}
+
+.status svg {
+  margin-bottom: 12px;
+}
+
+.status h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.status p {
+  color: #5d5a55;
+  font-size: 14px;
+  margin: 0;
+}

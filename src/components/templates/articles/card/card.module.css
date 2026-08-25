@@ -1,0 +1,147 @@
+/* ===== کارت مقاله ===== */
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(62, 39, 35, 0.06);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(215, 204, 200, 0.15);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(62, 39, 35, 0.12);
+    border-color: rgba(166, 124, 82, 0.2);
+  }
+  
+  /* ===== تصویر ===== */
+  .card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .card:hover img {
+    transform: scale(1.03);
+  }
+  
+  /* ===== عنوان ===== */
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3e2723;
+    line-height: 1.5;
+    margin: 16px 20px 8px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .title:hover {
+    color: #a67c52;
+  }
+  
+  /* ===== توضیحات ===== */
+  .description {
+    font-size: 14px;
+    color: #8d7a6b;
+    line-height: 1.8;
+    margin: 0 20px 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+  }
+  
+  /* ===== لینک "ادامه مطلب" ===== */
+  .card a:last-child {
+    font-size: 13px;
+    font-weight: 500;
+    color: #6d4c41;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 20px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    width: fit-content;
+  }
+  
+  .card a:last-child::after {
+    content: '←';
+    margin-right: 6px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+  
+  .card a:last-child:hover {
+    color: #a67c52;
+  }
+  
+  .card a:last-child:hover::after {
+    transform: translateX(-6px);
+  }
+  
+  /* ===== ریسپانسیو ===== */
+  @media (max-width: 992px) {
+    .card img {
+      height: 190px;
+    }
+    .title {
+      font-size: 16px;
+      margin: 14px 16px 6px;
+    }
+    .description {
+      font-size: 13px;
+      margin: 0 16px 10px;
+    }
+    .card a:last-child {
+      font-size: 12px;
+      margin: 2px 16px 16px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .card img {
+      height: 170px;
+    }
+    .title {
+      font-size: 15px;
+      margin: 12px 14px 6px;
+    }
+    .description {
+      font-size: 13px;
+      margin: 0 14px 8px;
+      -webkit-line-clamp: 2;
+    }
+    .card a:last-child {
+      font-size: 12px;
+      margin: 2px 14px 14px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .card {
+      border-radius: 16px;
+    }
+    .card img {
+      height: 200px;
+    }
+    .title {
+      font-size: 16px;
+      margin: 14px 16px 6px;
+    }
+    .description {
+      font-size: 13px;
+      margin: 0 16px 10px;
+      -webkit-line-clamp: 2;
+    }
+    .card a:last-child {
+      font-size: 13px;
+      margin: 2px 16px 16px;
+    }
+  }

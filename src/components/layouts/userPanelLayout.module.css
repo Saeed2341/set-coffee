@@ -1,0 +1,13 @@
+/* ===== لایه اصلی پنل ===== */
+.layout {
+  background: #faf6f0;
+  width: 100%;
+  direction: rtl;
+  min-height: 100vh;
+  color: #3e2723;
+}
+
+.section {
+  display: flex;
+}
+

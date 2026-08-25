@@ -1,0 +1,85 @@
+/* ===== کارت محصول برتر (سایدبار) ===== */
+.card {
+    display: flex;
+    gap: 10px;
+    padding: 10px 8px;
+    border-bottom: 1px solid #f0e8dd;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+  }
+  
+  .card:last-child {
+    border-bottom: none;
+  }
+  
+  .card:hover {
+    background: #faf6f0;
+    transform: translateX(-4px);
+  }
+  
+  .card img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+    border: 1px solid #f0e8dd;
+  }
+  
+  .card > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 4px;
+  }
+  
+  .card > div a {
+    font-size: 13px;
+    font-weight: 500;
+    color: #3e2723;
+    text-decoration: none;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.3s ease;
+  }
+  
+  .card > div a:hover {
+    color: #a67c52;
+  }
+  
+  .stars {
+    display: flex;
+    gap: 2px;
+    color: #f5b342;
+    font-size: 0.85rem;
+  }
+  
+  .card > div span {
+    font-weight: 700;
+    font-size: 14px;
+    color: #6d4c41;
+  }
+  
+  /* ===== ریسپانسیو ===== */
+  @media (max-width: 768px) {
+    .card {
+      padding: 8px 6px;
+      gap: 8px;
+    }
+    .card img {
+      width: 50px;
+      height: 50px;
+    }
+    .card > div a {
+      font-size: 12px;
+    }
+    .card > div span {
+      font-size: 13px;
+    }
+    .stars {
+      font-size: 0.75rem;
+    }
+  }

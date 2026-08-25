@@ -1,0 +1,445 @@
+/* ===== فوتر اصلی ===== */
+.footer {
+  background: #2c1810; /* قهوه‌ای بسیار تیره */
+  padding-top: 50px;
+  color: #d7ccc8;
+  border-top: 4px solid #6d4c41;
+  margin-top: 2rem;
+}
+
+.footer main {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  flex-direction: row-reverse;
+  text-align: right;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer hr {
+  border-color: rgba(215, 204, 200, 0.15);
+  margin: 0;
+}
+
+/* ===== بخش توضیحات (سمت راست) ===== */
+.descriptions {
+  width: 300px;
+  padding: 10px 0;
+  font-family: shabnam, sans-serif;
+  font-size: 15px;
+  direction: rtl;
+  flex-shrink: 0;
+}
+
+.descriptions img {
+  max-width: 160px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.descriptions_title {
+  margin-bottom: 30px;
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #f5ebe0;
+  line-height: 1.6;
+}
+
+/* ===== آیتم‌های توضیحات (آدرس، تلفن، ایمیل) ===== */
+.description {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  align-items: flex-start;
+  color: #d7ccc8;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.description svg {
+  font-size: 1.3rem !important;
+  color: #a67c52;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.description p {
+  margin: 0;
+  font-weight: 300;
+}
+
+.description:nth-child(3) p {
+  font-size: 15px;
+}
+
+/* ===== بخش آخرین نوشته‌ها ===== */
+.footer section h4 {
+  margin-bottom: 20px;
+  font-family: shabnam-Bold, sans-serif;
+  font-size: 18px;
+  color: #f5ebe0;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid rgba(166, 124, 82, 0.3);
+  padding-bottom: 10px;
+}
+
+/* ===== کارت مقاله در فوتر ===== */
+.footer_article {
+  font-family: shabnam, sans-serif;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin: 18px 0;
+  transition: all 0.3s ease;
+  padding: 6px 4px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.footer_article:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(-4px);
+}
+
+.footer_article img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  border: 2px solid rgba(166, 124, 82, 0.2);
+  transition: border-color 0.3s ease;
+}
+
+.footer_article:hover img {
+  border-color: #a67c52;
+}
+
+.footer_article div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.footer_article div div {
+  display: flex;
+  justify-content: right;
+  gap: 14px;
+  color: rgba(215, 204, 200, 0.6);
+  font-size: 12px;
+  padding-top: 0.5rem;
+  align-items: center;
+}
+
+.footer_article div div svg {
+  font-size: 0.9rem;
+  color: rgba(215, 204, 200, 0.4);
+}
+
+.footer_article_title {
+  font-family: shabnam-Bold, sans-serif;
+  font-size: 14px;
+  color: #f5ebe0;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.footer_article_title:hover {
+  color: #a67c52;
+}
+
+.footer_article a {
+  text-decoration: none;
+}
+
+.footer section hr {
+  border-color: rgba(215, 204, 200, 0.08);
+  margin: 6px 0;
+}
+
+/* ===== لینک‌های فوتر ===== */
+.links {
+  display: flex;
+  gap: 60px;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.links div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.links div h4 {
+  margin-bottom: 16px;
+  font-family: shabnam-Bold, sans-serif;
+  font-size: 18px;
+  color: #f5ebe0;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid rgba(166, 124, 82, 0.3);
+  padding-bottom: 10px;
+}
+
+.links li {
+  list-style: none;
+  margin-top: 8px;
+  font-family: shabnam, sans-serif;
+  color: rgba(215, 204, 200, 0.6);
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.links li:hover {
+  color: #a67c52;
+  transform: translateX(-4px);
+}
+
+.links li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.links li a:hover {
+  color: #a67c52;
+}
+
+/* ===== مجوزها ===== */
+.licenses {
+  height: 200px;
+  gap: 12px;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-content: center;
+  flex-shrink: 0;
+}
+
+.licenses img {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: brightness(0.7) saturate(0.8);
+  max-width: 85px;
+  height: auto;
+}
+
+.licenses img:hover {
+  filter: brightness(1) saturate(1);
+  transform: scale(1.05);
+}
+
+.licenses img:nth-child(4) {
+  margin-left: 0;
+}
+
+/* ===== کپی‌رایت ===== */
+.copyRight {
+  font-family: shabnam, sans-serif;
+  direction: rtl;
+  padding: 22px 0;
+  font-size: 13px;
+  text-align: right;
+  color: rgba(215, 204, 200, 0.5);
+  margin: 0;
+}
+
+.copyRight strong {
+  color: #a67c52;
+  font-weight: 700;
+}
+
+.copyRight svg {
+  position: relative;
+  top: 3.5px;
+  right: 1px;
+  font-size: 1.2rem;
+  color: rgba(215, 204, 200, 0.3);
+  margin: 0 4px;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 1200px) {
+  .footer main {
+    justify-content: center;
+    gap: 2.5rem;
+  }
+  .descriptions {
+    width: 100%;
+    max-width: 400px;
+  }
+  .links {
+    gap: 40px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .footer main {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+  }
+  .descriptions {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+  .description {
+    justify-content: center;
+  }
+  .links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    margin-right: 0;
+  }
+  .links div {
+    align-items: center;
+  }
+  .links li {
+    text-align: center;
+  }
+  .links li:hover {
+    transform: none;
+  }
+  .licenses {
+    justify-content: center;
+    height: auto;
+    padding: 10px 0;
+  }
+  .copyRight {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding-top: 35px;
+  }
+  .footer main {
+    padding-bottom: 25px;
+    gap: 1.5rem;
+  }
+  .descriptions {
+    padding: 0 10px;
+  }
+  .descriptions_title {
+    font-size: 14px;
+  }
+  .description {
+    font-size: 13px;
+  }
+  .footer_article {
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .footer_article img {
+    width: 60px;
+    height: 60px;
+  }
+  .footer_article_title {
+    font-size: 13px;
+  }
+  .footer_article div div {
+    font-size: 11px;
+    gap: 10px;
+  }
+  .footer section h4 {
+    font-size: 16px;
+  }
+  .links {
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .links div h4 {
+    font-size: 16px;
+  }
+  .links li {
+    font-size: 13px;
+  }
+  .licenses {
+    gap: 8px;
+  }
+  .licenses img {
+    max-width: 65px;
+  }
+  .copyRight {
+    font-size: 11px;
+    padding: 16px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding-top: 25px;
+  }
+  .descriptions {
+    padding: 0 6px;
+  }
+  .descriptions img {
+    max-width: 120px;
+  }
+  .descriptions_title {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .description {
+    font-size: 12px;
+    gap: 8px;
+  }
+  .description svg {
+    font-size: 1rem !important;
+  }
+  .footer_article {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: right;
+    gap: 8px;
+  }
+  .footer_article img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+  .footer_article_title {
+    font-size: 12px;
+  }
+  .footer section h4 {
+    font-size: 14px;
+  }
+  .links {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .links div {
+    align-items: center;
+    width: 100%;
+  }
+  .links li {
+    font-size: 12px;
+  }
+  .licenses {
+    grid-template-columns: repeat(2, auto);
+    gap: 6px;
+  }
+  .licenses img {
+    max-width: 55px;
+  }
+  .copyRight {
+    font-size: 10px;
+    padding: 12px 0;
+  }
+  .copyRight svg {
+    font-size: 1rem;
+  }
+}
