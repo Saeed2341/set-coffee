@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./table.module.css";
 import { useRouter } from "next/navigation";
 import { FiEdit2, FiUserCheck, FiTrash2, FiUserX, FiSearch } from "react-icons/fi";
@@ -7,8 +7,17 @@ import { FiEdit2, FiUserCheck, FiTrash2, FiUserX, FiSearch } from "react-icons/f
 export default function DataTable({ users, title }) {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
-  // ===== فیلتر کردن کاربران بر اساس نام و ایمیل =====
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const filteredUsers = users.filter(
     (user) =>
       user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -18,9 +27,7 @@ export default function DataTable({ users, title }) {
   const changeRole = async (userID) => {
     const res = await fetch(`/api/user/role`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: userID }),
     });
 
@@ -29,9 +36,7 @@ export default function DataTable({ users, title }) {
         title: "تغییر نقش با موفقیت انجام شد",
         icon: "success",
         buttons: "تایید",
-      }).then(() => {
-        router.refresh();
-      });
+      }).then(() => router.refresh());
     }
   };
 
@@ -44,9 +49,7 @@ export default function DataTable({ users, title }) {
       if (result) {
         const res = await fetch(`/api/user`, {
           method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ id: userID }),
         });
 
@@ -55,9 +58,7 @@ export default function DataTable({ users, title }) {
             title: "کاربر با موفقیت حذف شد",
             icon: "success",
             buttons: "تایید",
-          }).then(() => {
-            router.refresh();
-          });
+          }).then(() => router.refresh());
         }
       }
     });
@@ -72,9 +73,7 @@ export default function DataTable({ users, title }) {
       if (result) {
         const res = await fetch(`/api/user/ban`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: userEmail, phone: userPhone }),
         });
 
@@ -83,17 +82,13 @@ export default function DataTable({ users, title }) {
             title: "کاربر با موفقیت مسدود شد",
             icon: "success",
             buttons: "تایید",
-          }).then(() => {
-            router.refresh();
-          });
+          }).then(() => router.refresh());
         } else if (res.status == 200) {
           return swal({
             title: "کاربر با موفقیت آزاد شد",
             icon: "success",
             buttons: "تایید",
-          }).then(() => {
-            router.refresh();
-          });
+          }).then(() => router.refresh());
         }
       }
     });
@@ -116,69 +111,129 @@ export default function DataTable({ users, title }) {
         </div>
       </div>
 
-      {/* ===== جدول ===== */}
-      {filteredUsers.length > 0 ? (
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>شناسه</th>
-                <th>نام و نام خانوادگی</th>
-                <th>ایمیل</th>
-                <th>نقش</th>
-                <th>عملیات</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredUsers.map((user, index) => (
-                <tr key={user._id}>
-                  <td>{index + 1}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email ? user.email : "—"}</td>
-                  <td>{user.role === "USER" ? "کاربر عادی" : "مدیر"}</td>
-                  <td>
-                    <div className={styles.actions}>
-                      <span
-                        onClick={() =>
-                          router.replace(`/p-admin/users?mode=edit&id=${user._id}`)
-                        }
-                        className={styles.iconBtn}
-                        title="ویرایش"
-                      >
-                        <FiEdit2 size={16} />
-                      </span>
-                      <span
-                        onClick={() => changeRole(user._id)}
-                        className={styles.iconBtn}
-                        title="تغییر نقش"
-                      >
-                        <FiUserCheck size={16} />
-                      </span>
-                      <span
-                        onClick={() => deleteUser(user._id)}
-                        className={`${styles.iconBtn} ${styles.dangerIcon}`}
-                        title="حذف"
-                      >
-                        <FiTrash2 size={16} />
-                      </span>
-                      <span
-                        onClick={() => banUser(user?.email, user?.phone)}
-                        className={`${styles.iconBtn} ${styles.dangerIcon}`}
-                        title="مسدود"
-                      >
-                        <FiUserX size={16} />
-                      </span>
-                    </div>
-                  </td>
+      {/* ===== در دسکتاپ: نمایش جدول ===== */}
+      {!isMobile && (
+        filteredUsers.length > 0 ? (
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>شناسه</th>
+                  <th>نام و نام خانوادگی</th>
+                  <th>ایمیل</th>
+                  <th>نقش</th>
+                  <th>عملیات</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div className={styles.empty}>
-          <p>{searchTerm ? "کاربری با این جستجو یافت نشد" : "کاربری وجود ندارد"}</p>
-        </div>
+              </thead>
+              <tbody>
+                {filteredUsers.map((user, index) => (
+                  <tr key={user._id}>
+                    <td>{index + 1}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email ? user.email : "—"}</td>
+                    <td>{user.role === "USER" ? "کاربر عادی" : "مدیر"}</td>
+                    <td>
+                      <div className={styles.actions}>
+                        <span
+                          onClick={() => router.replace(`/p-admin/users?mode=edit&id=${user._id}`)}
+                          className={styles.iconBtn}
+                          title="ویرایش"
+                        >
+                          <FiEdit2 size={16} />
+                        </span>
+                        <span
+                          onClick={() => changeRole(user._id)}
+                          className={styles.iconBtn}
+                          title="تغییر نقش"
+                        >
+                          <FiUserCheck size={16} />
+                        </span>
+                        <span
+                          onClick={() => deleteUser(user._id)}
+                          className={`${styles.iconBtn} ${styles.dangerIcon}`}
+                          title="حذف"
+                        >
+                          <FiTrash2 size={16} />
+                        </span>
+                        <span
+                          onClick={() => banUser(user?.email, user?.phone)}
+                          className={`${styles.iconBtn} ${styles.dangerIcon}`}
+                          title="مسدود"
+                        >
+                          <FiUserX size={16} />
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className={styles.empty}>
+            <p>{searchTerm ? "کاربری با این جستجو یافت نشد" : "کاربری وجود ندارد"}</p>
+          </div>
+        )
+      )}
+
+      {/* ===== در موبایل: نمایش کارت ===== */}
+      {isMobile && (
+        filteredUsers.length > 0 ? (
+          <div className={styles.cardsContainer}>
+            {filteredUsers.map((user) => (
+              <div key={user._id} className={styles.userCard}>
+                <div className={styles.cardHeader}>
+                  <span className={styles.cardName}>{user.name}</span>
+                  <span className={styles.cardRole}>
+                    {user.role === "USER" ? "کاربر عادی" : "مدیر"}
+                  </span>
+                </div>
+
+                <div className={styles.cardBody}>
+                  <div className={styles.cardRow}>
+                    <span className={styles.cardLabel}>ایمیل:</span>
+                    <span>{user.email ? user.email : "—"}</span>
+                  </div>
+                </div>
+
+                <div className={styles.cardActions}>
+                  <span
+                    onClick={() => router.replace(`/p-admin/users?mode=edit&id=${user._id}`)}
+                    className={styles.cardIcon}
+                    title="ویرایش"
+                  >
+                    <FiEdit2 size={16} />
+                  </span>
+                  <span
+                    onClick={() => changeRole(user._id)}
+                    className={styles.cardIcon}
+                    title="تغییر نقش"
+                  >
+                    <FiUserCheck size={16} />
+                  </span>
+                  <span
+                    onClick={() => deleteUser(user._id)}
+                    className={`${styles.cardIcon} ${styles.dangerIcon}`}
+                    title="حذف"
+                  >
+                    <FiTrash2 size={16} />
+                  </span>
+                  <span
+                    onClick={() => banUser(user?.email, user?.phone)}
+                    className={`${styles.cardIcon} ${styles.dangerIcon}`}
+                    title="مسدود"
+                  >
+                    <FiUserX size={16} />
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className={styles.empty}>
+            <p>{searchTerm ? "کاربری با این جستجو یافت نشد" : "کاربری وجود ندارد"}</p>
+          </div>
+        )
       )}
     </div>
   );

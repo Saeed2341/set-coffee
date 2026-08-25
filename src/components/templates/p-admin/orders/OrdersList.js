@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./orders.module.css";
 import Modal from "@/components/modules/modal/Modal";
 import OrderDetails from "./OrderDetails";
@@ -59,6 +59,16 @@ const OrdersList = ({ orders: initialOrders }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const filteredOrders = orders.filter((order) => {
     const matchStatus = filter === "all" || order.status === filter;
@@ -167,89 +177,175 @@ const OrdersList = ({ orders: initialOrders }) => {
         </div>
       </div>
 
-      {/* ===== جدول ===== */}
-      {filteredOrders.length > 0 ? (
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>کد سفارش</th>
-                <th>کاربر</th>
-                <th>تاریخ</th>
-                <th>تعداد</th>
-                <th>مبلغ (تومان)</th>
-                <th>وضعیت</th>
-                <th>عملیات</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredOrders.map((order, index) => {
-                const statusInfo = getStatusInfo(order.status);
-                return (
-                  <tr key={order._id}>
-                    <td>{index + 1}</td>
-                    <td className={styles.codeCell}>
-                      <span className={styles.orderCode}>
-                        {order.code || order._id.slice(-8)}
-                      </span>
-                    </td>
-                    <td>{order.userID?.name || "نامشخص"}</td>
-                    <td>{formatDate(order.createdAt)}</td>
-                    <td>{order.items?.length || 0}</td>
-                    <td>{formatPrice(order.payableAmount || order.totalAmount)}</td>
-                    <td>
-                      <span
-                        className={styles.statusBadge}
-                        style={{
-                          background: statusInfo.bg,
-                          color: statusInfo.color,
-                          border: `1px solid ${statusInfo.color}20`,
-                        }}
-                      >
-                        {statusInfo.label}
-                      </span>
-                    </td>
-                    <td>
-                      <div className={styles.actions}>
-                        <span
-                          onClick={() => handleViewDetails(order._id)}
-                          className={styles.iconBtn}
-                          title="جزئیات"
-                        >
-                          <FiEye size={16} />
+      {/* ===== در دسکتاپ: نمایش جدول ===== */}
+      {!isMobile && (
+        filteredOrders.length > 0 ? (
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>کد سفارش</th>
+                  <th>کاربر</th>
+                  <th>تاریخ</th>
+                  <th>تعداد</th>
+                  <th>مبلغ (تومان)</th>
+                  <th>وضعیت</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredOrders.map((order, index) => {
+                  const statusInfo = getStatusInfo(order.status);
+                  return (
+                    <tr key={order._id}>
+                      <td>{index + 1}</td>
+                      <td className={styles.codeCell}>
+                        <span className={styles.orderCode}>
+                          {order.code || order._id.slice(-8)}
                         </span>
-                        <div className={styles.statusDropdown}>
-                          <select
-                            value={order.status}
-                            onChange={(e) =>
-                              handleStatusChange(order._id, e.target.value)
-                            }
-                            disabled={loading}
-                            className={styles.statusSelect}
+                      </td>
+                      <td>{order.userID?.name || "نامشخص"}</td>
+                      <td>{formatDate(order.createdAt)}</td>
+                      <td>{order.items?.length || 0}</td>
+                      <td>{formatPrice(order.payableAmount || order.totalAmount)}</td>
+                      <td>
+                        <span
+                          className={styles.statusBadge}
+                          style={{
+                            background: statusInfo.bg,
+                            color: statusInfo.color,
+                            border: `1px solid ${statusInfo.color}20`,
+                          }}
+                        >
+                          {statusInfo.label}
+                        </span>
+                      </td>
+                      <td>
+                        <div className={styles.actions}>
+                          <span
+                            onClick={() => handleViewDetails(order._id)}
+                            className={styles.iconBtn}
+                            title="جزئیات"
                           >
-                            {statusOptions
-                              .filter((s) => s.value !== "all")
-                              .map((opt) => (
-                                <option key={opt.value} value={opt.value}>
-                                  {opt.label}
-                                </option>
-                              ))}
-                          </select>
-                          <FiChevronDown className={styles.dropdownIcon} />
+                            <FiEye size={16} />
+                          </span>
+                          <div className={styles.statusDropdown}>
+                            <select
+                              value={order.status}
+                              onChange={(e) =>
+                                handleStatusChange(order._id, e.target.value)
+                              }
+                              disabled={loading}
+                              className={styles.statusSelect}
+                            >
+                              {statusOptions
+                                .filter((s) => s.value !== "all")
+                                .map((opt) => (
+                                  <option key={opt.value} value={opt.value}>
+                                    {opt.label}
+                                  </option>
+                                ))}
+                            </select>
+                            <FiChevronDown className={styles.dropdownIcon} />
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div className={styles.empty}>
-          <p>{search ? "سفارشی با این جستجو یافت نشد" : "هیچ سفارشی وجود ندارد"}</p>
-        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className={styles.empty}>
+            <p>{search ? "سفارشی با این جستجو یافت نشد" : "هیچ سفارشی وجود ندارد"}</p>
+          </div>
+        )
+      )}
+
+      {/* ===== در موبایل: نمایش کارت ===== */}
+      {isMobile && (
+        filteredOrders.length > 0 ? (
+          <div className={styles.cardsContainer}>
+            {filteredOrders.map((order) => {
+              const statusInfo = getStatusInfo(order.status);
+              return (
+                <div key={order._id} className={styles.orderCard}>
+                  <div className={styles.cardHeader}>
+                    <span className={styles.cardCode}>
+                      #{order.code || order._id.slice(-8)}
+                    </span>
+                    <span
+                      className={styles.cardStatus}
+                      style={{
+                        background: statusInfo.bg,
+                        color: statusInfo.color,
+                        border: `1px solid ${statusInfo.color}20`,
+                      }}
+                    >
+                      {statusInfo.label}
+                    </span>
+                  </div>
+
+                  <div className={styles.cardBody}>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>کاربر:</span>
+                      <span>{order.userID?.name || "نامشخص"}</span>
+                    </div>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>تاریخ:</span>
+                      <span>{formatDate(order.createdAt)}</span>
+                    </div>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>تعداد اقلام:</span>
+                      <span>{order.items?.length || 0}</span>
+                    </div>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>مبلغ:</span>
+                      <span className={styles.cardPrice}>
+                        {formatPrice(order.payableAmount || order.totalAmount)} تومان
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className={styles.cardActions}>
+                    <span
+                      onClick={() => handleViewDetails(order._id)}
+                      className={styles.cardIcon}
+                      title="جزئیات"
+                    >
+                      <FiEye size={16} />
+                    </span>
+                    <div className={styles.cardStatusDropdown}>
+                      <select
+                        value={order.status}
+                        onChange={(e) =>
+                          handleStatusChange(order._id, e.target.value)
+                        }
+                        disabled={loading}
+                        className={styles.cardStatusSelect}
+                      >
+                        {statusOptions
+                          .filter((s) => s.value !== "all")
+                          .map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </option>
+                          ))}
+                      </select>
+                      <FiChevronDown className={styles.cardDropdownIcon} />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className={styles.empty}>
+            <p>{search ? "سفارشی با این جستجو یافت نشد" : "هیچ سفارشی وجود ندارد"}</p>
+          </div>
+        )
       )}
 
       {showModal && selectedOrder && (

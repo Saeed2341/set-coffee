@@ -13,9 +13,19 @@ function Orders() {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [ordersCount, setOrdersCount] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const [limit, setLimit] = useState(6);
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     fetchOrders();
@@ -79,22 +89,22 @@ function Orders() {
 
   const getStatusInfo = (status) => {
     const map = {
-      pending: { label: "در انتظار پرداخت", color: "#f39c12" },
-      paid: { label: "پرداخت شده", color: "#27ae60" },
-      processing: { label: "در حال پردازش", color: "#2980b9" },
-      shipped: { label: "ارسال شده", color: "#8e44ad" },
-      delivered: { label: "تحویل داده شده", color: "#2ecc71" },
-      cancelled: { label: "لغو شده", color: "#e74c3c" },
-      expired: { label: "منقضی شده", color: "#95a5a6" },
+      pending: { label: "در انتظار پرداخت", color: "#f39c12", bg: "#fef9e7" },
+      paid: { label: "پرداخت شده", color: "#27ae60", bg: "#eafaf1" },
+      processing: { label: "در حال پردازش", color: "#2980b9", bg: "#ebf5fb" },
+      shipped: { label: "ارسال شده", color: "#8e44ad", bg: "#f4ecf7" },
+      delivered: { label: "تحویل داده شده", color: "#2ecc71", bg: "#eafaf1" },
+      cancelled: { label: "لغو شده", color: "#e74c3c", bg: "#fdedec" },
+      expired: { label: "منقضی شده", color: "#95a5a6", bg: "#f4f6f7" },
     };
-    return map[status] || { label: status, color: "#7f8c8d" };
+    return map[status] || { label: status, color: "#7f8c8d", bg: "#f4f6f7" };
   };
 
   if (loading) {
     return (
       <div style={{ textAlign: "center", padding: "60px 20px" }}>
         <div className={tableStyles.spinner}></div>
-        <p>در حال بارگذاری سفارشات...</p>
+        <p style={{ color: "#a09c96" }}>در حال بارگذاری سفارشات...</p>
       </div>
     );
   }
@@ -111,55 +121,107 @@ function Orders() {
     <>
       <main>
         <DataTable title="سفارش‌ها">
-          <table className={tableStyles.table}>
-            <thead>
-              <tr>
-                <th>شناسه</th>
-                <th>تاریخ</th>
-                <th>وضعیت</th>
-                <th>تعداد اقلام</th>
-                <th>مبلغ (تومان)</th>
-                <th>عملیات</th>
-              </tr>
-            </thead>
-            <tbody>
+          {/* ===== در دسکتاپ: نمایش جدول ===== */}
+          {!isMobile ? (
+            <table className={tableStyles.table}>
+              <thead>
+                <tr>
+                  <th>شناسه</th>
+                  <th>تاریخ</th>
+                  <th>وضعیت</th>
+                  <th>تعداد اقلام</th>
+                  <th>مبلغ (تومان)</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map((order) => {
+                  const statusInfo = getStatusInfo(order.status);
+                  return (
+                    <tr key={order._id}>
+                      <td>{order.code || order._id.slice(-6)}</td>
+                      <td>{formatDate(order.createdAt)}</td>
+                      <td>
+                        <span
+                          className={tableStyles.statusBadge}
+                          style={{
+                            background: statusInfo.bg,
+                            color: statusInfo.color,
+                            border: `1px solid ${statusInfo.color}20`,
+                          }}
+                        >
+                          {statusInfo.label}
+                        </span>
+                      </td>
+                      <td>{order.itemsCount}</td>
+                      <td>{formatPrice(order.total)}</td>
+                      <td>
+                        <button
+                          type="button"
+                          onClick={() => handleShowDetails(order._id)}
+                          className={tableStyles.btn}
+                        >
+                          نمایش
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          ) : (
+            /* ===== در موبایل: نمایش کارت ===== */
+            <div className={styles.cardsContainer}>
               {orders.map((order) => {
                 const statusInfo = getStatusInfo(order.status);
                 return (
-                  <tr key={order._id}>
-                    <td>{order.code || order._id.slice(-6)}</td>
-                    <td>{formatDate(order.createdAt)}</td>
-                    <td>
+                  <div key={order._id} className={styles.orderCard}>
+                    <div className={styles.cardHeader}>
+                      <span className={styles.cardCode}>
+                        #{order.code || order._id.slice(-6)}
+                      </span>
                       <span
+                        className={styles.cardStatus}
                         style={{
-                          background: statusInfo.color,
-                          color: "#fff",
-                          padding: "4px 14px",
-                          borderRadius: "30px",
-                          fontSize: "12px",
-                          fontWeight: 500,
-                          display: "inline-block",
+                          background: statusInfo.bg,
+                          color: statusInfo.color,
+                          border: `1px solid ${statusInfo.color}20`,
                         }}
                       >
                         {statusInfo.label}
                       </span>
-                    </td>
-                    <td>{order.itemsCount}</td>
-                    <td>{formatPrice(order.total)}</td>
-                    <td>
-                      <button
-                        type="button"
-                        onClick={() => handleShowDetails(order._id)}
-                        className={tableStyles.btn}
-                      >
-                        نمایش
-                      </button>
-                    </td>
-                  </tr>
+                    </div>
+
+                    <div className={styles.cardBody}>
+                      <div className={styles.cardRow}>
+                        <span className={styles.cardLabel}>تاریخ:</span>
+                        <span>{formatDate(order.createdAt)}</span>
+                      </div>
+                      <div className={styles.cardRow}>
+                        <span className={styles.cardLabel}>تعداد اقلام:</span>
+                        <span>{order.itemsCount}</span>
+                      </div>
+                      <div className={styles.cardRow}>
+                        <span className={styles.cardLabel}>مبلغ:</span>
+                        <span className={styles.cardPrice}>
+                          {formatPrice(order.total)} تومان
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleShowDetails(order._id)}
+                      className={styles.cardBtn}
+                    >
+                      مشاهده جزئیات
+                    </button>
+                  </div>
                 );
               })}
-            </tbody>
-          </table>
+            </div>
+          )}
+
           <Pagination
             currentPage={page}
             totalPages={ordersCount}

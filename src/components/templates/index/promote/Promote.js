@@ -15,9 +15,9 @@ const Promote = () => {
             <p>زیبایی امروز رو با قهوه “ست” کنید</p>
             <img
               data-aos="fade-left"
+              suppressHydrationWarning
               src="/images/Heisen-Kaffee-scaled.jpg"
               alt=""
-              suppressHydrationWarning
             />
           </section>
           <section className={styles.club}>

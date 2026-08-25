@@ -557,3 +557,261 @@
     padding: 10px 16px;
   }
 }
+
+
+/* ============================================ */
+/* ===== کارت‌های محصولات در موبایل ===== */
+/* ============================================ */
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.productCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  padding: 16px 18px;
+  box-shadow: 0 2px 8px rgba(62, 39, 35, 0.04);
+  transition: all 0.2s ease;
+}
+
+.productCard:hover {
+  border-color: #d7ccc8;
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.06);
+}
+
+/* ===== هدر کارت ===== */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.cardId {
+  font-size: 12px;
+  font-weight: 400;
+  color: #a09c96;
+  font-family: monospace;
+}
+
+.cardStock {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ===== بدنه کارت ===== */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.cardImageWrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cardImage {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #f0eeea;
+  background: #faf9f7;
+  flex-shrink: 0;
+}
+
+.cardInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardName {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardTags {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.cardTag {
+  font-size: 9px;
+  color: #a09c96;
+  background: #f4f3f0;
+  padding: 1px 8px;
+  border-radius: 12px;
+}
+
+.cardTagMore {
+  font-size: 9px;
+  color: #a09c96;
+}
+
+/* ===== جزئیات کارت ===== */
+.cardDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 8px;
+  border-top: 1px solid #f5f4f2;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #5d4037;
+}
+
+.cardLabel {
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.cardPrice {
+  font-weight: 700;
+  color: #6d4c41;
+}
+
+/* ===== عملیات کارت ===== */
+.cardActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #f5f4f2;
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 16px;
+}
+
+.cardIcon:hover {
+  background: #f0eeea;
+  transform: translateY(-2px);
+}
+
+.cardIcon.dangerIcon {
+  color: #e74c3c;
+}
+
+.cardIcon.dangerIcon:hover {
+  background: #fde8e8;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+  .cardsContainer {
+    gap: 14px;
+  }
+
+  .productCard {
+    padding: 14px 14px;
+    border-radius: 14px;
+  }
+
+  .cardImage {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cardName {
+    font-size: 13px;
+  }
+
+  .cardRow {
+    font-size: 12px;
+  }
+
+  .cardPrice {
+    font-size: 14px;
+  }
+
+  .cardActions {
+    gap: 10px;
+  }
+
+  .cardIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardsContainer {
+    gap: 12px;
+  }
+
+  .productCard {
+    padding: 12px 12px;
+    border-radius: 12px;
+  }
+
+  .cardImage {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cardName {
+    font-size: 12px;
+  }
+
+  .cardRow {
+    font-size: 11px;
+  }
+
+  .cardPrice {
+    font-size: 13px;
+  }
+
+  .cardTag {
+    font-size: 8px;
+    padding: 1px 6px;
+  }
+
+  .cardActions {
+    gap: 8px;
+  }
+
+  .cardIcon {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}

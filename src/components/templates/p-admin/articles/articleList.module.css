@@ -116,7 +116,7 @@
 .table thead th {
   background: #f8f7f5;
   padding: 12px 16px;
-  text-align: right;  /* ← راست‌چین */
+  text-align: right; /* ← راست‌چین */
   font-weight: 500;
   font-size: 12px;
   color: #6a6762;
@@ -128,7 +128,7 @@
 /* ===== سلول‌ها ===== */
 .table tbody td {
   padding: 12px 16px;
-  text-align: right;  /* ← راست‌چین */
+  text-align: right; /* ← راست‌چین */
   vertical-align: middle;
   border-bottom: 1px solid #f5f4f2;
   color: #1a1a1a;
@@ -202,7 +202,7 @@
 .actions {
   display: flex;
   gap: 6px;
-  justify-content: flex-start;  /* ← آیکون‌ها از راست شروع می‌شوند */
+  justify-content: flex-start; /* ← آیکون‌ها از راست شروع می‌شوند */
   align-items: center;
 }
 
@@ -315,4 +315,125 @@
     height: 26px;
     font-size: 14px;
   }
+}
+/* ===== کارت‌های مقالات در موبایل ===== */
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.articleCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  padding: 16px 18px;
+  box-shadow: 0 2px 8px rgba(62, 39, 35, 0.04);
+  transition: all 0.2s ease;
+}
+
+.articleCard:hover {
+  border-color: #d7ccc8;
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.06);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.cardStatus {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.cardTags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.cardTag {
+  font-size: 10px;
+  color: #a09c96;
+  background: #f4f3f0;
+  padding: 1px 8px;
+  border-radius: 12px;
+}
+
+.cardTagMore {
+  font-size: 10px;
+  color: #a09c96;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #5d4037;
+}
+
+.cardLabel {
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.cardActions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #f5f4f2;
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.cardIcon:hover {
+  background: #f0eeea;
+  transform: translateY(-2px);
+}
+
+.cardIcon.dangerIcon {
+  color: #e74c3c;
+}
+.cardIcon.dangerIcon:hover {
+  background: #fde8e8;
 }

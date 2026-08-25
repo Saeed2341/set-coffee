@@ -131,7 +131,6 @@
   .contents {
     margin-top: 80px;
     padding: 16px 12px 2rem;
-
   }
   .main :global(.gallery-slider .swiper-slide img) {
     height: 280px;
@@ -234,5 +233,41 @@
   .moreProducts :global(.swiper .swiper-button-prev:after),
   .moreProducts :global(.swiper .swiper-button-next:after) {
     font-size: 10px !important;
+  }
+}
+
+/* ============================================ */
+/* ===== گالری محصول ===== */
+/* ============================================ */
+.galleryWrapper {
+  width: 36%;
+  flex-shrink: 0;
+}
+
+/* ===== ریسپانسیو گالری ===== */
+@media (max-width: 992px) {
+  .galleryWrapper {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .galleryWrapper {
+    width: 100%;
+  }
+
+  .galleryWrapper :global(.swiper-slide img) {
+    height: 320px !important;
+    object-fit: cover;
+  }
+
+  .galleryWrapper :global(.swiper) {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryWrapper :global(.swiper-slide img) {
+    height: 280px !important;
   }
 }

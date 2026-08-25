@@ -10,19 +10,23 @@ import { authUser } from "@/utils/auth";
 
 const page = async ({ searchParams }) => {
   const user = await authUser();
-  const { page, limit } = await searchParams;
+  const { page = 1, limit = 12 } = await searchParams;
+  const currentPage = Number(page);
+  const itemsPerPage = Number(limit);
+  const skip = (currentPage - 1) * itemsPerPage;
 
-  const skip = (page - 1) * limit;
+  const [products, totalProducts] = await Promise.all([
+    ProductModel.find({})
+      .sort({ _id: -1 })
+      .skip(skip)
+      .limit(itemsPerPage)
+      .lean(),
+    ProductModel.countDocuments(),
+  ]);
 
-  const totalProducts = await ProductModel.countDocuments();
+  const totalPages = Math.ceil(totalProducts / itemsPerPage);
 
-  const products = await ProductModel.find({})
-    .sort({ _id: -1 })
-    .skip(skip)
-    .limit(limit)
-    .lean();
-
-  const totalPages = Math.ceil(totalProducts / limit);
+  const hasProducts = products && products.length > 0;
 
   return (
     <>
@@ -38,14 +42,20 @@ const page = async ({ searchParams }) => {
         suppressHydrationWarning
       >
         <div className={styles.category}>
-          <Products
-            currentPage={page}
-            totalPages={totalPages}
-            totalProducts={totalProducts}
-            limit={limit}
-            products={JSON.parse(JSON.stringify(products))}
-          />
-          <Filtering />
+          <div className={styles.productsWrapper}>
+            <Products
+              currentPage={currentPage}
+              totalPages={totalPages}
+              totalProducts={totalProducts}
+              limit={itemsPerPage}
+              products={JSON.parse(JSON.stringify(products))}
+            />
+          </div>
+          {hasProducts && (
+            <aside className={styles.filterSidebar}>
+              <Filtering />
+            </aside>
+          )}
         </div>
       </main>
       <Footer />

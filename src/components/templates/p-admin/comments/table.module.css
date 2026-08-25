@@ -407,3 +407,130 @@
     margin: 0 2px;
   }
 }
+/* ===== کارت‌های کامنت در موبایل ===== */
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.commentCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  padding: 16px 18px;
+  box-shadow: 0 2px 8px rgba(62, 39, 35, 0.04);
+  transition: all 0.2s ease;
+}
+
+.commentCard:hover {
+  border-color: #d7ccc8;
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.06);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.cardUser {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.cardStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #5d4037;
+}
+
+.cardLabel {
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.cardActions {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid #f5f4f2;
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 15px;
+}
+
+.cardIcon:hover:not([style*="opacity: 0.4"]) {
+  background: #f0eeea;
+  transform: translateY(-2px);
+}
+
+.cardIcon.dangerIcon {
+  color: #e74c3c;
+}
+.cardIcon.dangerIcon:hover:not([style*="opacity: 0.4"]) {
+  background: #fde8e8;
+}
+.cardIcon.acceptIcon {
+  color: #27ae60;
+}
+.cardIcon.acceptIcon:hover:not([style*="opacity: 0.4"]) {
+  background: #e8f5e9;
+}
+.cardIcon.rejectIcon {
+  color: #e74c3c;
+}
+.cardIcon.rejectIcon:hover:not([style*="opacity: 0.4"]) {
+  background: #ffebee;
+}
+.cardIcon.replyIcon {
+  color: #a67c52;
+}
+.cardIcon.replyIcon:hover:not([style*="opacity: 0.4"]) {
+  background: #f5ebe0;
+}
+.cardIcon.banIcon {
+  color: #e74c3c;
+}
+.cardIcon.banIcon:hover:not([style*="opacity: 0.4"]) {
+  background: #fde8e8;
+}

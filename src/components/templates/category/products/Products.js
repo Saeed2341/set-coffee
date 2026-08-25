@@ -6,6 +6,7 @@ import { TfiLayoutGrid4Alt } from "react-icons/tfi";
 import Pagination from "@/components/modules/pagination/Pagination";
 import Product from "@/components/modules/product/Product";
 import { useRouter } from "next/navigation";
+import { FiPackage } from "react-icons/fi";
 
 const Products = ({
   products,
@@ -20,6 +21,25 @@ const Products = ({
       router.push(`/category?page=${newPage}&limit=${limit}`);
     }
   };
+
+  // ===== اگر محصولی وجود نداشت =====
+  if (products.length === 0) {
+    return (
+      <div className={styles.emptyWrapper}>
+        <div className={styles.emptyState}>
+          <div className={styles.emptyIcon}>
+            <FiPackage size={64} />
+          </div>
+          <h2 className={styles.emptyTitle}>محصولی وجود ندارد</h2>
+          <p className={styles.emptyDescription}>
+            در حال حاضر هیچ محصولی در این دسته‌بندی موجود نیست. لطفاً بعداً
+            مجدداً مراجعه کنید.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.products}>
       <div className={styles.filtering}>

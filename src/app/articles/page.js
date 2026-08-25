@@ -8,6 +8,7 @@ import ArticleModel from "@/models/Article";
 import { authUser } from "@/utils/auth";
 import { PiArticleDuotone } from "react-icons/pi";
 import MobileNav from "@/components/modules/mobileNav/MobileNav";
+import Link from "next/link";
 
 const page = async () => {
   const user = await authUser();
@@ -17,8 +18,6 @@ const page = async () => {
   )
     .sort({ _id: -1 })
     .lean();
-
-  if (!articles.length) return <p>هیچ مقاله ای منتشر نشده است</p>;
 
   return (
     <>
@@ -30,15 +29,29 @@ const page = async () => {
       <Breadcrumb route={"اخبار و مقالات"} />
       <main data-aos="fade-up" className={styles.container}>
         <div className={styles.articles}>
-          {articles.map((article) => (
-            <Card key={article._id} {...article} />
-          ))}
+          {articles.length > 0 ? (
+            articles.map((article) => <Card key={article._id} {...article} />)
+          ) : (
+            <div className={styles.emptyState}>
+              <div className={styles.emptyIcon}>
+                <PiArticleDuotone />
+              </div>
+              <h2 className={styles.emptyTitle}>هیچ مقاله‌ای وجود ندارد</h2>
+              <p className={styles.emptyDescription}>
+                در حال حاضر هیچ مقاله‌ای در سایت منتشر نشده است. لطفاً بعداً
+                مجدداً مراجعه کنید.
+              </p>
+              <Link href="/" className={styles.emptyLink}>
+                بازگشت به صفحه اصلی
+              </Link>
+            </div>
+          )}
         </div>
         {/* <Pagination /> */}
       </main>
 
       <Footer />
-           <MobileNav
+      <MobileNav
         isLogin={user ? true : false}
         isAdmin={user?.role == "ADMIN" ? true : false}
       />

@@ -19,10 +19,7 @@ const Card = ({
         {img ? (
           <img src={process.env.NEXT_PUBLIC_IMAGE_URL + img} alt={name} />
         ) : (
-          <img
-            src="/images/prduct-default-image.png"
-            alt={name}
-          />
+          <img src="/images/prduct-default-image.png" alt={name} />
         )}
         <div className={styles.icons}>
           <Link href={`/product/${_id}`}>

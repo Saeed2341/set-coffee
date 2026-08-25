@@ -18,6 +18,7 @@ const product = async ({ params }) => {
 
   const relatedProducts = await ProductModel.find({
     smell: product.smell,
+    _id: { $ne: product._id },
   }).lean();
   return (
     <div className={styles.container}>
@@ -33,15 +34,17 @@ const product = async ({ params }) => {
       >
         <div className={styles.main}>
           <Details product={JSON.parse(JSON.stringify(product))} />
-          <Gallery />
+          <Gallery img={JSON.parse(JSON.stringify(product.img))} />
         </div>
         <Tabs product={JSON.parse(JSON.stringify(product))} />
-        <MoreProducts
-          relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}
-        />
+        {relatedProducts.length > 0 && (
+          <MoreProducts
+            relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}
+          />
+        )}
       </div>
       <Footer />
-           <MobileNav
+      <MobileNav
         isLogin={user ? true : false}
         isAdmin={user?.role == "ADMIN" ? true : false}
       />

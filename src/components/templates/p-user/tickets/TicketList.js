@@ -11,12 +11,24 @@ const TicketList = ({ tickets }) => {
   const getStatusInfo = (ticket) => {
     const lastMessage = ticket.messages?.[ticket.messages.length - 1];
     if (lastMessage?.isAnswer) {
-      return { label: "پاسخ داده شده", color: "#27ae60", icon: <FaCircle size={10} /> };
+      return {
+        label: "پاسخ داده شده",
+        color: "#27ae60",
+        icon: <FaCircle size={10} />,
+      };
     }
     if (ticket.hasAnswer) {
-      return { label: "پاسخ داده شده", color: "#27ae60", icon: <FaCircle size={10} /> };
+      return {
+        label: "پاسخ داده شده",
+        color: "#27ae60",
+        icon: <FaCircle size={10} />,
+      };
     }
-    return { label: "در انتظار پاسخ", color: "#f39c12", icon: <FaClock size={10} /> };
+    return {
+      label: "در انتظار پاسخ",
+      color: "#f39c12",
+      icon: <FaClock size={10} />,
+    };
   };
 
   const getLastMessage = (ticket) => {
@@ -28,7 +40,7 @@ const TicketList = ({ tickets }) => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.header}>
-        <h2>📬 تیکت‌ها</h2>
+        <h2>تیکت‌ها</h2>
         <Link href="/p-user/tickets/new" className={styles.newTicketBtn}>
           <FaPlus size={14} />
           جدید
@@ -66,8 +78,13 @@ const TicketList = ({ tickets }) => {
                     </span>
                   </div>
                   <div className={styles.bottomRow}>
-                    <span className={styles.lastMessage}>{getLastMessage(ticket)}</span>
-                    <span className={styles.status} style={{ color: status.color }}>
+                    <span className={styles.lastMessage}>
+                      {getLastMessage(ticket)}
+                    </span>
+                    <span
+                      className={styles.status}
+                      style={{ color: status.color }}
+                    >
                       {status.icon} {status.label}
                     </span>
                   </div>
@@ -76,9 +93,11 @@ const TicketList = ({ tickets }) => {
                   </div>
                 </div>
 
-                {ticket.messages && ticket.messages.length > 0 && !ticket.messages[ticket.messages.length - 1]?.isAnswer && (
-                  <span className={styles.unreadDot}></span>
-                )}
+                {ticket.messages &&
+                  ticket.messages.length > 0 &&
+                  !ticket.messages[ticket.messages.length - 1]?.isAnswer && (
+                    <span className={styles.unreadDot}></span>
+                  )}
               </Link>
             );
           })

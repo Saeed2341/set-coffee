@@ -391,3 +391,182 @@
     padding: 10px 16px;
   }
 }
+/* ============================================ */
+/* ===== کارت‌های کاربران در موبایل ===== */
+/* ============================================ */
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.userCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  padding: 16px 18px;
+  box-shadow: 0 2px 8px rgba(62, 39, 35, 0.04);
+  transition: all 0.2s ease;
+}
+
+.userCard:hover {
+  border-color: #d7ccc8;
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.06);
+}
+
+/* ===== هدر کارت ===== */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.cardName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.cardRole {
+  display: inline-block;
+  padding: 2px 14px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 500;
+  background: #f0eeea;
+  color: #1a1a1a;
+}
+
+/* ===== بدنه کارت ===== */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #5d4037;
+}
+
+.cardLabel {
+  font-weight: 500;
+  color: #3e2723;
+}
+
+/* ===== عملیات کارت ===== */
+.cardActions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #f5f4f2;
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 16px;
+}
+
+.cardIcon:hover {
+  background: #f0eeea;
+  transform: translateY(-2px);
+}
+
+.cardIcon.dangerIcon {
+  color: #e74c3c;
+}
+
+.cardIcon.dangerIcon:hover {
+  background: #fde8e8;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+  .cardsContainer {
+    gap: 14px;
+  }
+
+  .userCard {
+    padding: 14px 14px;
+    border-radius: 14px;
+  }
+
+  .cardName {
+    font-size: 14px;
+  }
+
+  .cardRole {
+    font-size: 10px;
+    padding: 2px 10px;
+  }
+
+  .cardRow {
+    font-size: 12px;
+  }
+
+  .cardActions {
+    gap: 8px;
+  }
+
+  .cardIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardsContainer {
+    gap: 12px;
+  }
+
+  .userCard {
+    padding: 12px 12px;
+    border-radius: 12px;
+  }
+
+  .cardName {
+    font-size: 13px;
+  }
+
+  .cardRole {
+    font-size: 9px;
+    padding: 2px 8px;
+  }
+
+  .cardRow {
+    font-size: 11px;
+  }
+
+  .cardActions {
+    gap: 6px;
+  }
+
+  .cardIcon {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}

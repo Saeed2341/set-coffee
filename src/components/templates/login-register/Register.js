@@ -8,6 +8,7 @@ import {
   validatePassword,
   validatePhone,
 } from "@/utils/validators";
+import { useRouter } from "next/navigation";
 
 const Register = ({ showloginForm }) => {
   const [isRegisterWithOtp, setIsRegisterWithOtp] = useState(false);
@@ -17,6 +18,7 @@ const Register = ({ showloginForm }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const router = useRouter();
   const hideOtpForm = () => setIsRegisterWithOtp(false);
   const registerWithOtp = () => {
     if (!phone.trim()) {
@@ -45,9 +47,8 @@ const Register = ({ showloginForm }) => {
     if (!validatePhone(phone)) {
       return showSwal("شماره تماس نامعتبر است", "error", "تلاش مجدد");
     }
-    if (email) {
-      const isValid = validateEmail(email);
-      if (!isValid) return showSwal("ایمیل نامعتبر است", "error", "تلاش مجدد");
+    if (!email || !validateEmail(email)) {
+      return showSwal("ایمیل نامعتبر است", "error", "تلاش مجدد");
     }
     if (!validatePassword(password)) {
       return showSwal("رمز عبور باید پیچیده باشد", "error", "تلاش مجدد");
@@ -64,11 +65,12 @@ const Register = ({ showloginForm }) => {
     });
 
     if (res.status == 201) {
-      return showSwal(
-        "ثبت نام با موفقیت انجام شد",
-        "success",
-        "ورود به پنل کاربری",
-      );
+      return swal({
+        title: "موفقیت",
+        icon: "success",
+        text: "ثبت نام شما با موفقیت انجام شد",
+        buttons: "ورود به حساب کاربری",
+      }).then(() => showloginForm());
     } else if (res.status == 409) {
       return showSwal(
         "کاربر با این اطلاعات از قبل وجود دارد",
@@ -93,7 +95,6 @@ const Register = ({ showloginForm }) => {
             data-aos="fade-up"
             suppressHydrationWarning
           >
-            {/* ===== دکمه بازگشت به ورود (جایگزین لغو) ===== */}
             <button
               onClick={showloginForm}
               className={styles.back_to_login_btn}
@@ -118,7 +119,7 @@ const Register = ({ showloginForm }) => {
             <input
               className={styles.input}
               type="email"
-              placeholder="ایمیل (دلخواه)"
+              placeholder="ایمیل"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />

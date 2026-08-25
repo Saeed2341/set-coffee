@@ -33,6 +33,16 @@ export default function DataTable({
   const [filterStatus, setFilterStatus] = useState(currentFilter);
   const [activeTab, setActiveTab] = useState(currentTab);
   const [searchValue, setSearchValue] = useState(searchTerm);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     setFilterStatus(currentFilter);
@@ -263,32 +273,25 @@ export default function DataTable({
 
   return (
     <div className={styles.container}>
-      {/* ===== هدر (فقط عنوان) ===== */}
       <div className={styles.header}>
         <h1 className={styles.title}>{title}</h1>
       </div>
 
-      {/* ===== ردیف تب‌ها + جستجو + فیلتر ===== */}
       <div className={styles.toolbar}>
         <div className={styles.tabs}>
           <span
-            className={`${styles.tabBtn} ${
-              activeTab === "products" ? styles.tabActive : ""
-            }`}
+            className={`${styles.tabBtn} ${activeTab === "products" ? styles.tabActive : ""}`}
             onClick={() => handleTabChange("products")}
           >
             محصولات
           </span>
           <span
-            className={`${styles.tabBtn} ${
-              activeTab === "articles" ? styles.tabActive : ""
-            }`}
+            className={`${styles.tabBtn} ${activeTab === "articles" ? styles.tabActive : ""}`}
             onClick={() => handleTabChange("articles")}
           >
             مقالات
           </span>
         </div>
-
         <div className={styles.toolbarActions}>
           <div className={styles.searchWrapper}>
             <FaSearch className={styles.searchIcon} />
@@ -316,134 +319,244 @@ export default function DataTable({
         </div>
       </div>
 
-      {/* ===== جدول ===== */}
       {comments.length > 0 ? (
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>کاربر</th>
-                <th>ایمیل</th>
-                <th>عنوان</th>
-                <th>وضعیت</th>
-                <th>عملیات</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comments.map((comment, index) => {
-                const status = getStatusInfo(comment);
-                const isAccepted = comment.status === "accept";
-                const isRejected = comment.status === "reject";
-
-                return (
-                  <tr key={comment._id}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <div className={styles.userCell}>
-                        <span>{comment.username}</span>
-                      </div>
-                    </td>
-                    <td>{comment.email || "—"}</td>
-                    <td>
-                      <div className={styles.titleCell}>
-                        <span className={styles.targetTitle}>
-                          {comment.targetType === "Product"
-                            ? comment.targetId?.name || "محصول"
-                            : comment.targetId?.title || "مقاله"}
+        !isMobile ? (
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>کاربر</th>
+                  <th>ایمیل</th>
+                  <th>عنوان</th>
+                  <th>وضعیت</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comments.map((comment, index) => {
+                  const status = getStatusInfo(comment);
+                  const isAccepted = comment.status === "accept";
+                  const isRejected = comment.status === "reject";
+                  return (
+                    <tr key={comment._id}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <div className={styles.userCell}>
+                          <span>{comment.username}</span>
+                        </div>
+                      </td>
+                      <td>{comment.email || "—"}</td>
+                      <td>
+                        <div className={styles.titleCell}>
+                          <span className={styles.targetTitle}>
+                            {comment.targetType === "Product"
+                              ? comment.targetId?.name || "محصول"
+                              : comment.targetId?.title || "مقاله"}
+                          </span>
+                          <span className={styles.targetType}>
+                            {comment.targetType === "Product"
+                              ? "محصول"
+                              : "مقاله"}
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <span
+                          className={`${styles.statusBadge} ${status.className}`}
+                        >
+                          {status.icon}
+                          {status.label}
                         </span>
-                        <span className={styles.targetType}>
-                          {comment.targetType === "Product" ? "محصول" : "مقاله"}
-                        </span>
-                      </div>
-                    </td>
-                    <td>
-                      <span
-                        className={`${styles.statusBadge} ${status.className}`}
-                      >
-                        {status.icon}
-                        {status.label}
+                      </td>
+                      <td>
+                        <div className={styles.actions}>
+                          <span
+                            onClick={() => showCommentBody(comment.body)}
+                            className={styles.iconBtn}
+                            title="مشاهده"
+                          >
+                            <FiEye size={16} />
+                          </span>
+                          <span
+                            onClick={() =>
+                              editComment(comment._id, comment.body)
+                            }
+                            className={styles.iconBtn}
+                            title="ویرایش"
+                          >
+                            <FiEdit2 size={16} />
+                          </span>
+                          <span
+                            onClick={() => deleteComment(comment._id)}
+                            className={`${styles.iconBtn} ${styles.dangerIcon}`}
+                            title="حذف"
+                          >
+                            <FiTrash2 size={16} />
+                          </span>
+                          <div className={styles.actionDivider} />
+                          <span
+                            onClick={() => acceptComment(comment)}
+                            className={`${styles.iconBtn} ${styles.acceptIcon}`}
+                            style={{
+                              opacity: isAccepted ? 0.4 : 1,
+                              cursor: isAccepted ? "not-allowed" : "pointer",
+                            }}
+                            title={isAccepted ? "تایید شده" : "تایید"}
+                          >
+                            <FaCheck size={14} />
+                          </span>
+                          <span
+                            onClick={() => rejectComment(comment)}
+                            className={`${styles.iconBtn} ${styles.rejectIcon}`}
+                            style={{
+                              opacity: isRejected ? 0.4 : 1,
+                              cursor: isRejected ? "not-allowed" : "pointer",
+                            }}
+                            title={isRejected ? "رد شده" : "رد"}
+                          >
+                            <FaTimes size={14} />
+                          </span>
+                          <div className={styles.actionDivider} />
+                          <span
+                            onClick={() =>
+                              answerComment(
+                                comment.targetId,
+                                comment._id,
+                                comment.targetType,
+                              )
+                            }
+                            className={`${styles.iconBtn} ${styles.replyIcon}`}
+                            title="پاسخ"
+                          >
+                            <FiMessageSquare size={16} />
+                          </span>
+                          <span
+                            className={`${styles.iconBtn} ${styles.banIcon}`}
+                            title="مسدود"
+                          >
+                            <FiUserX size={16} />
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <Pagination
+              currentPage={parseInt(page)}
+              totalPages={totalPage}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        ) : (
+          <div className={styles.cardsContainer}>
+            {comments.map((comment) => {
+              const status = getStatusInfo(comment);
+              const isAccepted = comment.status === "accept";
+              const isRejected = comment.status === "reject";
+              return (
+                <div key={comment._id} className={styles.commentCard}>
+                  <div className={styles.cardHeader}>
+                    <span className={styles.cardUser}>{comment.username}</span>
+                    <span
+                      className={`${styles.cardStatus} ${status.className}`}
+                    >
+                      {status.icon}
+                      {status.label}
+                    </span>
+                  </div>
+                  <div className={styles.cardBody}>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>ایمیل:</span>
+                      <span>{comment.email || "—"}</span>
+                    </div>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>عنوان:</span>
+                      <span>
+                        {comment.targetType === "Product"
+                          ? comment.targetId?.name || "محصول"
+                          : comment.targetId?.title || "مقاله"}
                       </span>
-                    </td>
-                    <td>
-                      <div className={styles.actions}>
-                        <span
-                          onClick={() => showCommentBody(comment.body)}
-                          className={styles.iconBtn}
-                          title="مشاهده"
-                        >
-                          <FiEye size={16} />
-                        </span>
-                        <span
-                          onClick={() => editComment(comment._id, comment.body)}
-                          className={styles.iconBtn}
-                          title="ویرایش"
-                        >
-                          <FiEdit2 size={16} />
-                        </span>
-                        <span
-                          onClick={() => deleteComment(comment._id)}
-                          className={`${styles.iconBtn} ${styles.dangerIcon}`}
-                          title="حذف"
-                        >
-                          <FiTrash2 size={16} />
-                        </span>
-                        <div className={styles.actionDivider} />
-                        <span
-                          onClick={() => acceptComment(comment)}
-                          className={`${styles.iconBtn} ${styles.acceptIcon}`}
-                          style={{
-                            opacity: isAccepted ? 0.4 : 1,
-                            cursor: isAccepted ? "not-allowed" : "pointer",
-                          }}
-                          title={isAccepted ? "تایید شده" : "تایید"}
-                        >
-                          <FaCheck size={14} />
-                        </span>
-                        <span
-                          onClick={() => rejectComment(comment)}
-                          className={`${styles.iconBtn} ${styles.rejectIcon}`}
-                          style={{
-                            opacity: isRejected ? 0.4 : 1,
-                            cursor: isRejected ? "not-allowed" : "pointer",
-                          }}
-                          title={isRejected ? "رد شده" : "رد"}
-                        >
-                          <FaTimes size={14} />
-                        </span>
-                        <div className={styles.actionDivider} />
-                        <span
-                          onClick={() =>
-                            answerComment(
-                              comment.targetId,
-                              comment._id,
-                              comment.targetType,
-                            )
-                          }
-                          className={`${styles.iconBtn} ${styles.replyIcon}`}
-                          title="پاسخ"
-                        >
-                          <FiMessageSquare size={16} />
-                        </span>
-                        <span
-                          className={`${styles.iconBtn} ${styles.banIcon}`}
-                          title="مسدود"
-                        >
-                          <FiUserX size={16} />
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <Pagination
-            currentPage={parseInt(page)}
-            totalPages={totalPage}
-            onPageChange={handlePageChange}
-          />
-        </div>
+                    </div>
+                  </div>
+                  <div className={styles.cardActions}>
+                    <span
+                      onClick={() => showCommentBody(comment.body)}
+                      className={styles.cardIcon}
+                      title="مشاهده"
+                    >
+                      <FiEye size={16} />
+                    </span>
+                    <span
+                      onClick={() => editComment(comment._id, comment.body)}
+                      className={styles.cardIcon}
+                      title="ویرایش"
+                    >
+                      <FiEdit2 size={16} />
+                    </span>
+                    <span
+                      onClick={() => deleteComment(comment._id)}
+                      className={`${styles.cardIcon} ${styles.dangerIcon}`}
+                      title="حذف"
+                    >
+                      <FiTrash2 size={16} />
+                    </span>
+                    <div className={styles.actionDivider} />
+                    <span
+                      onClick={() => acceptComment(comment)}
+                      className={`${styles.cardIcon} ${styles.acceptIcon}`}
+                      style={{
+                        opacity: isAccepted ? 0.4 : 1,
+                        cursor: isAccepted ? "not-allowed" : "pointer",
+                      }}
+                      title={isAccepted ? "تایید شده" : "تایید"}
+                    >
+                      <FaCheck size={14} />
+                    </span>
+                    <span
+                      onClick={() => rejectComment(comment)}
+                      className={`${styles.cardIcon} ${styles.rejectIcon}`}
+                      style={{
+                        opacity: isRejected ? 0.4 : 1,
+                        cursor: isRejected ? "not-allowed" : "pointer",
+                      }}
+                      title={isRejected ? "رد شده" : "رد"}
+                    >
+                      <FaTimes size={14} />
+                    </span>
+                    <div className={styles.actionDivider} />
+                    <span
+                      onClick={() =>
+                        answerComment(
+                          comment.targetId,
+                          comment._id,
+                          comment.targetType,
+                        )
+                      }
+                      className={`${styles.cardIcon} ${styles.replyIcon}`}
+                      title="پاسخ"
+                    >
+                      <FiMessageSquare size={16} />
+                    </span>
+                    <span
+                      className={`${styles.cardIcon} ${styles.banIcon}`}
+                      title="مسدود"
+                    >
+                      <FiUserX size={16} />
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+            <Pagination
+              currentPage={parseInt(page)}
+              totalPages={totalPage}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        )
       ) : (
         <div className={styles.empty}>
           <p>کامنتی وجود ندارد</p>

@@ -1,56 +1,174 @@
 /* ===== کانتینر اصلی ===== */
 .container {
-    max-width: 1222px;
-    width: 100%;
-    padding-right: 24px;
-    padding-left: 24px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 4rem;
-    direction: rtl;
-    color: #3e2723;
-  }
-  
-  /* ===== لیست مقالات ===== */
+  max-width: 1222px;
+  width: 100%;
+  padding-right: 24px;
+  padding-left: 24px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 4rem;
+  direction: rtl;
+  color: #3e2723;
+}
+
+/* ===== لیست مقالات ===== */
+.articles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  row-gap: 40px;
+  margin-top: 10px;
+}
+
+/* ============================================ */
+/* ===== حالت خالی (هیچ مقاله‌ای وجود ندارد) ===== */
+/* ============================================ */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 2px dashed #e8e5e0;
+  box-shadow: 0 4px 20px rgba(62, 39, 35, 0.04);
+  min-height: 400px;
+  grid-column: 1 / -1;
+}
+
+.emptyState .emptyIcon {
+  font-size: 4rem;
+  color: #d7ccc8;
+  margin-bottom: 16px;
+}
+
+.emptyState .emptyTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3e2723;
+  margin: 0 0 8px 0;
+}
+
+.emptyState .emptyDescription {
+  font-size: 15px;
+  color: #a09c96;
+  margin: 0 0 24px 0;
+  max-width: 400px;
+  line-height: 1.8;
+}
+
+.emptyState .emptyLink {
+  display: inline-block;
+  padding: 12px 32px;
+  background: #6d4c41;
+  color: #ffffff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.2);
+}
+
+.emptyState .emptyLink:hover {
+  background: #3e2723;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(62, 39, 35, 0.3);
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
   .articles {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    row-gap: 40px;
-    margin-top: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    row-gap: 32px;
   }
-  
-  /* ===== ریسپانسیو ===== */
-  @media (max-width: 992px) {
-    .articles {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      row-gap: 32px;
-    }
+
+  .emptyState {
+    padding: 60px 30px;
+    min-height: 320px;
   }
-  
-  @media (max-width: 768px) {
-    .container {
-      padding-right: 16px;
-      padding-left: 16px;
-      margin-bottom: 3rem;
-    }
-    .articles {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      row-gap: 24px;
-    }
+
+  .emptyState .emptyIcon {
+    font-size: 3.2rem;
   }
-  
-  @media (max-width: 576px) {
-    .articles {
-      grid-template-columns: 1fr;
-      gap: 20px;
-      row-gap: 24px;
-    }
-    .container {
-      padding-right: 12px;
-      padding-left: 12px;
-      margin-bottom: 2rem;
-    }
+
+  .emptyState .emptyTitle {
+    font-size: 20px;
   }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-right: 16px;
+    padding-left: 16px;
+    margin-bottom: 3rem;
+  }
+
+  .articles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    row-gap: 24px;
+  }
+
+  .emptyState {
+    padding: 40px 20px;
+    min-height: 260px;
+  }
+
+  .emptyState .emptyIcon {
+    font-size: 2.6rem;
+  }
+
+  .emptyState .emptyTitle {
+    font-size: 18px;
+  }
+
+  .emptyState .emptyDescription {
+    font-size: 14px;
+  }
+
+  .emptyState .emptyLink {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .articles {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    row-gap: 24px;
+  }
+
+  .container {
+    padding-right: 12px;
+    padding-left: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .emptyState {
+    padding: 30px 16px;
+    min-height: 220px;
+    border-radius: 16px;
+  }
+
+  .emptyState .emptyIcon {
+    font-size: 2.2rem;
+  }
+
+  .emptyState .emptyTitle {
+    font-size: 16px;
+  }
+
+  .emptyState .emptyDescription {
+    font-size: 13px;
+  }
+
+  .emptyState .emptyLink {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+}

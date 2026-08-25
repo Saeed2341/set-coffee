@@ -254,3 +254,200 @@
     padding: 3px 10px;
   }
 }
+/* ============================================ */
+/* ===== کارت‌های کامنت در موبایل ===== */
+/* ============================================ */
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.commentCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0e8dd;
+  padding: 16px 18px;
+  box-shadow: 0 2px 8px rgba(62, 39, 35, 0.04);
+  transition: all 0.2s ease;
+}
+
+.commentCard:hover {
+  border-color: #d7ccc8;
+  box-shadow: 0 4px 16px rgba(62, 39, 35, 0.06);
+}
+
+/* ===== هدر کارت ===== */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0e8dd;
+}
+
+.cardId {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3e2723;
+  font-family: monospace;
+}
+
+.cardStatus {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ===== وضعیت‌های مختلف ===== */
+.statusAccepted {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.statusAnswered {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.statusPending {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.statusRejected {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.statusUnknown {
+  background: #f5f5f5;
+  color: #757575;
+}
+
+/* ===== بدنه کارت ===== */
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.cardRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #5d4037;
+}
+
+.cardLabel {
+  font-weight: 500;
+  color: #3e2723;
+}
+
+.cardStars {
+  display: flex;
+  gap: 2px;
+  direction: ltr;
+}
+
+.cardStars svg {
+  color: #f5b342;
+}
+
+/* ===== دکمه کارت ===== */
+.cardBtn {
+  width: 100%;
+  padding: 10px 0;
+  background: #6d4c41;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(109, 76, 65, 0.12);
+}
+
+.cardBtn:hover {
+  background: #3e2723;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(62, 39, 35, 0.2);
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+  .cardsContainer {
+    gap: 14px;
+    padding: 4px 0;
+  }
+
+  .commentCard {
+    padding: 14px 14px;
+    border-radius: 14px;
+  }
+
+  .cardHeader {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+  }
+
+  .cardId {
+    font-size: 13px;
+  }
+
+  .cardStatus {
+    font-size: 10px;
+    padding: 2px 10px;
+  }
+
+  .cardRow {
+    font-size: 12px;
+  }
+
+  .cardBtn {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardsContainer {
+    gap: 12px;
+  }
+
+  .commentCard {
+    padding: 12px 12px;
+    border-radius: 12px;
+  }
+
+  .cardId {
+    font-size: 12px;
+  }
+
+  .cardStatus {
+    font-size: 9px;
+    padding: 2px 8px;
+  }
+
+  .cardRow {
+    font-size: 11px;
+  }
+
+  .cardStars svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .cardBtn {
+    font-size: 11px;
+    padding: 6px 0;
+  }
+}

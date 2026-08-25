@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./transactions.module.css";
 import Modal from "@/components/modules/modal/Modal";
 import TransactionDetails from "./TransactionDetails";
@@ -46,6 +46,16 @@ const TransactionsList = ({ payments: initialPayments }) => {
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const filteredPayments = payments.filter((p) => {
     const matchStatus = filter === "all" || p.status === filter;
@@ -117,74 +127,145 @@ const TransactionsList = ({ payments: initialPayments }) => {
         </div>
       </div>
 
-      {/* ===== جدول ===== */}
-      {filteredPayments.length > 0 ? (
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>سفارش</th>
-                <th>کاربر</th>
-                <th>مبلغ (تومان)</th>
-                <th>روش پرداخت</th>
-                <th>وضعیت</th>
-                <th>تاریخ</th>
-                <th>عملیات</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredPayments.map((payment, index) => {
-                const statusInfo = getStatusInfo(payment.status);
-                return (
-                  <tr key={payment._id}>
-                    <td>{index + 1}</td>
-                    <td className={styles.codeCell}>
-                      <span className={styles.orderCode}>
-                        {payment.order?.code || payment._id.slice(-8)}
+      {/* ===== در دسکتاپ: نمایش جدول ===== */}
+      {!isMobile && (
+        filteredPayments.length > 0 ? (
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>سفارش</th>
+                  <th>کاربر</th>
+                  <th>مبلغ (تومان)</th>
+                  <th>روش پرداخت</th>
+                  <th>وضعیت</th>
+                  <th>تاریخ</th>
+                  <th>عملیات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredPayments.map((payment, index) => {
+                  const statusInfo = getStatusInfo(payment.status);
+                  return (
+                    <tr key={payment._id}>
+                      <td>{index + 1}</td>
+                      <td className={styles.codeCell}>
+                        <span className={styles.orderCode}>
+                          {payment.order?.code || payment._id.slice(-8)}
+                        </span>
+                      </td>
+                      <td>{payment.order?.userID?.name || "نامشخص"}</td>
+                      <td className={styles.priceCell}>
+                        {formatPrice(payment.amount)}
+                      </td>
+                      <td>
+                        {payment.paymentMethod === "online"
+                          ? "آنلاین"
+                          : payment.paymentMethod || "-"}
+                      </td>
+                      <td>
+                        <span
+                          className={styles.statusBadge}
+                          style={{
+                            background: statusInfo.bg,
+                            color: statusInfo.color,
+                            border: `1px solid ${statusInfo.color}20`,
+                          }}
+                        >
+                          {statusInfo.label}
+                        </span>
+                      </td>
+                      <td>{formatDate(payment.createdAt)}</td>
+                      <td>
+                        <span
+                          onClick={() => handleViewDetails(payment._id)}
+                          className={styles.iconBtn}
+                          title="جزئیات"
+                        >
+                          <FiEye size={16} />
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className={styles.empty}>
+            <p>{search ? "تراکنشی با این جستجو یافت نشد" : "هیچ تراکنشی وجود ندارد"}</p>
+          </div>
+        )
+      )}
+
+      {/* ===== در موبایل: نمایش کارت ===== */}
+      {isMobile && (
+        filteredPayments.length > 0 ? (
+          <div className={styles.cardsContainer}>
+            {filteredPayments.map((payment) => {
+              const statusInfo = getStatusInfo(payment.status);
+              return (
+                <div key={payment._id} className={styles.transactionCard}>
+                  <div className={styles.cardHeader}>
+                    <span className={styles.cardCode}>
+                      #{payment.order?.code || payment._id.slice(-8)}
+                    </span>
+                    <span
+                      className={styles.cardStatus}
+                      style={{
+                        background: statusInfo.bg,
+                        color: statusInfo.color,
+                        border: `1px solid ${statusInfo.color}20`,
+                      }}
+                    >
+                      {statusInfo.label}
+                    </span>
+                  </div>
+
+                  <div className={styles.cardBody}>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>کاربر:</span>
+                      <span>{payment.order?.userID?.name || "نامشخص"}</span>
+                    </div>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>مبلغ:</span>
+                      <span className={styles.cardPrice}>
+                        {formatPrice(payment.amount)} تومان
                       </span>
-                    </td>
-                    <td>{payment.order?.userID?.name || "نامشخص"}</td>
-                    <td className={styles.priceCell}>
-                      {formatPrice(payment.amount)}
-                    </td>
-                    <td>
-                      {payment.paymentMethod === "online"
-                        ? "آنلاین"
-                        : payment.paymentMethod || "-"}
-                    </td>
-                    <td>
-                      <span
-                        className={styles.statusBadge}
-                        style={{
-                          background: statusInfo.bg,
-                          color: statusInfo.color,
-                          border: `1px solid ${statusInfo.color}20`,
-                        }}
-                      >
-                        {statusInfo.label}
+                    </div>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>روش پرداخت:</span>
+                      <span>
+                        {payment.paymentMethod === "online"
+                          ? "آنلاین"
+                          : payment.paymentMethod || "-"}
                       </span>
-                    </td>
-                    <td>{formatDate(payment.createdAt)}</td>
-                    <td>
-                      <span
-                        onClick={() => handleViewDetails(payment._id)}
-                        className={styles.iconBtn}
-                        title="جزئیات"
-                      >
-                        <FiEye size={16} />
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div className={styles.empty}>
-          <p>{search ? "تراکنشی با این جستجو یافت نشد" : "هیچ تراکنشی وجود ندارد"}</p>
-        </div>
+                    </div>
+                    <div className={styles.cardRow}>
+                      <span className={styles.cardLabel}>تاریخ:</span>
+                      <span>{formatDate(payment.createdAt)}</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.cardActions}>
+                    <span
+                      onClick={() => handleViewDetails(payment._id)}
+                      className={styles.cardIcon}
+                      title="جزئیات"
+                    >
+                      <FiEye size={16} />
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className={styles.empty}>
+            <p>{search ? "تراکنشی با این جستجو یافت نشد" : "هیچ تراکنشی وجود ندارد"}</p>
+          </div>
+        )
       )}
 
       {showModal && selectedPayment && (

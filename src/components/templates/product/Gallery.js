@@ -6,16 +6,19 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useState } from "react";
+import styles from "@/styles/product.module.css"; // ← اضافه کردن import
 
-const Gallery = () => {
+const Gallery = ({ img }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const images = [
-    "https://set-coffee.com/wp-content/uploads/2020/12/Gold-DG-700x700.jpg",
-    "https://set-coffee.com/wp-content/uploads/2020/12/Gold-box-DG--150x150.jpg",
+    `${process.env.NEXT_PUBLIC_IMAGE_URL}${img}`,
+    // "https://set-coffee.com/wp-content/uploads/2020/12/Gold-box-DG--150x150.jpg",
   ];
 
   return (
-    <section style={{ width: "36%" }}>
+    <section className={styles.galleryWrapper}>
+      {" "}
+      {/* ← استفاده از کلاس CSS */}
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -27,14 +30,13 @@ const Gallery = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2 gallery-slider"
       >
-        {images.map((img) => (
-          <SwiperSlide>
-            <img src={img} />
+        {images.map((img, index) => (
+          <SwiperSlide key={index}>
+            <img src={img} alt="تصویر محصول" />
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <Swiper
+      {/* <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
         slidesPerView={4}
@@ -43,12 +45,12 @@ const Gallery = () => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="gallery-slider-2"
       >
-        {images.map((img) => (
-          <SwiperSlide key={Math.random()}>
-            <img src={img} />
+        {images.map((img, index) => (
+          <SwiperSlide key={index}>
+            <img src={img} alt="تصویر کوچک محصول" />
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
     </section>
   );
 };
