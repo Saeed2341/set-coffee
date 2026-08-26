@@ -6,7 +6,7 @@ import tableStyles from "./dataTable.module.css";
 import Modal from "@/components/modules/modal/Modal";
 import styles from "./orders.module.css";
 import Pagination from "@/components/modules/pagination/Pagination";
-
+import ShimmerTable from "@/components/modules/shimmer/ShimmerTable";
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -102,10 +102,11 @@ function Orders() {
 
   if (loading) {
     return (
-      <div style={{ textAlign: "center", padding: "60px 20px" }}>
-        <div className={tableStyles.spinner}></div>
-        <p style={{ color: "#a09c96" }}>در حال بارگذاری سفارشات...</p>
-      </div>
+      <main>
+        <DataTable title="سفارش‌ها">
+          <ShimmerTable rows={5} columns={6} isMobile={isMobile} />
+        </DataTable>
+      </main>
     );
   }
 

@@ -97,15 +97,15 @@ export default function DataTable({ comments, title }) {
                 return (
                   <tr key={index}>
                     <td>{startIndex + index + 1}</td>
-                    <td>{new Date(comment.date).toLocaleDateString("fa-IR")}</td>
+                    <td>
+                      {new Date(comment.date).toLocaleDateString("fa-IR")}
+                    </td>
                     <td>{comment.targetId.name}</td>
                     {comment.score ? (
                       <td>
-                        {new Array(comment.score)
-                          .fill(0)
-                          .map((item, idx) => (
-                            <FaStar key={idx} />
-                          ))}
+                        {new Array(comment.score).fill(0).map((item, idx) => (
+                          <FaStar key={idx} />
+                        ))}
                         {new Array(5 - comment.score)
                           .fill(0)
                           .map((item, idx) => (
@@ -150,7 +150,9 @@ export default function DataTable({ comments, title }) {
             return (
               <div key={index} className={styles.commentCard}>
                 <div className={styles.cardHeader}>
-                  <span className={styles.cardId}>#{startIndex + index + 1}</span>
+                  <span className={styles.cardId}>
+                    #{startIndex + index + 1}
+                  </span>
                   <span
                     className={`${styles.cardStatus} ${statusInfo.className}`}
                   >
@@ -161,7 +163,9 @@ export default function DataTable({ comments, title }) {
                 <div className={styles.cardBody}>
                   <div className={styles.cardRow}>
                     <span className={styles.cardLabel}>تاریخ:</span>
-                    <span>{new Date(comment.date).toLocaleDateString("fa-IR")}</span>
+                    <span>
+                      {new Date(comment.date).toLocaleDateString("fa-IR")}
+                    </span>
                   </div>
                   <div className={styles.cardRow}>
                     <span className={styles.cardLabel}>محصول:</span>
@@ -172,11 +176,9 @@ export default function DataTable({ comments, title }) {
                     <span className={styles.cardStars}>
                       {comment.score ? (
                         <>
-                          {new Array(comment.score)
-                            .fill(0)
-                            .map((item, idx) => (
-                              <FaStar key={idx} size={12} />
-                            ))}
+                          {new Array(comment.score).fill(0).map((item, idx) => (
+                            <FaStar key={idx} size={12} />
+                          ))}
                           {new Array(5 - comment.score)
                             .fill(0)
                             .map((item, idx) => (

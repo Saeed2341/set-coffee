@@ -1,0 +1,219 @@
+/* ============================================ */
+/* ===== Shimmer Table ===== */
+/* ============================================ */
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  overflow: hidden;
+  overflow-x: auto;
+  padding: 0;
+}
+
+.shimmerTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 600px;
+}
+
+.shimmerTable thead th {
+  background: #f5ebe0;
+  padding: 14px 18px;
+  text-align: center;
+  border: none;
+}
+
+.shimmerTable tbody td {
+  padding: 14px 18px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #f5f4f2;
+}
+
+.shimmerTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================ */
+/* ===== Shimmer Lines ===== */
+/* ============================================ */
+.shimmerLine {
+  height: 16px;
+  border-radius: 6px;
+  background: #f0eeea;
+  background: linear-gradient(
+    90deg,
+    #f0eeea 0%,
+    #e8e3dc 20%,
+    #f0eeea 40%,
+    #f0eeea 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmerHeader {
+  height: 18px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.shimmerCell {
+  height: 14px;
+  margin: 0 auto;
+}
+
+/* ============================================ */
+/* ===== Shimmer Cards (موبایل) ===== */
+/* ============================================ */
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.shimmerCard {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f0eeea;
+  padding: 16px 18px;
+  box-shadow: 0 2px 8px rgba(62, 39, 35, 0.02);
+}
+
+.cardHeaderShimmer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f5f4f2;
+}
+
+.shimmerCode {
+  width: 80px;
+  height: 18px;
+}
+
+.shimmerStatus {
+  width: 70px;
+  height: 22px;
+  border-radius: 30px;
+}
+
+.cardBodyShimmer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.shimmerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shimmerLabel {
+  width: 50px;
+  height: 14px;
+}
+
+.shimmerValue {
+  width: 100px;
+  height: 14px;
+}
+
+.shimmerButton {
+  width: 100%;
+  height: 38px;
+  border-radius: 30px;
+}
+
+/* ============================================ */
+/* ===== ریسپانسیو ===== */
+/* ============================================ */
+@media (max-width: 768px) {
+  .shimmerTable {
+    min-width: 480px;
+  }
+
+  .shimmerTable thead th,
+  .shimmerTable tbody td {
+    padding: 10px 12px;
+  }
+
+  .shimmerHeader {
+    height: 16px;
+  }
+
+  .shimmerCell {
+    height: 12px;
+  }
+
+  .shimmerCode {
+    width: 60px;
+    height: 16px;
+  }
+
+  .shimmerStatus {
+    width: 60px;
+    height: 20px;
+  }
+
+  .shimmerValue {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shimmerTable {
+    min-width: 400px;
+  }
+
+  .shimmerTable thead th,
+  .shimmerTable tbody td {
+    padding: 8px 8px;
+  }
+
+  .shimmerHeader {
+    height: 14px;
+  }
+
+  .shimmerCell {
+    height: 10px;
+  }
+
+  .shimmerCard {
+    padding: 14px 14px;
+  }
+
+  .shimmerCode {
+    width: 50px;
+    height: 14px;
+  }
+
+  .shimmerStatus {
+    width: 50px;
+    height: 18px;
+  }
+
+  .shimmerValue {
+    width: 70px;
+  }
+
+  .shimmerButton {
+    height: 34px;
+  }
+}
