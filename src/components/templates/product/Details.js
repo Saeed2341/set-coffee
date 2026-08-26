@@ -53,6 +53,7 @@ const Details = ({ product }) => {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
     showSwal("محصول با موفقیت به سبد خرید اضافه شد", "success", "تایید");
+    setCount(1);
   };
 
   return (

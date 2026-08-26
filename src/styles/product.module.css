@@ -119,7 +119,7 @@
     padding: 20px 16px 3rem;
   }
   .main {
-    flex-direction: column !important;
+    flex-direction: column-reverse !important;
     gap: 30px;
   }
   .main :global(.gallery-slider .swiper-slide img) {
